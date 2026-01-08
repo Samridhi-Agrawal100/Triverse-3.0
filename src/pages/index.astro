@@ -1,0 +1,37 @@
+---
+import Hero from '../components/Hero.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Triverse - A cosmic journey through space" />
+		<title>Triverse - A Cosmic Event</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			html, body {
+				width: 100%;
+				height: 100%;
+				overflow-x: hidden;
+			}
+			
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+				background: #010418;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<Hero />
+	</body>
+</html>
