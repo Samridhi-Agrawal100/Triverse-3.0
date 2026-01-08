@@ -1,0 +1,217 @@
+---
+---
+<div class="menu-container">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Menu">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+    </button>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <nav class="menu-nav">
+            <a href="/" class="menu-link">HOME</a>
+            <a href="/events" class="menu-link">EVENTS</a>
+            <a href="/teams" class="menu-link">TEAMS</a>
+            <a href="/sponsors" class="menu-link">SPONSORS</a>
+        </nav>
+    </div>
+</div>
+
+<style>
+    /* Menu Toggle Button */
+    .menu-toggle {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1000;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .line {
+        width: 24px;
+        height: 2px;
+        background-color: white;
+        transition: transform 0.3s ease;
+    }
+
+    /* Active state for hamburger to X */
+    .menu-toggle.active .line-1 {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-toggle.active .line-2 {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    /* Menu Overlay */
+    .menu-overlay {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        width: 300px;
+        background: rgba(10, 10, 10, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 2rem;
+        z-index: 999;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0.8);
+        transform-origin: top right;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .menu-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .menu-link {
+        color: white;
+        text-decoration: none;
+        font-family: 'Orbitron', sans-serif; /* Assuming font exists or fallback */
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        position: relative;
+        padding: 0.5rem 0;
+        overflow: hidden;
+        transition: color 0.3s ease;
+    }
+
+    /* Hover Animation for Links */
+    .menu-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #00f0ff; /* Cyan accent */
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .menu-link:hover {
+        color: #00f0ff;
+    }
+
+    .menu-link:hover::after {
+        transform: translateX(0);
+    }
+
+</style>
+
+<script>
+    // Using GSAP since it is already loaded in Layout
+    // We wait for DOM content loaded to ensure elements exist
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('menu-toggle');
+        const overlay = document.getElementById('menu-overlay');
+        const links = document.querySelectorAll('.menu-link');
+        let isOpen = false;
+
+        if (!toggle || !overlay) return;
+
+        // Ensure GSAP is available (it's loaded in Layout head)
+        const checkGsap = setInterval(() => {
+            if (window.gsap) {
+                clearInterval(checkGsap);
+                initMenu();
+            }
+        }, 100);
+
+        function initMenu() {
+            // Set initial state
+            gsap.set(overlay, { 
+                scale: 0.8, 
+                autoAlpha: 0, // handles opacity and visibility
+                transformOrigin: "top right"
+            });
+
+            toggle.addEventListener('click', () => {
+                isOpen = !isOpen;
+                
+                // Toggle Button Animation
+                toggle.classList.toggle('active');
+
+                if (isOpen) {
+                    // Open Animation
+                    gsap.to(overlay, {
+                        duration: 0.5,
+                        scale: 1,
+                        autoAlpha: 1,
+                        ease: "back.out(1.7)"
+                    });
+
+                    // Stagger links
+                    gsap.fromTo(links, 
+                        { y: 20, opacity: 0 },
+                        { 
+                            y: 0, 
+                            opacity: 1, 
+                            duration: 0.4, 
+                            stagger: 0.1, 
+                            delay: 0.1,
+                            ease: "power2.out"
+                        }
+                    );
+                } else {
+                    // Close Animation
+                    gsap.to(overlay, {
+                        duration: 0.3,
+                        scale: 0.8,
+                        autoAlpha: 0,
+                        ease: "power2.in"
+                    });
+                }
+            });
+
+            // Close when clicking a link
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    isOpen = false;
+                    toggle.classList.remove('active');
+                    gsap.to(overlay, {
+                        duration: 0.3,
+                        scale: 0.8,
+                        autoAlpha: 0,
+                        ease: "power2.in"
+                    });
+                });
+            });
+            
+             // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (isOpen && !overlay.contains(e.target as Node) && !toggle.contains(e.target as Node)) {
+                     isOpen = false;
+                    toggle.classList.remove('active');
+                    gsap.to(overlay, {
+                        duration: 0.3,
+                        scale: 0.8,
+                        autoAlpha: 0,
+                        ease: "power2.in"
+                    });
+                }
+            });
+        }
+    });
+</script>
