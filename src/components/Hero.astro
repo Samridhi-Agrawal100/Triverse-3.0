@@ -6,11 +6,6 @@ import logoImage from '../images/logo.png';
 ---
 
 <div class="hero-container">
-	<!-- Starry Background with Bokeh Effect -->
-	<div class="stars-background">
-		<div class="bokeh-stars"></div>
-	</div>
-	
 	<!-- Top Spotlight - Cone beam from top center -->
 	<div class="top-spotlight" id="topSpotlight"></div>
 	
@@ -111,12 +106,22 @@ import logoImage from '../images/logo.png';
 				duration: 1.5,
 				ease: 'power3.out'
 			}, '-=0.5')
-			// Fade in logo
-			.to(logoContainer, {
-				opacity: 1,
-				duration: 1.5,
-				ease: 'power2.out'
-			}, '-=1.2');
+		// Fade in logo
+		.to(logoContainer, {
+			opacity: 1,
+			duration: 1.5,
+			ease: 'power2.out'
+		}, '-=1.2');
+		
+		// Start floating animation after fade in
+		gsap.to(triverseLogo, {
+			y: -20,
+			duration: 3.5,
+			repeat: -1,
+			yoyo: true,
+			ease: 'sine.inOut',
+			delay: 1.8
+		});
 			
 			// Subtle spotlight pulse
 			gsap.to(topSpotlight, {
