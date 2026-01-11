@@ -1,0 +1,84 @@
+{
+  "teams": [
+    {
+      "name": "office bearer",
+      "lead": {
+        "name": "Samridhi Agrawal",
+        "role": "Team Lead",
+        "image": "/src/images/team/tech/samridhi-agrawal.png"
+      },
+      "colead": {
+        "name": "Gyanendra Pratap Singh",
+        "role": "Co-Lead",
+        "image": "/src/images/team/tech/gyanendra.png"
+      },
+      "members": [
+         {
+          "name": "Rishabh Verma",
+          "role": "Core Member",
+          "image": "/src/images/team/Office-bearer/Rishabh_Verma.png"
+        },
+        {
+          "name": "Shruti",
+          "role": "Core Member",
+          "image": "/src/images/team/tech/shruti.png"
+        },
+        {
+          "name": "Rishabh Verma",
+          "role": "Core Member",
+          "image": "/src/images/team/Office-bearer/Rishabh_Verma.png"
+        }
+      ]
+    },
+    {
+      "name": "Tech team",
+      "lead": {
+        "name": "Samridhi Agrawal",
+        "role": "Team Lead",
+        "image": "/src/images/team/tech/samridhi-agrawal.png"
+      },
+      "colead": {
+        "name": "Gyanendra Pratap Singh",
+        "role": "Co-Lead",
+        "image": "/src/images/team/tech/gyanendra.png"
+      },
+      "members": [
+        {
+          "name": "Shruti",
+          "role": "Core Member",
+          "image": "/src/images/team/tech/shruti.png"
+        },
+        {
+          "name": "Rishabh",
+          "role": "Core Member",
+          "image": "/src/images/team/Office-bearer/Rishabh_Verma.png"
+        }
+      ]
+    },
+    {
+      "name": "Content team",
+      "lead": {
+        "name": "Aditya Gupta",
+        "role": "Team Lead",
+        "image": "/src/images/team/Content/Aditya_Gupta.png"
+      },
+      "colead": {
+        "name": "Gyanendra Pratap Singh",
+        "role": "Co-Lead",
+        "image": "/src/images/team/Content/Aditya_Gupta.png"
+      },
+      "members": [
+        {
+          "name": "Shruti",
+          "role": "Core Member",
+          "image": "/src/images/team/Content/Aditya_Gupta.png"
+        },
+        {
+          "name": "Rishabh",
+          "role": "Core Member",
+          "image": "/src/images/team/Content/Aditya_Gupta.png"
+        }
+      ]
+    }
+  ]
+}

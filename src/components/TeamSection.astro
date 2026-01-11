@@ -1,0 +1,211 @@
+---
+import teamData from '../data/team-details.json';
+
+interface Props {
+  teamName: string;
+}
+
+const { teamName } = Astro.props;
+const team = teamData.teams.find(t => t.name.toLowerCase() === teamName.toLowerCase());
+
+if (!team) {
+  console.error(`Team "${teamName}" not found`);
+}
+---
+
+{team && (
+  <section class="team-section">
+
+    <!-- LEAD -->
+    <div class="lead-row left">
+      <img src={team.lead.image} alt={team.lead.name} />
+      <div class="info">
+        <h3>{team.lead.name}</h3>
+        <p>{team.lead.role}</p>
+      </div>
+    </div>
+
+    <!-- CO-LEAD -->
+    <div class="lead-row right">
+      <div class="info">
+        <h3>{team.colead.name}</h3>
+        <p>{team.colead.role}</p>
+      </div>
+      <img src={team.colead.image} alt={team.colead.name} />
+    </div>
+
+    <!-- MEMBERS -->
+    {team.members.length > 0 && (
+      <div class="members-grid">
+        {team.members.map(member => (
+          <div class="member-card">
+            <img src={member.image} alt={member.name} />
+            <h4>{member.name}</h4>
+            <p>{member.role}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+  </section>
+)}
+
+<style>
+.team-section {
+  width: 100%;
+  padding: 0 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: -3rem; /* HEADING SE GAP KAM KIYA */
+}
+
+/* ---------- LEAD / CO-LEAD ROWS ---------- */
+.lead-row {
+  display: flex;
+  align-items: center;
+  gap: 0.000015rem;
+  padding: 0;
+  margin-bottom: 0; /* Default no margin */
+}
+
+/* SIRF PEHLI ROW (LEAD) KO NEGATIVE MARGIN - YE CO-LEAD SE OVERLAP KAREGA */
+.lead-row.left {
+  margin-bottom: -8rem; /* Lead aur Co-lead overlap honge */
+}
+
+/* CO-LEAD ROW - Members se pehle proper space */
+.lead-row.right {
+  margin-bottom: 2rem; /* Co-lead ke baad members ke liye proper gap */
+}
+
+/* Left & Right alignment */
+.lead-row.left {
+  justify-content: flex-start;
+}
+
+.lead-row.right {
+  justify-content: flex-end;
+}
+
+/* FIXED IMAGE SIZE FOR LEAD & CO-LEAD - HEIGHT REDUCE KIYA */
+.lead-row img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
+  filter:
+    drop-shadow(2px 0 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(0 -2px 0 white);
+  transition: transform 0.3s ease;
+}
+
+.lead-row img:hover {
+  transform: scale(1.05);
+}
+
+
+
+.lead-row h3 {
+  font-size: 1.85rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.lead-row p {
+  font-size: 1.1rem;
+  color: #bbb;
+  font-weight: 300;
+}
+
+/* ---------- MEMBERS GRID ---------- */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.5rem; /* 1.2rem se kam kiya */
+}
+
+/* MEMBER CARD FIXED SIZE */
+.member-card {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-10px);
+}
+
+/* SMALLER, FIXED MEMBER IMAGES */
+.member-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin: 0 auto 0.6rem;
+  background: transparent;
+  border: none;
+  filter:
+    drop-shadow(1.5px 0 0 white)
+    drop-shadow(-1.5px 0 0 white)
+    drop-shadow(0 1.5px 0 white)
+    drop-shadow(0 -1.5px 0 white);
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover img {
+  transform: scale(1.08);
+}
+
+.member-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.member-card p {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-weight: 300;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lead-row {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .lead-row.left {
+    margin-bottom: 2.5rem !important;
+  }
+  
+  .lead-row.right {
+    margin-bottom: 2rem !important;
+  }
+  
+  .lead-row.left,
+  .lead-row.right {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  /* YEH IMPORTANT - IMAGE HAMESHA PEHLE */
+  .lead-row img {
+    order: -1 !important; /* Image ko top pe */
+  }
+  
+  .lead-row .info {
+    text-align: center;
+    order: 1; /* Text neeche */
+  }
+  
+  .members-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.2rem;
+  }
+}
+</style>
