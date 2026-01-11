@@ -45,6 +45,7 @@ const {
                 position: relative;
                 width: 100%;
                 z-index: 2; /* Above footer initially */
+                pointer-events: none;
             }
             
             .content-wrapper {
@@ -53,6 +54,7 @@ const {
                 background-color: #010418; /* Ensure content has background to cover footer */
                 width: 100%;
                 will-change: transform;
+                pointer-events: auto;
             }
 
             .footer-spacer {

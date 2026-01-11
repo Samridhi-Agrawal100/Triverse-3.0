@@ -1,11 +1,9 @@
 ---
 import '../assets/footer.css';
 
-interface Props {
-  logoUrl?: string;
-}
-
-const { logoUrl = '/src/images/logo.png' } = Astro.props;
+import { Image } from 'astro:assets';
+import clubLogo from '../images/club.png';
+import triverseLogo from '../images/logo.png';
 ---
 
 <footer class="footer" id="footer">
@@ -15,7 +13,7 @@ const { logoUrl = '/src/images/logo.png' } = Astro.props;
       <!-- Left Section: Nav & Logo -->
       <div class="footer-column footer-left">
         <div class="footer-logo-wrapper">
-          <img src="/src/images/club.png" alt="IEEE" class="footer-logo-long" />
+          <Image src={clubLogo} alt="IEEE" width={200} format="png" />
         </div>
         <nav class="footer-nav">
           <ul>
@@ -27,9 +25,9 @@ const { logoUrl = '/src/images/logo.png' } = Astro.props;
         </nav>
       </div>
 
-      <!-- Center Section: AI SOCIETY & Partners -->
+      <!-- Center Section: IEEE & Partners -->
       <div class="footer-column footer-center">
-        <img src="/src/images/logo.png" alt="Triverse" class="footer-center-logo" />
+        <Image src={triverseLogo} alt="IEEE" width={540} height={180} format="png" />
         <div class="partner-logos">
           <div class="partner-logo-placeholder">
             <span>Student Cabinet<br/>School of CSET</span>
@@ -91,8 +89,13 @@ const { logoUrl = '/src/images/logo.png' } = Astro.props;
       </div>
 
       <div class="credits">
-        DESIGN & DEVELOPED BY AFJAL HUSSEIN
+        DESIGN & DEVELOPED BY IEEE TRIVERSE
       </div>
+
     </div>
+    <!-- Added holographic text element at end of footer -->
+ <div class="holographic-text">
+   <span class="holo-text">TRIVERSE 3.0</span>
+ </div>
   </div>
 </footer>

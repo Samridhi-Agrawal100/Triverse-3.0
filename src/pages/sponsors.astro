@@ -1,9 +1,276 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// DATA: Divided into Tiers
+const sponsorTiers = [
+  {
+    title: "GOLD SPONSORS",
+    id: "gold",
+    color: "#FFD700", // Gold Color
+    sponsors: [
+      { name: "Bennett University", logo: "/src/images/logo.png" },
+      { name: "Tech Giant", logo: "https://placehold.co/300x300/1a1a1a/FFF?text=Tech+Giant" },
+    ]
+  },
+  {
+    title: "SILVER SPONSORS",
+    id: "silver",
+    color: "#00f0ff", // Cyber Cyan
+    sponsors: [
+      { name: "Future Systems", logo: "https://placehold.co/250x250/1a1a1a/FFF?text=Future" },
+      { name: "Alpha Code", logo: "https://placehold.co/250x250/1a1a1a/FFF?text=Alpha" },
+      { name: "Beta Devs", logo: "https://placehold.co/250x250/1a1a1a/FFF?text=Beta" },
+    ]
+  },
+  {
+    title: "COMMUNITY PARTNERS",
+    id: "community",
+    color: "#bd00ff", // Triverse Purple
+    sponsors: [
+      { name: "Club A", logo: "https://placehold.co/200x200/1a1a1a/FFF?text=Club+A" },
+      { name: "Club B", logo: "https://placehold.co/200x200/1a1a1a/FFF?text=Club+B" },
+      { name: "Club C", logo: "https://placehold.co/200x200/1a1a1a/FFF?text=Club+C" },
+      { name: "Orbital", logo: "https://placehold.co/200x200/1a1a1a/FFF?text=Orbital" },
+      { name: "Nebula", logo: "https://placehold.co/200x200/1a1a1a/FFF?text=Nebula" },
+    ]
+  }
+];
 ---
 
-<Layout title="Sponsors - Triverse">
-	<main style="min-height: 100vh; display: flex; align-items: center; justify-content: center; color: white;">
-		<h1>Sponsors Page</h1>
-	</main>
+<Layout title="Sponsors | Triverse">
+  <div class="space-bg"></div>
+  <div class="stars"></div>
+
+  <div class="sponsors-page">
+    
+    <section class="hero">
+      <h1 class="cyber-title">EVENT SPONSORS</h1>
+      <p class="subtitle">Powering our voyage into the unknown</p>
+    </section>
+
+    <div class="tiers-wrapper">
+      {sponsorTiers.map((tier) => (
+        <section class={`tier-section ${tier.id}`} style={`--theme-color: ${tier.color}`}>
+          
+          <h2 class="tier-title">{tier.title}</h2>
+          
+          <div class="constellation-grid">
+            {tier.sponsors.map((sponsor) => (
+              <div class="diamond-wrapper">
+                <div class="diamond-shape">
+                  <div class="shine"></div>
+                  <div class="diamond-content">
+                    <img 
+                      src={sponsor.logo} 
+                      alt={sponsor.name} 
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+  </div>
 </Layout>
+
+<style>
+  /* --- 1. Background & Layout --- */
+  .sponsors-page {
+    position: relative;
+    padding: 4rem 1rem;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  .space-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Triverse Purple Gradient */
+    background: radial-gradient(circle at 50% 90%, #5e187a 0%, #0f021a 70%, #000000 100%);
+    z-index: -2;
+  }
+
+  .stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  /* --- 2. Typography --- */
+  .hero {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .cyber-title {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    margin: 0;
+    background: linear-gradient(to right, #ae00ff7c, #bb00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(187, 0, 255, 0.4));
+  }
+
+  .subtitle {
+    color: #a29bfe;
+    letter-spacing: 2px;
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+
+  /* --- 3. Tier Sections --- */
+  .tiers-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; 
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* --- CENTERED TITLES FIX --- */
+  .tier-title {
+    text-align: center;
+    width: 100%;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 3rem;
+    color: var(--theme-color);
+    text-shadow: 0 0 15px var(--theme-color);
+    position: relative;
+    display: block;
+  }
+  
+  /* Decorative line under title */
+  .tier-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--theme-color);
+    margin: 10px auto 0;
+    box-shadow: 0 0 10px var(--theme-color);
+  }
+
+  /* --- 4. The Grid --- */
+  .constellation-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding-bottom: 2rem;
+  }
+
+  /* --- 5. Diamond Shape Logic --- */
+  .diamond-wrapper {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* SIZE LOGIC BASED ON TIERS */
+  .gold .diamond-wrapper { width: 240px; height: 240px; }
+  .silver .diamond-wrapper { width: 190px; height: 190px; }
+  .community .diamond-wrapper { width: 150px; height: 150px; }
+
+  /* Honeycomb Offset */
+  .diamond-wrapper:nth-child(even) {
+    margin-top: 40px; 
+    animation-delay: -3s;
+  }
+
+  .diamond-shape {
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+    overflow: hidden;
+    background: rgba(20, 10, 30, 0.6);
+    backdrop-filter: blur(5px);
+    
+    border: 2px solid rgba(255, 255, 255, 0.1); 
+    border-color: var(--theme-color); 
+    box-shadow: 0 0 15px var(--theme-color);
+    transition: all 0.4s ease;
+  }
+
+  /* --- 6. Content (Logos) --- */
+  .diamond-content {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 140%; 
+    height: 140%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diamond-content img {
+    max-width: 55%;
+    max-height: 55%;
+    object-fit: contain;
+    transition: all 0.4s;
+    
+    filter: grayscale(1) brightness(1.2); 
+    opacity: 0.8;
+  }
+
+  .gold .diamond-content img {
+    filter: grayscale(0) brightness(1.1);
+    opacity: 1;
+    max-width: 65%;
+  }
+
+  /* --- 7. Hover Effects --- */
+  .diamond-wrapper:hover .diamond-shape {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg) scale(1.1);
+    box-shadow: 0 0 40px var(--theme-color);
+    z-index: 10;
+  }
+
+  .diamond-wrapper:hover img {
+    filter: grayscale(0) brightness(1.2);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* Shine Animation */
+  .shine {
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+    transform: rotate(-45deg) translateY(-100%);
+    pointer-events: none;
+  }
+
+  .diamond-wrapper:hover .shine {
+    transition: transform 0.6s;
+    transform: rotate(-45deg) translateY(100%);
+  }
+
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* --- Mobile Response --- */
+  @media (max-width: 768px) {
+    .gold .diamond-wrapper { width: 180px; height: 180px; }
+    .silver .diamond-wrapper { width: 140px; height: 140px; }
+    .community .diamond-wrapper { width: 120px; height: 120px; }
+    
+    .constellation-grid { gap: 20px; }
+    .tiers-wrapper { gap: 4rem; }
+  }
+</style>
