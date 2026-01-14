@@ -75,7 +75,6 @@ if (!team) {
   border-radius: 50%;
   overflow: hidden;
 
-  /* ✅ ONLY RELIABLE WAY */
   background-image: url('/galaxy.png');
   background-size: cover;
   background-position: center;
@@ -88,10 +87,10 @@ if (!team) {
   align-items: center;
 }
 
-/* ---------- STICKER IMAGE ---------- */
+/* ---------- STICKER IMAGE (SUBTLE ZOOM) ---------- */
 .avatar-wrap img {
-  width: 90%;
-  height: 90%;
+  width: 98%;
+  height: 105%;
   object-fit: contain;
   z-index: 1;
   background: transparent;
@@ -102,6 +101,7 @@ if (!team) {
     drop-shadow(0 2px 0 white)
     drop-shadow(0 -2px 0 white);
 
+  transform: scale(1.03);
   transition: transform 0.3s ease;
 }
 
@@ -144,7 +144,11 @@ if (!team) {
   margin-top: 0.5rem;
 }
 
+/* ---------- MEMBER CARD (FIXED ALIGNMENT) ---------- */
 .member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   transition: transform 0.3s ease;
 }
@@ -153,28 +157,39 @@ if (!team) {
   transform: translateY(-10px);
 }
 
+/* 🔥 KEY FIX: space control */
+.member-avatar {
+  margin-bottom: 0.45rem;
+}
+
 .member-card h4 {
   font-size: 0.95rem;
-  margin-bottom: 0.3rem;
+  margin: 0;
+  margin-top: 0.1rem;
 }
 
 .member-card p {
   font-size: 0.85rem;
+  margin-top: 0.2rem;
   color: #aaa;
 }
 
 /* ---------- RESPONSIVE ---------- */
-@media (max-width: 768px) {
+@media (max-width: 941px) {
   .lead-row {
     flex-direction: column;
     text-align: center;
   }
 
+  /* ✅ Space between TECH TEAM heading & LEAD avatar */
   .lead-row.left {
+    margin-top: 2rem;      /* distance from heading */
     margin-bottom: 2.5rem;
   }
 
+  /* ✅ Co-Lead name below image on mobile */
   .lead-row.right {
+    flex-direction: column-reverse;
     margin-bottom: 2rem;
   }
 
@@ -182,5 +197,4 @@ if (!team) {
     width: 205px;
     height: 205px;
   }
-}
 </style>
