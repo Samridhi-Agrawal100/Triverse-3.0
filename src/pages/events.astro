@@ -304,16 +304,21 @@ const events = [
 			1500px
 		); /* Regulated width on the flap itself */
 		height: 100%;
-		/* Premium Material: Vertical Gradient + Transparency */
-		background: linear-gradient(
-			180deg, 
-			rgba(74, 42, 106, 0.45) 0%, 
-			rgba(168, 85, 247, 0.15) 50%, 
-			rgba(74, 42, 106, 0.45) 100%
-		);
+		
+		/* Horizon Purple Glass Gradient: Top-center glow + Vertical dark base */
+		background: 
+			radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.25) 0%, transparent 75%),
+			linear-gradient(180deg, rgba(26, 11, 53, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+		
 		backdrop-filter: blur(35px); /* Increased blur for more depth */
 		filter: url(#glassRefraction); /* Faint organic distortion */
-		border: 1px solid var(--glass-border);
+		
+		/* Rim Lighting & Depth */
+		box-shadow: 
+			inset 0 1px 1px rgba(255, 255, 255, 0.1),
+			inset 0 20px 40px -10px rgba(168, 85, 247, 0.2);
+
+		border: 1px solid rgba(255, 255, 255, 0.08);
 		/* Wide, shallow architectural dome curve */
 		border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 		transform-origin: bottom center;
@@ -342,6 +347,7 @@ const events = [
 		transition:
 			border-color 0.6s ease,
 			background 0.6s ease,
+			box-shadow 0.6s ease,
 			transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
@@ -350,6 +356,13 @@ const events = [
 			width: 90vw;
 			height: 55vh;
 			padding: 0 5vw 8vh 5vw;
+			/* Subtle mobile gradients */
+			background: 
+				radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
+				linear-gradient(180deg, rgba(26, 11, 53, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
+			box-shadow: 
+				inset 0 1px 1px rgba(255, 255, 255, 0.15),
+				inset 0 10px 20px -5px rgba(168, 85, 247, 0.15);
 		}
 		.turbine-wrapper {
 			height: 55vh;
@@ -377,8 +390,11 @@ const events = [
 
 	.turbine-flap.active {
 		border-color: var(--accent);
-		background: rgba(255, 255, 255, 0.05);
-		box-shadow: 0 0 50px rgba(168, 85, 247, 0.05);
+		/* Brighter outer aura and reinforced rim light */
+		box-shadow: 
+			inset 0 1px 2px rgba(255, 255, 255, 0.2),
+			inset 0 30px 60px -15px rgba(168, 85, 247, 0.3),
+			0 0 30px rgba(168, 85, 247, 0.1);
 	}
 
 	.flap-content {
