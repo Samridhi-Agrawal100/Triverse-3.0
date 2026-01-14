@@ -1,5 +1,6 @@
 ---
 import teamData from '../data/team-details.json';
+const galaxyBg = new URL('../assets/galaxy.png', import.meta.url).href;
 
 interface Props {
   teamName: string;
@@ -14,11 +15,13 @@ if (!team) {
 ---
 
 {team && (
-  <section class="team-section">
+  <section class="team-section" style={`--galaxy-bg: url(${galaxyBg});`}>
 
     <!-- LEAD -->
     <div class="lead-row left">
-      <img src={team.lead.image} alt={team.lead.name} />
+      <div class="avatar-wrap lead-avatar">
+        <img src={team.lead.image} alt={team.lead.name} />
+      </div>
       <div class="info">
         <h3>{team.lead.name}</h3>
         <p>{team.lead.role}</p>
@@ -31,7 +34,9 @@ if (!team) {
         <h3>{team.colead.name}</h3>
         <p>{team.colead.role}</p>
       </div>
-      <img src={team.colead.image} alt={team.colead.name} />
+      <div class="avatar-wrap lead-avatar">
+        <img src={team.colead.image} alt={team.colead.name} />
+      </div>
     </div>
 
     <!-- MEMBERS -->
@@ -39,7 +44,9 @@ if (!team) {
       <div class="members-grid">
         {team.members.map(member => (
           <div class="member-card">
-            <img src={member.image} alt={member.name} />
+            <div class="avatar-wrap member-avatar">
+              <img src={member.image} alt={member.name} />
+            </div>
             <h4>{member.name}</h4>
             <p>{member.role}</p>
           </div>
@@ -59,13 +66,38 @@ if (!team) {
   margin-top: -3rem; /* HEADING SE GAP KAM KIYA */
 }
 
+/* Shared circular background */
+.avatar-wrap {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  isolation: isolate;
+  background: var(--galaxy-bg, #0b0b1a) center/cover no-repeat;
+  box-sizing: border-box;
+  overflow: visible;
+  z-index: 0;
+  padding: 6px;
+  border: 2px solid #ffffff;
+}
+
+.avatar-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  border-radius: 50%;
+  background: var(--galaxy-bg, #0b0b1a) center/cover no-repeat;
+  z-index: -1;
+}
+
 /* ---------- LEAD / CO-LEAD ROWS ---------- */
 .lead-row {
   display: flex;
   align-items: center;
-  gap: 0.000015rem;
+  gap: 1.5rem; /* prevent text behind circle */
   padding: 0;
-  margin-bottom: 0; /* Default no margin */
+  margin-bottom: 0;
 }
 
 /* SIRF PEHLI ROW (LEAD) KO NEGATIVE MARGIN - YE CO-LEAD SE OVERLAP KAREGA */
@@ -87,10 +119,10 @@ if (!team) {
   justify-content: flex-end;
 }
 
-/* FIXED IMAGE SIZE FOR LEAD & CO-LEAD - HEIGHT REDUCE KIYA */
+/* FIXED IMAGE SIZE FOR LEAD & CO-LEAD */
 .lead-row img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   background: transparent;
   border: none;
@@ -122,6 +154,12 @@ if (!team) {
   font-weight: 300;
 }
 
+/* Circle sizing for lead / co-lead */
+.lead-avatar {
+  width: 220px;
+  height: 220px;
+}
+
 /* ---------- MEMBERS GRID ---------- */
 .members-grid {
   display: grid;
@@ -140,10 +178,10 @@ if (!team) {
   transform: translateY(-10px);
 }
 
-/* SMALLER, FIXED MEMBER IMAGES */
+/* SMALLER, FIXED MEMBER IMAGES (now same as lead) */
 .member-card img {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   margin: 0 auto 0.6rem;
   background: transparent;
@@ -170,6 +208,20 @@ if (!team) {
   font-size: 0.85rem;
   color: #aaa;
   font-weight: 300;
+}
+
+/* Circle sizing for members (match lead) */
+.member-avatar {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 0.6rem;
+  border: 2px solid #ffffff;
+  background: var(--galaxy-bg, #0b0b1a) center/cover no-repeat;
+}
+
+.member-avatar::before {
+  inset: -2%;
+  background: var(--galaxy-bg, #0b0b1a) center/cover no-repeat;
 }
 
 /* Responsive adjustments */
@@ -206,6 +258,21 @@ if (!team) {
   .members-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1.2rem;
+  }
+  
+  .lead-avatar {
+    width: 205px;
+    height: 205px;
+  }
+  
+  .member-avatar {
+    width: 205px;
+    height: 205px;
+  }
+  
+  .member-card img {
+    width: 185px;
+    height: 185px;
   }
 }
 </style>
