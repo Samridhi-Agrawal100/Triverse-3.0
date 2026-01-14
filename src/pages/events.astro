@@ -1,9 +1,929 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+
+// Event data
+const events = [
+	{
+		id: 1,
+		icon: "🎯",
+		title: "Opening Ceremony",
+		date: "March 15, 2026",
+		description:
+			"Kickoff the event with keynote speakers and high-energy networking sessions.",
+		color: "#a855f7",
+	},
+	{
+		id: 2,
+		icon: "💡",
+		title: "Tech Workshop",
+		date: "March 16, 2026",
+		description:
+			"Deep dive into cutting-edge technologies with hands-on labs led by experts.",
+		color: "#d946ef",
+	},
+	{
+		id: 3,
+		icon: "🏆",
+		title: "Competition",
+		date: "March 17, 2026",
+		description:
+			"Put your skills to the test in our flagship hackathon and win amazing prizes.",
+		color: "#ec4899",
+	},
+	{
+		id: 4,
+		icon: "🎉",
+		title: "Closing Event",
+		date: "March 18, 2026",
+		description:
+			"Celebrate our collective achievements with an awards show and after-party.",
+		color: "#f43f5e",
+	},
+];
 ---
 
 <Layout title="Events - Triverse">
-	<main style="min-height: 100vh; display: flex; align-items: center; justify-content: center; color: white;">
-		<h1>Events Page</h1>
+	<main class="events-container">
+		<!-- PHASE 1: TURBINE HERO (SCROLL LOCKED / SCRUBBABLE) -->
+		<!-- Taller stage prevents top clipping during 3D rotation -->
+		<section class="hero-section" id="turbineHero">
+			<div class="turbine-stage">
+						<defs>
+							<!-- Subtle sine-wave refraction filter for glass distortion -->
+							<filter id="glassRefraction">
+								<feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" result="noise" />
+								<feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+							</filter>
+						</defs>
+					</svg>
+				</div>
+				<div class="turbine-wrapper" id="turbineWrapper">
+					<div class="turbine" id="turbine">
+						{
+							events.map((event, index) => (
+								<div
+									class="turbine-flap"
+									style={`--index: ${index}; --accent: ${event.color};`}
+								>
+									<!-- Glass Reflection Overlay -->
+									<div class="flap-reflection"></div>
+									
+									<div class="flap-content">
+										<div class="event-icon">
+											{event.icon}
+										</div>
+										<h2 class="event-title">
+											{event.title}
+										</h2>
+										<div class="event-date">
+											{event.date}
+										</div>
+										<p class="event-desc">
+											{event.description}
+										</p>
+									</div>
+									<div class="flap-glass" />
+									<div class="flap-border" />
+									<div
+										class="flap-glow"
+										style={`background: radial-gradient(circle at center, ${event.color}22 0%, transparent 70%);`}
+									/>
+								</div>
+							))
+						}
+					</div>
+					<div class="turbine-hinge"></div>
+				</div>
+			</div>
+
+			<!-- Scroll Guidance -->
+			<div class="scroll-status">
+				<div class="status-inner" id="scrollHint">
+					<span class="status-text desktop-hint">Scroll to Explore</span>
+					<span class="status-text mobile-hint">Swipe Up to Rotate</span>
+					<div class="status-bar">
+						<div class="status-progress" id="rotationProgress">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- PHASE 2: FLOWING TIMELINE (SCROLL UNLOCKED) -->
+		<section class="timeline-section" id="timelineSection">
+			<div class="timeline-header">
+				<h1 class="timeline-title">The Journey</h1>
+				<p class="timeline-subtitle">
+					A flowing path through Triverse 3.0
+				</p>
+			</div>
+
+			<div class="timeline-content">
+				<!-- Organic S-Curve Path -->
+				<div class="timeline-svg-stage">
+					<svg
+						class="timeline-svg"
+						viewBox="0 0 100 1000"
+						preserveAspectRatio="none"
+					>
+						<defs>
+							<filter id="glow">
+								<feGaussianBlur
+									stdDeviation="2"
+									result="coloredBlur"></feGaussianBlur>
+								<feMerge>
+									<feMergeNode in="coloredBlur"></feMergeNode>
+									<feMergeNode in="SourceGraphic"
+									></feMergeNode>
+								</feMerge>
+							</filter>
+							<mask id="pathMask">
+								<path
+									id="timelineMaskPath"
+									fill="none"
+									stroke="white"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									d="M50,0 C50,150 10,250 10,400 S90,650 90,800 S50,950 50,1100"
+								></path>
+							</mask>
+						</defs>
+						<!-- Background decorative path -->
+						<path
+							class="path-base"
+							d="M50,0 C50,150 10,250 10,400 S90,650 90,800 S50,950 50,1100"
+						></path>
+						<!-- Progressive dashed organic path -->
+						<path
+							class="path-trace"
+							mask="url(#pathMask)"
+							d="M50,0 C50,150 10,250 10,400 S90,650 90,800 S50,950 50,1100"
+							filter="url(#glow)"></path>
+
+						<!-- Glowing nodes where path meets cards -->
+						<circle
+							class="path-node"
+							cx="10"
+							cy="400"
+							r="1.5"
+							fill="#a855f7"></circle>
+						<circle
+							class="path-node"
+							cx="90"
+							cy="800"
+							r="1.5"
+							fill="#ec4899"></circle>
+					</svg>
+				</div>
+
+				<div class="milestones-wrapper">
+					{
+						events.map((event, index) => (
+							<div
+								class="milestone-block"
+								id={`milestone-${index}`}
+								style={`--accent: ${event.color};`}
+							>
+								<div class="milestone-card">
+									<div class="card-glow" />
+									<div class="card-icon">{event.icon}</div>
+									<div class="card-body">
+										<h3>{event.title}</h3>
+										<span class="date">{event.date}</span>
+										<p>{event.description}</p>
+									</div>
+									<div class="card-connector" />
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
 	</main>
 </Layout>
+
+<style is:global>
+	:root {
+		--bg-dark: #0f0617;
+		--purple-deep: #4a2a6a;
+		--purple-bright: #a855f7;
+		--glass-bg: rgba(255, 255, 255, 0.03);
+		--glass-border: rgba(255, 255, 255, 0.1);
+	}
+
+	html.scroll-frozen,
+	html.scroll-frozen body {
+		overflow: hidden !important;
+		height: 100vh !important;
+		position: fixed !important;
+		width: 100% !important;
+		top: 0;
+		left: 0;
+	}
+
+	body {
+		background-color: var(--bg-dark);
+		color: #ffffff;
+		margin: 0;
+		font-family:
+			"Inter",
+			system-ui,
+			-apple-system,
+			sans-serif;
+		overflow-x: hidden;
+	}
+</style>
+
+<style>
+	.events-container {
+		position: relative;
+		width: 100%;
+	}
+
+	/* ==================== TURBINE HERO (PHASE 1) ==================== */
+	.hero-section {
+		height: 100vh;
+		width: 100%;
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: radial-gradient(
+			circle at center,
+			#1a0b35 0%,
+			var(--bg-dark) 100%
+		);
+		overflow: visible;
+		display: flex;
+		align-items: flex-end; /* Anchor to bottom */
+		justify-content: center;
+	}
+
+	.turbine-stage {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 200vh;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		perspective: 4000px;
+		overflow: visible;
+		pointer-events: none;
+	}
+
+	.turbine-wrapper {
+		position: relative;
+		width: 100%;
+		height: clamp(450px, 60vh, 700px);
+		transform-style: preserve-3d;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		overflow: visible;
+	}
+
+	.turbine {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transform-style: preserve-3d;
+		transform-origin: bottom center;
+	}
+
+	.turbine-flap {
+		position: absolute;
+		bottom: 0;
+		left: 50%; /* Center the exact element */
+		width: clamp(
+			1000px,
+			85vw,
+			1500px
+		); /* Regulated width on the flap itself */
+		height: 100%;
+		/* Premium Material: Vertical Gradient + Transparency */
+		background: linear-gradient(
+			180deg, 
+			rgba(74, 42, 106, 0.45) 0%, 
+			rgba(168, 85, 247, 0.15) 50%, 
+			rgba(74, 42, 106, 0.45) 100%
+		);
+		backdrop-filter: blur(35px); /* Increased blur for more depth */
+		filter: url(#glassRefraction); /* Faint organic distortion */
+		border: 1px solid var(--glass-border);
+		/* Wide, shallow architectural dome curve */
+		border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+		transform-origin: bottom center;
+		/* Fog Fade: The bottom edge melts into background */
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 0%,
+			black 15%,
+			black 100%
+		);
+		mask-image: linear-gradient(
+			to top,
+			transparent 0%,
+			black 15%,
+			black 100%
+		);
+		/* Combined translateX centering and rotateX */
+		transform: translateX(-50%) rotateX(calc(var(--index) * 90deg));
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		padding: 0 8vw 10vh 8vw;
+		text-align: center;
+		backface-visibility: hidden;
+		overflow: hidden;
+		transition:
+			border-color 0.6s ease,
+			background 0.6s ease,
+			transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	@media (max-width: 768px) {
+		.turbine-flap {
+			width: 90vw;
+			height: 55vh;
+			padding: 0 5vw 8vh 5vw;
+		}
+		.turbine-wrapper {
+			height: 55vh;
+		}
+	}
+
+	.flap-reflection {
+		position: absolute;
+		top: -20%;
+		left: -20%;
+		width: 140%;
+		height: 140%;
+		/* Curved glass highlight */
+		background: radial-gradient(
+			circle at 30% 30%, 
+			rgba(255, 255, 255, 0.12) 0%, 
+			transparent 40%
+		);
+		mix-blend-mode: screen;
+		pointer-events: none;
+		z-index: 2;
+		/* Shifting motion wired via JS variables */
+		transform: translate(calc(var(--scroll-offset, 0) * 1px), calc(var(--scroll-offset, 0) * 0.5px));
+	}
+
+	.turbine-flap.active {
+		border-color: var(--accent);
+		background: rgba(255, 255, 255, 0.05);
+		box-shadow: 0 0 50px rgba(168, 85, 247, 0.05);
+	}
+
+	.flap-content {
+		z-index: 10;
+		opacity: 0;
+		transform: translateZ(20px) scale(0.9);
+		transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+		width: 100%;
+		max-width: 800px;
+	}
+
+	.turbine-flap.active .flap-content {
+		opacity: 1;
+		transform: translateZ(80px) scale(1);
+	}
+
+	.event-icon {
+		font-size: clamp(3rem, 8vw, 5.5rem);
+		margin-bottom: 2vh;
+		filter: drop-shadow(0 0 25px var(--accent));
+	}
+
+	.event-title {
+		font-size: clamp(1.8rem, 6vw, 4rem);
+		font-weight: 900;
+		margin: 0 0 1vh 0;
+		letter-spacing: -0.03em;
+		background: linear-gradient(
+			180deg,
+			#fff 40%,
+			rgba(255, 255, 255, 0.6) 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.event-date {
+		font-size: clamp(0.9rem, 2vw, 1.2rem);
+		color: var(--purple-bright);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		margin-bottom: 2vh;
+	}
+
+	.event-desc {
+		font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.75);
+		margin: 0;
+	}
+
+	.turbine-hinge {
+		position: absolute;
+		bottom: 0; /* Anchored to bottom edge */
+		left: 50%;
+		width: clamp(20px, 4vw, 40px);
+		height: clamp(20px, 4vw, 40px);
+		background: #fff;
+		border-radius: 50%;
+		transform: translate(-50%, 50%) translateZ(40px); /* Pivot point center */
+		box-shadow:
+			0 0 40px var(--purple-bright),
+			0 0 20px #fff;
+		z-index: 100;
+	}
+
+	.scroll-status {
+		position: absolute;
+		bottom: 2vh; /* Positioned just above pivot */
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		z-index: 110;
+		pointer-events: none;
+	}
+
+	.status-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.mobile-hint {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.desktop-hint { display: none; }
+		.mobile-hint { display: block; }
+	}
+
+	.status-text {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.3em;
+		color: var(--purple-bright);
+		font-weight: 600;
+		animation: blink 2.5s infinite;
+	}
+
+	.status-bar {
+		width: 160px;
+		height: 3px;
+		background: rgba(255, 255, 255, 0.08);
+		border-radius: 2px;
+		overflow: hidden;
+	}
+
+	.status-progress {
+		height: 100%;
+		width: 0%;
+		background: var(--purple-bright);
+		box-shadow: 0 0 15px var(--purple-bright);
+	}
+
+	@keyframes blink {
+		0%,
+		100% {
+			opacity: 0.4;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	/* ==================== TIMELINE (PHASE 2) ==================== */
+	.timeline-section {
+		min-height: 350vh;
+		padding: 25vh 5vw;
+		background: var(--bg-dark);
+		position: relative;
+		z-index: 50;
+		opacity: 0;
+		transform: translateY(15vh);
+		transition:
+			opacity 1.2s ease,
+			transform 1.2s ease;
+	}
+
+	.timeline-section.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.timeline-header {
+		text-align: center;
+		margin-bottom: 25vh;
+		position: relative;
+		z-index: 2;
+	}
+
+	.timeline-title {
+		font-size: clamp(3rem, 12vw, 7.5rem);
+		font-weight: 950;
+		letter-spacing: -0.05em;
+		margin: 0;
+		line-height: 0.9;
+	}
+
+	.timeline-subtitle {
+		font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+		color: var(--purple-bright);
+		margin-top: 15px;
+		opacity: 0.9;
+	}
+
+	.timeline-content {
+		position: relative;
+		max-width: 1400px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.timeline-svg-stage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.timeline-svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.path-base {
+		fill: none;
+		stroke: rgba(168, 85, 247, 0.06);
+		stroke-width: 0.8;
+		stroke-linecap: round;
+		stroke-dasharray: 4 8;
+	}
+
+	.path-trace {
+		fill: none;
+		stroke: var(--purple-bright);
+		stroke-width: 1.5;
+		stroke-linecap: round;
+		stroke-dasharray: 8 12;
+	}
+
+	.path-node {
+		filter: drop-shadow(0 0 5px var(--purple-bright));
+		animation: nodePulse 2s infinite;
+	}
+
+	@keyframes nodePulse {
+		0%,
+		100% {
+			r: 1.2;
+			opacity: 0.6;
+		}
+		50% {
+			r: 1.8;
+			opacity: 1;
+		}
+	}
+
+	.milestones-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 40vh;
+		padding-top: 10vh;
+	}
+
+	.milestone-block {
+		width: 100%;
+		display: flex;
+		opacity: 0;
+		transform: translateY(80px);
+		transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.milestone-block:nth-child(odd) {
+		justify-content: flex-start;
+		padding-left: 2vw;
+	}
+	.milestone-block:nth-child(even) {
+		justify-content: flex-end;
+		padding-right: 2vw;
+	}
+
+	/* Second and third cards aligned with path points */
+	.milestone-block:nth-child(2) {
+		margin-top: 5vh;
+	}
+	.milestone-block:nth-child(3) {
+		margin-top: 5vh;
+	}
+
+	.milestone-block.revealed {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.milestone-card {
+		width: min(520px, 90vw);
+		padding: clamp(30px, 5vw, 50px);
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(20px);
+		border: 1px solid var(--glass-border);
+		border-radius: 32px;
+		position: relative;
+		overflow: visible;
+		transition:
+			transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 0.5s ease;
+	}
+
+	.milestone-card:hover {
+		transform: translateY(-15px) scale(1.02);
+		border-color: var(--accent);
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	.card-glow {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle at 0% 0%,
+			var(--accent) 0%,
+			transparent 70%
+		);
+		opacity: 0.04;
+		border-radius: inherit;
+		pointer-events: none;
+	}
+
+	.card-icon {
+		font-size: clamp(2.5rem, 6vw, 3.5rem);
+		margin-bottom: 2.5vh;
+	}
+
+	.card-body h3 {
+		font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+		margin: 0 0 1vh 0;
+		font-weight: 900;
+		letter-spacing: -0.02em;
+	}
+
+	.card-body .date {
+		display: block;
+		font-size: 0.95rem;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		color: var(--accent);
+		margin-bottom: 2.5vh;
+		font-weight: 700;
+	}
+
+	.card-body p {
+		color: rgba(255, 255, 255, 0.65);
+		line-height: 1.8;
+		font-size: clamp(1rem, 1.8vw, 1.15rem);
+		margin: 0;
+	}
+
+	/* Card Connector Node */
+	.card-connector {
+		position: absolute;
+		top: 50%;
+		width: 60px;
+		height: 1px;
+		background: linear-gradient(90deg, var(--accent), transparent);
+		opacity: 0.5;
+	}
+
+	.milestone-block:nth-child(odd) .card-connector {
+		right: -60px;
+	}
+	.milestone-block:nth-child(even) .card-connector {
+		left: -60px;
+		transform: scaleX(-1);
+	}
+
+	/* Desktop Adjustments for side-to-side */
+	@media (min-width: 1025px) {
+		.milestone-block:nth-child(2) {
+			padding-right: 5vw;
+		}
+		.milestone-block:nth-child(3) {
+			padding-left: 5vw;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		.milestone-block:nth-child(odd),
+		.milestone-block:nth-child(even) {
+			justify-content: center;
+			padding: 0;
+		}
+		.card-connector {
+			display: none;
+		}
+		.milestones-wrapper {
+			gap: 20vh;
+		}
+	}
+</style>
+
+<script>
+	// DOM Elements
+	const turbineHero = document.getElementById("turbineHero");
+	const turbine = document.getElementById("turbine");
+	const flaps = document.querySelectorAll(".turbine-flap");
+	const progress = document.getElementById("rotationProgress");
+	const timelineSection = document.getElementById("timelineSection");
+	const timelineMaskPath = document.getElementById(
+		"timelineMaskPath",
+	) as SVGPathElement | null;
+	const milestones = document.querySelectorAll(".milestone-block");
+
+	// --- BI-DIRECTIONAL SCRUBBING STATE ---
+	let targetRotation = 0;
+	let currentRotation = 0;
+	let isLocked = true;
+	const MAX_ROTATION = 360;
+	const SENSITIVITY = 0.45;
+
+	// --- SCROLL MANAGEMENT ---
+	function setLock(active: boolean) {
+		isLocked = active;
+		if (active) {
+			document.documentElement.classList.add("scroll-frozen");
+			window.scrollTo(0, 0);
+			if (turbineHero) turbineHero.style.position = "sticky";
+		} else {
+			document.documentElement.classList.remove("scroll-frozen");
+			if (timelineSection) timelineSection.classList.add("visible");
+			if (turbineHero) turbineHero.style.position = "relative";
+		}
+	}
+
+	// Init
+	setLock(true);
+
+	// --- WHEEL HANDLER ---
+	window.addEventListener(
+		"wheel",
+		(e) => {
+			if (isLocked) {
+				e.preventDefault();
+				targetRotation += e.deltaY * SENSITIVITY;
+				targetRotation = Math.max(
+					0,
+					Math.min(MAX_ROTATION, targetRotation),
+				);
+
+				if (targetRotation === MAX_ROTATION && e.deltaY > 0)
+					setLock(false);
+			} else {
+				// Re-locking when scrolling back up to the top
+				if (window.scrollY <= 2 && e.deltaY < 0) {
+					e.preventDefault();
+					setLock(true);
+					targetRotation += e.deltaY * SENSITIVITY;
+					targetRotation = Math.max(
+						0,
+						Math.min(MAX_ROTATION, targetRotation),
+					);
+				}
+			}
+		},
+		{ passive: false },
+	);
+
+	// --- TIMELINE MEASUREMENTS ---
+	let pathLength = 0;
+	if (timelineMaskPath) {
+		pathLength = timelineMaskPath.getTotalLength();
+		timelineMaskPath.style.strokeDasharray = `${pathLength}`;
+		timelineMaskPath.style.strokeDashoffset = `${pathLength}`;
+	}
+
+	const triggers = [0.05, 0.35, 0.7, 0.95];
+
+	// --- ANIMATION CORE ---
+	const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
+
+	function tick() {
+		// Smooth Rotation
+		currentRotation = lerp(currentRotation, targetRotation, 0.12);
+
+		// Apply to Turbine
+		if (turbine) {
+			turbine.style.transform = `rotateX(${-currentRotation}deg)`;
+		}
+
+		// Update Progress
+		if (progress) {
+			progress.style.width = `${(currentRotation / MAX_ROTATION) * 100}%`;
+		}
+
+		// Active Flap Logic & Reactive Reflections
+		flaps.forEach((flap, i) => {
+			const angle = i * 90;
+			const norm = ((currentRotation % 360) + 360) % 360;
+			let diff = Math.abs(norm - angle);
+			if (diff > 180) diff = 360 - diff;
+
+			if (diff < 30) (flap as HTMLElement).classList.add("active");
+			else (flap as HTMLElement).classList.remove("active");
+
+			// Shift glass reflection based on rotation (reactive motion)
+			const shift = (currentRotation - angle) * 0.5;
+			(flap as HTMLElement).style.setProperty('--scroll-offset', shift.toString());
+		});
+
+		// Timeline Trace Logic (Phase 2)
+		if (!isLocked && timelineSection) {
+			const sy = window.scrollY;
+			const vh = window.innerHeight;
+			const top = timelineSection.offsetTop;
+			const h = timelineSection.offsetHeight;
+
+			// Progressive trace (reversible)
+			const scrollStart = top - vh * 0.4;
+			const scrollEnd = top + h - vh * 1.6;
+			const p = Math.max(
+				0,
+				Math.min(1, (sy - scrollStart) / (scrollEnd - scrollStart)),
+			);
+
+			if (timelineMaskPath) {
+				timelineMaskPath.style.strokeDashoffset = (
+					pathLength *
+					(1 - p)
+				).toString();
+			}
+
+			// Milestone reveal
+			milestones.forEach((m, i) => {
+				if (p >= triggers[i]) m.classList.add("revealed");
+				else m.classList.remove("revealed");
+			});
+		}
+
+		requestAnimationFrame(tick);
+	}
+
+	requestAnimationFrame(tick);
+
+	// --- TOUCH SUPPORT ---
+	let startY = 0;
+	window.addEventListener(
+		"touchstart",
+		(e) => {
+			startY = e.touches[0].clientY;
+		},
+		{ passive: true },
+	);
+
+	window.addEventListener(
+		"touchmove",
+		(e) => {
+			if (isLocked) {
+				e.preventDefault();
+				const delta = startY - e.touches[0].clientY;
+				// Adjusted sensitivity for mobile swipe
+				targetRotation += delta * 1.5; 
+				targetRotation = Math.max(
+					0,
+					Math.min(MAX_ROTATION, targetRotation),
+				);
+				
+				if (targetRotation === MAX_ROTATION && delta > 0) {
+					setLock(false);
+				}
+				startY = e.touches[0].clientY;
+			} else {
+				// Re-locking when swiping back up at the top
+				if (window.scrollY <= 2 && (startY - e.touches[0].clientY) < 0) {
+					setLock(true);
+					// Optionally prevent scroll to capture first swipe back
+					// e.preventDefault(); 
+				}
+			}
+		},
+		{ passive: false },
+	);
+</script>
+>>>>>>> 0466093 (Initialize repo with redesigned Events page and mobile support)
