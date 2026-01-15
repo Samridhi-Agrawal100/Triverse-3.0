@@ -5,18 +5,18 @@
       "lead": {
         "name": "Devansh Kumar",
         "role": "Chairperson",
-        "image": "public\\team\\office-bearer\\Devansh_Kumar.png"
+        "image": "\\team\\office-bearer\\Devansh_Kumar.png"
       },
       "colead": {
         "name": "Manya Chaubey",
         "role": "Vice Chairperson",
-        "image": "public/team/office-bearer/Manya_Chaudhray.png"
+        "image": "/team/office-bearer/Manya_Chaudhray.png"
       },
       "members": [
          {
           "name": "Rishabh Verma",
           "role": "Web Master",
-          "image": "public/team/Office-bearer/Rishabh_Verma.png"
+          "image": "/team/office-bearer/Rishabh_Verma.png"
         }
       ]
     },
@@ -25,34 +25,34 @@
       "lead": {
         "name": "Samridhi Agrawal",
         "role": "Team Lead",
-        "image": "public/team/tech/samridhi-agrawal.png"
+        "image": "/team/tech/samridhi-agrawal.png"
       },
       "colead": {
         "name": "Gyanendra Pratap Singh",
         "role": "Co-Lead",
-        "image": "public/team/tech/gyanendra.png"
+        "image": "/team/tech/gyanendra.png"
       },
       "members": [
         
         {
           "name": "Saksham Yadav",
           "role": "Core Member",
-          "image": "public\\team\\tech\\saksham_yadav.png"
+          "image": "\\team\\tech\\saksham_yadav.png"
         },
         {
           "name": "Shruti",
           "role": "Core Member",
-          "image": "public\\team\\tech\\shruti.png"
+          "image": "\\team\\tech\\shruti.png"
         },
         {
           "name": "Lakshya Dixit",
           "role": "Core Member",
-          "image": "public\\team\\tech\\Lakshya.png"
+          "image": "\\team\\tech\\Lakshya.png"
         },
         {
           "name": "Ayush Tiwari",
           "role": "Core Member",
-          "image": "public\\team\\tech\\Ayush_Tiwari.png"
+          "image": "\\team\\tech\\Ayush_Tiwari.png"
         }
       ]
     },
@@ -72,22 +72,22 @@
         {
           "name": "Aditya Gupta",
           "role": "Core Member",
-          "image": "public\\team\\Content\\Aditya_Gupta.png"
+          "image": "\\team\\Content\\Aditya_Gupta.png"
         },
         {
           "name": "Agrim Verma",
           "role": "Core Member",
-          "image": "public\\team\\Content\\Agrim_Verma.png"
+          "image": "\\team\\Content\\Agrim_Verma.png"
         },
         {
           "name": "Archi Khandelwal",
           "role": "Core Member",
-          "image": "public\\team\\Content\\Archi_Khandelwal.png"
+          "image": "\\team\\Content\\Archi_Khandelwal.png"
         },
         {
           "name": "Poornima Sharma",
           "role": "Core Member",
-          "image": "public\\team\\Content\\Poornima_Sharma.png"
+          "image": "\\team\\Content\\Poornima_Sharma.png"
         }
       ]
     },{
@@ -100,13 +100,13 @@
       "colead": {
         "name": "Apoorv_Verma",
         "role": "Co-Lead",
-        "image": "public\\team\\Design\\Apoorv_Verma.png"
+        "image": "\\team\\Design\\Apoorv_Verma.png"
       },
       "members": [
         {
           "name": "Nandani Khandelwa",
           "role": "Core Member",
-          "image": "public\\team\\Design\\nandani_khandelwal.png"
+          "image": "\\team\\Design\\nandani_khandelwal.png"
         }
       ]
     },{
@@ -119,33 +119,33 @@
       "colead": {
         "name": "Arpita_Arora",
         "role": "Co-Lead",
-        "image": "public\\team\\PRandOutreach\\Arpita_Arora.png"
+        "image": "\\team\\PRandOutreach\\Arpita_Arora.png"
       },
       "members": [
         {
           "name": "Aditya Kushwaha",
           "role": "Core Member",
-          "image": "public\\team\\PRandOutreach\\Aditya Kushwaha .png"
+          "image": "\\team\\PRandOutreach\\Aditya Kushwaha .png"
         },
         {
           "name": "Divyansh Sharma",
           "role": "Core Member",
-          "image": "public\\team\\PRandOutreach\\Divyansh_Sharma.png"
+          "image": "\\team\\PRandOutreach\\Divyansh_Sharma.png"
         },
         {
           "name": "Mannat Bansal",
           "role": "Core Member",
-          "image": "public\\team\\PRandOutreach\\Mannat_Bansal.png"
+          "image": "\\team\\PRandOutreach\\Mannat_Bansal.png"
         },
         {
           "name": "Prabhavi Gupta",
           "role": "Core Member",
-          "image": "public\\team\\PRandOutreach\\Prabhavi_Gupta.png"
+          "image": "\\team\\PRandOutreach\\Prabhavi_Gupta.png"
         },
         {
           "name": "Samar Kumar",
           "role": "Core Member",
-          "image": "public\\team\\PRandOutreach\\Samar_Kumar.png"
+          "image": "\\team\\PRandOutreach\\Samar_Kumar.png"
         }
       ]
     },{
@@ -159,52 +159,52 @@
         {
           "name": "Aditi Gangwar",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Aditi_Gangwar.png"
+          "image": "\\team\\Management\\Aditi_Gangwar.png"
         },
         {
           "name": "Aman",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Aman.png"
+          "image": "\\team\\Management\\Aman.png"
         },
         {
           "name": "Ashwin Sharma",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Ashwin_Sharma.png"
+          "image": "\\team\\Management\\Ashwin_Sharma.png"
         },
         {
           "name": "Bhumika ",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Bhumika-removebg.png"
+          "image": "\\team\\Management\\Bhumika-removebg.png"
         },
         {
           "name": "khushi mittal",
           "role": "Core Member",
-          "image": "public\\team\\Management\\khushi_mittal.png"
+          "image": "\\team\\Management\\khushi_mittal.png"
         },
         {
           "name": "Shreejeet Gupta",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Shreejeet_Gupta.png"
+          "image": "\\team\\Management\\Shreejeet_Gupta.png"
         },
         {
           "name": "Manashvini Dave",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Manashvini_Dave.png"
+          "image": "\\team\\Management\\Manashvini_Dave.png"
         },
         {
           "name": "Shivika Yadav",
           "role": "Core Member",
-          "image": "public\\team\\Management\\shivikaYadav.png"
+          "image": "\\team\\Management\\shivikaYadav.png"
         },
         {
           "name": "Megha Singhal",
           "role": "Core Member",
-          "image": "public\\team\\Management\\megha_singhal.png"
+          "image": "\\team\\Management\\megha_singhal.png"
         },
         {
           "name": "Sivant Raj",
           "role": "Core Member",
-          "image": "public\\team\\Management\\Sivant_Raj.png"
+          "image": "\\team\\Management\\Sivant_Raj.png"
         }
       ]
     },{
@@ -217,7 +217,7 @@
       "colead": {
         "name": "Sanskriti Chaudhary",
         "role": "Co-Lead",
-        "image": "public\\team\\Media\\Sanskriti Chaudhary.png"
+        "image": "\\team\\Media\\Sanskriti Chaudhary.png"
       },
       "members": [
         {
@@ -274,18 +274,18 @@
       "lead": {
         "name": "Dhruv Gupta",
         "role": "Team Lead",
-        "image": "public\\team\\Research\\Dhruv_Gupta.png"
+        "image": "\\team\\Research\\Dhruv_Gupta.png"
       },
       "colead": {
         "name": "Shambhavi_Saumya",
         "role": "Co-Lead",
-        "image": "public\\team\\Research\\Shambhavi_Saumya.png"
+        "image": "\\team\\Research\\Shambhavi_Saumya.png"
       },
       "members": [
         {
           "name": "Dhaanvee Mathur",
           "role": "Core Member",
-          "image": "public\\team\\Research\\Dhaanvee_mathur.png"
+          "image": "\\team\\Research\\Dhaanvee_mathur.png"
         }
       ]
     }
