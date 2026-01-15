@@ -33,31 +33,31 @@
   z-index: 0;
 }
 
-/* Large subtle logo watermark - half cut effect */
+/* Large subtle logo watermark - fade effect */
 .footer-logo-watermark {
   position: absolute;
   left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: min(90%, 1200px);
-  max-width: 1200px;
-  opacity: 0.12;
+  bottom: -10%;
+  transform: translateX(-51%);
+  width: 100vw;
+  max-width: none;
+  opacity: 0.1;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
-  height: 60%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  overflow: visible;
+  height: auto;
+  display: block;
 }
 
 .footer-logo-watermark img {
   width: 100%;
   height: auto;
+  min-height: 500px;
   object-fit: contain;
+  object-position: center bottom;
   display: block;
-  transform: translateY(35%);
-  filter: brightness(1.2);
+  transform: translateY(40%);
+  filter: brightness(1.5);
 }
 
 /* Decorative + signs */
@@ -136,10 +136,29 @@
   gap: 1.5rem;
 }
 
-.footer-center-logo {
-  max-width: 200px; /* Slightly larger for center focal point */
+.footer-center-logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-center-logo-img {
+  max-width: 500px;
+  width: 100%;
   height: auto;
+  object-fit: contain;
   filter: brightness(0) invert(1);
+}
+
+.footer-description {
+  font-size: 0.85rem;
+  color: var(--footer-text-secondary);
+  text-align: center;
+  max-width: 400px;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
 }
 
 .main-title {
@@ -159,14 +178,9 @@
   align-items: center;
 }
 
-.partner-logo-placeholder {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  color: var(--footer-text-secondary);
-  text-transform: uppercase;
-  max-width: 120px;
+.partner-logo-img {
+  max-width: 200px;
+  height: auto;
 }
 
 .tech-club-logo {
@@ -221,6 +235,18 @@
 }
 
 .contact-value:hover {
+  color: var(--footer-accent);
+}
+
+.contact-phone {
+  font-size: 0.85rem;
+  color: var(--footer-text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-top: 0.15rem;
+}
+
+.contact-phone:hover {
   color: var(--footer-accent);
 }
 
@@ -287,6 +313,15 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  display: block;
 }
 
 .team-avatar::before {
@@ -381,8 +416,13 @@
   }
 
   /* Shrink Logos */
-  .footer-center-logo {
-    max-width: 120px;
+  .footer-center-logo-img {
+    max-width: 280px;
+  }
+
+  .footer-description {
+    font-size: 0.75rem;
+    max-width: 280px;
   }
 
   .footer-logo-long {
@@ -397,11 +437,8 @@
     justify-content: center;
   }
   
-  .partner-logo-placeholder {
-      padding: 6px;
-      font-size: 0.6rem;
-      max-width: 100px;
-      line-height: 1.2;
+  .partner-logo-img {
+      max-width: 150px;
   }
   
   /* Compact Nav */
@@ -455,6 +492,10 @@
     align-items: flex-start;
   }
 
+  .contact-phone {
+    font-size: 0.75rem;
+  }
+
   .credits {
       font-size: 0.7rem;
       text-align: center;
@@ -462,5 +503,17 @@
 
   .main-title {
     font-size: 1.5rem;
+  }
+
+  /* Mobile: Scale down watermark, preserve fade */
+  .footer-logo-watermark {
+    width: 100vw;
+    opacity: 0.1;
+    bottom: -10%;
+  }
+
+  .footer-logo-watermark img {
+    transform: translateY(35%);
+    min-height: 350px;
   }
 }
