@@ -43,10 +43,16 @@
           "name": "Shruti",
           "role": "Core Member",
           "image": "src\\images\\team\\tech\\shruti.png"
-        },{
+        },
+        {
           "name": "Lakshya Dixit",
           "role": "Core Member",
           "image": "src\\images\\team\\tech\\Lakshya.png"
+        },
+        {
+          "name": "Ayush Tiwari",
+          "role": "Core Member",
+          "image": "src\\images\\team\\tech\\Ayush_Tiwari.png"
         }
       ]
     },
@@ -55,12 +61,12 @@
       "lead": {
         "name": "_",
         "role": "Team Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "colead": {
         "name": "_",
         "role": "Co-Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "members": [
         {
@@ -89,7 +95,7 @@
       "lead": {
         "name": "-",
         "role": "Team Lead",
-        "image": "src\\images\\team\\Content\\Aditya_Gupta.png"
+        "image": ""
       },
       "colead": {
         "name": "Apoorv_Verma",
@@ -108,12 +114,12 @@
       "lead": {
         "name": "-",
         "role": "Team Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "colead": {
-        "name": "-",
+        "name": "Arpita_Arora",
         "role": "Co-Lead",
-        "image": "\\src\\images\\team\\Design\\Apoorv_Verma.png"
+        "image": "src\\images\\team\\PRandOutreach\\Arpita_Arora.png"
       },
       "members": [
         {
@@ -147,7 +153,7 @@
       "lead": {
         "name": "-",
         "role": "Team Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "members": [
         {
@@ -206,7 +212,7 @@
       "lead": {
         "name": "-",
         "role": "Team Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "colead": {
         "name": "Sanskriti Chaudhary",
@@ -217,12 +223,12 @@
         {
           "name": "-",
           "role": "Core Member",
-          "image": "/src/images/team/Content/Aditya_Gupta.png"
+          "image": ""
         },
         {
           "name": "-",
           "role": "Core Member",
-          "image": "/src/images/team/Content/Aditya_Gupta.png"
+          "image": ""
         }
       ]
     },{
@@ -230,18 +236,18 @@
       "lead": {
         "name": "-",
         "role": "Team Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "colead": {
         "name": "-",
         "role": "Co-Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "members": [
         {
           "name": "-",
           "role": "Core Member",
-          "image": "src\\images\\team\\Content\\Agrim_Verma.png"
+          "image": ""
         }
       ]
     },{
@@ -249,18 +255,18 @@
       "lead": {
         "name": "-",
         "role": "Team Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "colead": {
         "name": "-",
         "role": "Co-Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": ""
       },
       "members": [
         {
           "name": "-",
           "role": "Core Member",
-          "image": "src\\images\\team\\office-bearer\\Manya_Chaudhray.png"
+          "image": ""
         }
       ]
     },{
@@ -271,9 +277,9 @@
         "image": "src\\images\\team\\Research\\Dhruv_Gupta.png"
       },
       "colead": {
-        "name": "-",
+        "name": "Shambhavi_Saumya",
         "role": "Co-Lead",
-        "image": "/src/images/team/Content/Aditya_Gupta.png"
+        "image": "src\\images\\team\\Research\\Shambhavi_Saumya.png"
       },
       "members": [
         {
