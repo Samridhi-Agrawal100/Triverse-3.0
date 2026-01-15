@@ -1,0 +1,293 @@
+{
+  "teams": [
+    {
+      "name": "office bearer",
+      "lead": {
+        "name": "Devansh Kumar",
+        "role": "Chairperson",
+        "image": "src\\images\\team\\office-bearer\\Devansh_Kumar.png"
+      },
+      "colead": {
+        "name": "Manya",
+        "role": "Vice Chairperson",
+        "image": "src/images/team/office-bearer/Manya_Chaudhray.png"
+      },
+      "members": [
+         {
+          "name": "Rishabh Verma",
+          "role": "Web Master",
+          "image": "/src/images/team/Office-bearer/Rishabh_Verma.png"
+        }
+      ]
+    },
+    {
+      "name": "Tech team",
+      "lead": {
+        "name": "Samridhi Agrawal",
+        "role": "Team Lead",
+        "image": "/src/images/team/tech/samridhi-agrawal.png"
+      },
+      "colead": {
+        "name": "Gyanendra Pratap Singh",
+        "role": "Co-Lead",
+        "image": "/src/images/team/tech/gyanendra.png"
+      },
+      "members": [
+        
+        {
+          "name": "Saksham Yadav",
+          "role": "Core Member",
+          "image": "src\\images\\team\\tech\\saksham_yadav.png"
+        },
+        {
+          "name": "Shruti",
+          "role": "Core Member",
+          "image": "src\\images\\team\\tech\\shruti.png"
+        },
+        {
+          "name": "Lakshya Dixit",
+          "role": "Core Member",
+          "image": "src\\images\\team\\tech\\Lakshya.png"
+        },
+        {
+          "name": "Ayush Tiwari",
+          "role": "Core Member",
+          "image": "src\\images\\team\\tech\\Ayush_Tiwari.png"
+        }
+      ]
+    },
+    {
+      "name": "Content team",
+      "lead": {
+        "name": "_",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "colead": {
+        "name": "_",
+        "role": "Co-Lead",
+        "image": ""
+      },
+      "members": [
+        {
+          "name": "Aditya Gupta",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Content\\Aditya_Gupta.png"
+        },
+        {
+          "name": "Agrim Verma",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Content\\Agrim_Verma.png"
+        },
+        {
+          "name": "Archi Khandelwal",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Content\\Archi_Khandelwal.png"
+        },
+        {
+          "name": "Poornima Sharma",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Content\\Poornima_Sharma.png"
+        }
+      ]
+    },{
+      "name": "Design Team",
+      "lead": {
+        "name": "-",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "colead": {
+        "name": "Apoorv_Verma",
+        "role": "Co-Lead",
+        "image": "src\\images\\team\\Design\\Apoorv_Verma.png"
+      },
+      "members": [
+        {
+          "name": "Nandani Khandelwa",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Design\\nandani_khandelwal.png"
+        }
+      ]
+    },{
+      "name": "Pr and Outreach Team ",
+      "lead": {
+        "name": "-",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "colead": {
+        "name": "Arpita_Arora",
+        "role": "Co-Lead",
+        "image": "src\\images\\team\\PRandOutreach\\Arpita_Arora.png"
+      },
+      "members": [
+        {
+          "name": "Aditya Kushwaha",
+          "role": "Core Member",
+          "image": "src\\images\\team\\PRandOutreach\\Aditya Kushwaha .png"
+        },
+        {
+          "name": "Divyansh Sharma",
+          "role": "Core Member",
+          "image": "src\\images\\team\\PRandOutreach\\Divyansh_Sharma.png"
+        },
+        {
+          "name": "Mannat Bansal",
+          "role": "Core Member",
+          "image": "src\\images\\team\\PRandOutreach\\Mannat_Bansal.png"
+        },
+        {
+          "name": "Prabhavi Gupta",
+          "role": "Core Member",
+          "image": "src\\images\\team\\PRandOutreach\\Prabhavi_Gupta.png"
+        },
+        {
+          "name": "Samar Kumar",
+          "role": "Core Member",
+          "image": "src\\images\\team\\PRandOutreach\\Samar_Kumar.png"
+        }
+      ]
+    },{
+      "name": "Management Team",
+      "lead": {
+        "name": "-",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "members": [
+        {
+          "name": "Aditi Gangwar",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Aditi_Gangwar.png"
+        },
+        {
+          "name": "Aman",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Aman.png"
+        },
+        {
+          "name": "Ashwin Sharma",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Ashwin_Sharma.png"
+        },
+        {
+          "name": "Bhumika ",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Bhumika-removebg.png"
+        },
+        {
+          "name": "khushi mittal",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\khushi_mittal.png"
+        },
+        {
+          "name": "Shreejeet Gupta",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Shreejeet_Gupta.png"
+        },
+        {
+          "name": "Manashvini Dave",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Manashvini_Dave.png"
+        },
+        {
+          "name": "Shivika Yadav",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\shivikaYadav.png"
+        },
+        {
+          "name": "Megha Singhal",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\megha_singhal.png"
+        },
+        {
+          "name": "Sivant Raj",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Management\\Sivant_Raj.png"
+        }
+      ]
+    },{
+      "name": "Multimedia team",
+      "lead": {
+        "name": "-",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "colead": {
+        "name": "Sanskriti Chaudhary",
+        "role": "Co-Lead",
+        "image": "src\\images\\team\\Media\\Sanskriti Chaudhary.png"
+      },
+      "members": [
+        {
+          "name": "-",
+          "role": "Core Member",
+          "image": ""
+        },
+        {
+          "name": "-",
+          "role": "Core Member",
+          "image": ""
+        }
+      ]
+    },{
+      "name": "Social Media Team",
+      "lead": {
+        "name": "-",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "colead": {
+        "name": "-",
+        "role": "Co-Lead",
+        "image": ""
+      },
+      "members": [
+        {
+          "name": "-",
+          "role": "Core Member",
+          "image": ""
+        }
+      ]
+    },{
+      "name": "logistics team",
+      "lead": {
+        "name": "-",
+        "role": "Team Lead",
+        "image": ""
+      },
+      "colead": {
+        "name": "-",
+        "role": "Co-Lead",
+        "image": ""
+      },
+      "members": [
+        {
+          "name": "-",
+          "role": "Core Member",
+          "image": ""
+        }
+      ]
+    },{
+      "name": "research team",
+      "lead": {
+        "name": "Dhruv Gupta",
+        "role": "Team Lead",
+        "image": "src\\images\\team\\Research\\Dhruv_Gupta.png"
+      },
+      "colead": {
+        "name": "Shambhavi_Saumya",
+        "role": "Co-Lead",
+        "image": "src\\images\\team\\Research\\Shambhavi_Saumya.png"
+      },
+      "members": [
+        {
+          "name": "Dhaanvee Mathur",
+          "role": "Core Member",
+          "image": "src\\images\\team\\Research\\Dhaanvee_mathur.png"
+        }
+      ]
+    }
+  ]
+}
