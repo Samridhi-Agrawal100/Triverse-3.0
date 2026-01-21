@@ -1,115 +1,128 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Event data
+// Event data for timeline (unchanged)
 const events = [
 	{
 		id: 1,
-		icon: "🎯",
-		title: "Opening Ceremony",
-		date: "March 15, 2026",
-		description:
-			"Kickoff the event with keynote speakers and high-energy networking sessions.",
+		icon: "",
+		image: "/Media/LOGO_cff.png",
+		cardTitle: "EVENT 1: BREAKIT",
+		cardSubtitle: "Deconstruct. Stress Test. Redesign.",
+		objectiveTitle: "🎯 Objective",
+		objective: "Participants analyze and rethink real-world tech products, exposing system flaws and proposing grounded fixes — no code required.",
 		color: "#a855f7",
 	},
 	{
 		id: 2,
-		icon: "💡",
-		title: "Tech Workshop",
-		date: "March 16, 2026",
-		description:
-			"Deep dive into cutting-edge technologies with hands-on labs led by experts.",
+		icon: "",
+		image: "/Media/TheDropt.png",
+		cardTitle: "🚀 EVENT 2: THE DROP",
+		cardSubtitle: "Launch the Future. Even If It's Fake.",
+		objectiveTitle: "🎯 Objective",
+		objective: "Teams invent fictional future-tech products and launch them like real startups — blending storytelling, design, and satire.",
 		color: "#d946ef",
 	},
 	{
 		id: 3,
-		icon: "🏆",
-		title: "Competition",
-		date: "March 17, 2026",
-		description:
-			"Put your skills to the test in our flagship hackathon and win amazing prizes.",
+		icon: "",
+		image: "/Media/Frame 87 (1).png",
+		cardTitle: "Event 3 : Bet for Tech 3.0",
+		objectiveTitle: "Objective",
+		objective: "tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
 		color: "#ec4899",
 	},
-	{
-		id: 4,
-		icon: "🎉",
-		title: "Closing Event",
-		date: "March 18, 2026",
-		description:
-			"Celebrate our collective achievements with an awards show and after-party.",
-		color: "#f43f5e",
-	},
+];
+
+// Staggered bento hero data (Column 1, 2, 3)
+const bentoCards = [
+	// Column 1
+	{ type: "text", title: "1", subtitle: "Event", column: 1, order: 1 },
+	{ type: "image", image: events[0].image, title: events[0].cardTitle, column: 1, order: 2 },
+	
+	// Column 2 (Dominant center)
+	{ type: "image", image: events[1].image, title: events[1].cardTitle, column: 2, order: 1, dominant: true },
+	{ type: "text", title: "$500k", subtitle: "In Prizes", column: 2, order: 2 },
+	
+	// Column 3
+	{ type: "text", title: "2000+", subtitle: "Participants", column: 3, order: 1 },
+	{ type: "image", image: events[2].image, title: events[2].cardTitle, column: 3, order: 2 },
 ];
 ---
 
 <Layout title="Events - Triverse">
 	<main class="events-container">
-		<!-- PHASE 1: TURBINE HERO (SCROLL LOCKED / SCRUBBABLE) -->
-		<!-- Taller stage prevents top clipping during 3D rotation -->
-		<section class="hero-section" id="turbineHero">
-			<div class="turbine-stage">
-						<defs>
-							<!-- Subtle sine-wave refraction filter for glass distortion -->
-							<filter id="glassRefraction">
-								<feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" result="noise" />
-								<feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
-							</filter>
-						</defs>
-					</svg>
+		<!-- PHASE 1: STAGGERED BENTO HERO -->
+		<section class="hero-section" id="staticHero">
+			<div class="hero-content">
+				<div class="hero-header">
+					<h1 class="hero-title">The Events</h1>
+					<p class="hero-subtitle">Premium competitions for bold creators</p>
 				</div>
-				<div class="turbine-wrapper" id="turbineWrapper">
-					<div class="turbine" id="turbine">
-						{
-							events.map((event, index) => (
-								<div
-									class="turbine-flap"
-									style={`--index: ${index}; --accent: ${event.color};`}
-								>
-									<!-- Glass Reflection Overlay -->
-									<div class="flap-reflection"></div>
-									
-									<div class="flap-content">
-										<div class="event-icon">
-											{event.icon}
-										</div>
-										<h2 class="event-title">
-											{event.title}
-										</h2>
-										<div class="event-date">
-											{event.date}
-										</div>
-										<p class="event-desc">
-											{event.description}
-										</p>
-									</div>
-									<div class="flap-glass" />
-									<div class="flap-border" />
-									<div
-										class="flap-glow"
-										style={`background: radial-gradient(circle at center, ${event.color}22 0%, transparent 70%);`}
-									/>
-								</div>
-							))
-						}
-					</div>
-					<div class="turbine-hinge"></div>
-				</div>
-			</div>
 
-			<!-- Scroll Guidance -->
-			<div class="scroll-status">
-				<div class="status-inner" id="scrollHint">
-					<span class="status-text desktop-hint">Scroll to Explore</span>
-					<span class="status-text mobile-hint">Swipe Up to Rotate</span>
-					<div class="status-bar">
-						<div class="status-progress" id="rotationProgress">
+				<!-- Staggered Bento Layout (3 Columns) -->
+				<div class="bento-grid">
+					{/* Column 1: Text → Image */}
+					<div class="bento-column col-1">
+						{/* Text Card */}
+						<div class="bento-card text-card">
+							<div class="card-content">
+								<div class="stat-number">Day 1</div>
+								<div class="stat-label">Event</div>
+							</div>
+						</div>
+
+						{/* Image Card */}
+						<div class="bento-card image-card">
+							<img src={events[0].image} alt={events[0].cardTitle} />
+							<div class="image-overlay">
+								<p class="image-caption">{events[0].cardTitle}</p>
+							</div>
+						</div>
+					</div>
+
+					{/* Column 2: Image (Dominant) → Text */}
+					<div class="bento-column col-2">
+						{/* Large Image Card (Dominant) */}
+						<div class="bento-card image-card dominant">
+							<img src={events[1].image} alt={events[1].cardTitle} />
+							<div class="image-overlay">
+								<p class="image-caption">{events[1].cardTitle}</p>
+							</div>
+						</div>
+
+						{/* Text Card */}
+						<div class="bento-card text-card small">
+							<div class="card-content">
+								<div class="stat-number">Day 2</div>
+								<div class="stat-label">Event</div>
+							</div>
+						</div>
+					</div>
+
+					{/* Column 3: Text → Image */}
+					<div class="bento-column col-3">
+						{/* Text Card */}
+						<div class="bento-card text-card">
+							<div class="card-content">
+								<div class="stat-number">Day 3</div>
+								<div class="stat-label">Event</div>
+							</div>
+						</div>
+
+						{/* Image Card */}
+						<div class="bento-card image-card">
+							<img src={events[2].image} alt={events[2].cardTitle} />
+							<div class="image-overlay">
+								<p class="image-caption">{events[2].cardTitle}</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- PHASE 2: FLOWING TIMELINE (SCROLL UNLOCKED) -->
+		<!-- PHASE 2: FLOWING TIMELINE (UNCHANGED) -->
 		<section class="timeline-section" id="timelineSection">
 			<div class="timeline-header">
 				<h1 class="timeline-title">The Journey</h1>
@@ -129,74 +142,58 @@ const events = [
 						<defs>
 							<filter id="glow">
 								<feGaussianBlur
+									in="SourceGraphic"
 									stdDeviation="2"
-									result="coloredBlur"></feGaussianBlur>
+									result="coloredBlur"
+								/>
 								<feMerge>
-									<feMergeNode in="coloredBlur"></feMergeNode>
-									<feMergeNode in="SourceGraphic"
-									></feMergeNode>
+									<feMergeNode in="coloredBlur" />
+									<feMergeNode in="SourceGraphic" />
 								</feMerge>
 							</filter>
-							<mask id="pathMask">
-								<path
-									id="timelineMaskPath"
-									fill="none"
-									stroke="white"
-									stroke-width="1.5"
-									stroke-linecap="round"
-									d="M50,0 C50,150 10,250 10,400 S90,650 90,800 S50,950 50,1100"
-								></path>
-							</mask>
 						</defs>
-						<!-- Background decorative path -->
+						<!-- Base Path (Dashed) -->
 						<path
-							class="path-base"
-							d="M50,0 C50,150 10,250 10,400 S90,650 90,800 S50,950 50,1100"
-						></path>
-						<!-- Progressive dashed organic path -->
-						<path
-							class="path-trace"
-							mask="url(#pathMask)"
-							d="M50,0 C50,150 10,250 10,400 S90,650 90,800 S50,950 50,1100"
-							filter="url(#glow)"></path>
-
-						<!-- Glowing nodes where path meets cards -->
-						<circle
-							class="path-node"
-							cx="10"
-							cy="400"
-							r="1.5"
-							fill="#a855f7"></circle>
-						<circle
-							class="path-node"
-							cx="90"
-							cy="800"
-							r="1.5"
-							fill="#ec4899"></circle>
+						d="M 50,0 Q 30,150 50,300 Q 70,450 50,600 Q 30,750 50,900"
+						class="path-base"
+					/>
+					<!-- Animated Trace Path -->
+					<path
+						id="timelineMaskPath"
+						d="M 50,0 Q 30,150 50,300 Q 70,450 50,600 Q 30,750 50,900"
+						class="path-trace"
+						filter="url(#glow)"
+					/>
+					<!-- Pulse Nodes -->
+					<circle cx="50" cy="0" r="1.2" class="path-node" />
+					<circle cx="50" cy="300" r="1.2" class="path-node" />
+					<circle cx="50" cy="600" r="1.2" class="path-node" />
+					<circle cx="50" cy="900" r="1.2" class="path-node" />
 					</svg>
 				</div>
 
+				<!-- Milestones -->
 				<div class="milestones-wrapper">
-					{
-						events.map((event, index) => (
-							<div
-								class="milestone-block"
-								id={`milestone-${index}`}
-								style={`--accent: ${event.color};`}
-							>
-								<div class="milestone-card">
-									<div class="card-glow" />
-									<div class="card-icon">{event.icon}</div>
-									<div class="card-body">
-										<h3>{event.title}</h3>
-										<span class="date">{event.date}</span>
-										<p>{event.description}</p>
-									</div>
-									<div class="card-connector" />
+					{events.map((event) => (
+						<div class="milestone-block">
+							<div class="milestone-card" style={`--accent: ${event.color};`}>
+								<div class="card-glow"></div>
+								<div class="card-body">
+									{event.cardTitle && (<h3 class="card-title">{event.cardTitle}</h3>)}
+									{event.cardSubtitle && (<p class="card-subtitle">{event.cardSubtitle}</p>)}
+									{event.cardTitle && (<div class="card-divider"></div>)}
+									
+									{!event.cardTitle && event.title && (<h3>{event.title}</h3>)}
+									{!event.cardTitle && event.date && (<span class="date">{event.date}</span>)}
+									{!event.cardTitle && event.description && (<p>{event.description}</p>)}
+									
+									{event.objectiveTitle && (<h4 class="card-section-title">{event.objectiveTitle}</h4>)}
+									{event.objective && (<p class="card-text">{event.objective}</p>)}
 								</div>
+								<div class="card-connector"></div>
 							</div>
-						))
-					}
+						</div>
+					))}
 				</div>
 			</div>
 		</section>
@@ -205,21 +202,10 @@ const events = [
 
 <style is:global>
 	:root {
-		--bg-dark: #0f0617;
-		--purple-deep: #4a2a6a;
-		--purple-bright: #a855f7;
-		--glass-bg: rgba(255, 255, 255, 0.03);
-		--glass-border: rgba(255, 255, 255, 0.1);
-	}
-
-	html.scroll-frozen,
-	html.scroll-frozen body {
-		overflow: hidden !important;
-		height: 100vh !important;
-		position: fixed !important;
-		width: 100% !important;
-		top: 0;
-		left: 0;
+		--bg-dark: #0a0e1a;
+		--bg-darker: #060810;
+		--purple-bright: #b48bff;
+		--glass-border: rgba(255, 255, 255, 0.12);
 	}
 
 	body {
@@ -241,299 +227,264 @@ const events = [
 		width: 100%;
 	}
 
-	/* ==================== TURBINE HERO (PHASE 1) ==================== */
+	/* ==================== STATIC HERO (PHASE 1) ==================== */
 	.hero-section {
-		height: 100vh;
-		width: 100%;
-		position: sticky;
-		top: 0;
-		z-index: 100;
-		background: radial-gradient(
-			circle at center,
-			#1a0b35 0%,
-			var(--bg-dark) 100%
-		);
-		overflow: visible;
-		display: flex;
-		align-items: flex-end; /* Anchor to bottom */
-		justify-content: center;
-	}
-
-	.turbine-stage {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 200vh;
-		display: flex;
-		align-items: flex-end;
-		justify-content: center;
-		perspective: 4000px;
-		overflow: visible;
-		pointer-events: none;
-	}
-
-	.turbine-wrapper {
+		min-height: 120vh;
+		padding: 80px 5vw 100px;
+		background: linear-gradient(135deg, #0a0e1a 0%, #12111f 100%);
 		position: relative;
-		width: 100%;
-		height: clamp(450px, 60vh, 700px);
-		transform-style: preserve-3d;
+		z-index: 40;
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: center;
-		overflow: visible;
 	}
 
-	.turbine {
+	.hero-content {
 		width: 100%;
-		height: 100%;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		transform-style: preserve-3d;
-		transform-origin: bottom center;
+		max-width: 1600px;
 	}
 
-	.turbine-flap {
-		position: absolute;
-		bottom: 0;
-		left: 50%; /* Center the exact element */
-		width: clamp(
-			1000px,
-			85vw,
-			1500px
-		); /* Regulated width on the flap itself */
-		height: 100%;
-		
-		/* Horizon Purple Glass Gradient: Top-center glow + Vertical dark base */
-		background: 
-			radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.25) 0%, transparent 75%),
-			linear-gradient(180deg, rgba(26, 11, 53, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
-		
-		backdrop-filter: blur(35px); /* Increased blur for more depth */
-		filter: url(#glassRefraction); /* Faint organic distortion */
-		
-		/* Rim Lighting & Depth */
-		box-shadow: 
-			inset 0 1px 1px rgba(255, 255, 255, 0.1),
-			inset 0 20px 40px -10px rgba(168, 85, 247, 0.2);
-
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		/* Wide, shallow architectural dome curve */
-		border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-		transform-origin: bottom center;
-		/* Fog Fade: The bottom edge melts into background */
-		-webkit-mask-image: linear-gradient(
-			to top,
-			transparent 0%,
-			black 15%,
-			black 100%
-		);
-		mask-image: linear-gradient(
-			to top,
-			transparent 0%,
-			black 15%,
-			black 100%
-		);
-		/* Combined translateX centering and rotateX */
-		transform: translateX(-50%) rotateX(calc(var(--index) * 90deg));
-		display: flex;
-		align-items: flex-end;
-		justify-content: center;
-		padding: 0 8vw 10vh 8vw;
+	.hero-header {
+		margin-bottom: 80px;
 		text-align: center;
-		backface-visibility: hidden;
-		overflow: hidden;
-		transition:
-			border-color 0.6s ease,
-			background 0.6s ease,
-			box-shadow 0.6s ease,
-			transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	@media (max-width: 768px) {
-		.turbine-flap {
-			width: 90vw;
-			height: 55vh;
-			padding: 0 5vw 8vh 5vw;
-			/* Subtle mobile gradients */
-			background: 
-				radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 60%),
-				linear-gradient(180deg, rgba(26, 11, 53, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
-			box-shadow: 
-				inset 0 1px 1px rgba(255, 255, 255, 0.15),
-				inset 0 10px 20px -5px rgba(168, 85, 247, 0.15);
-		}
-		.turbine-wrapper {
-			height: 55vh;
-		}
-	}
-
-	.flap-reflection {
-		position: absolute;
-		top: -20%;
-		left: -20%;
-		width: 140%;
-		height: 140%;
-		/* Curved glass highlight */
-		background: radial-gradient(
-			circle at 30% 30%, 
-			rgba(255, 255, 255, 0.12) 0%, 
-			transparent 40%
-		);
-		mix-blend-mode: screen;
-		pointer-events: none;
-		z-index: 2;
-		/* Shifting motion wired via JS variables */
-		transform: translate(calc(var(--scroll-offset, 0) * 1px), calc(var(--scroll-offset, 0) * 0.5px));
-	}
-
-	.turbine-flap.active {
-		border-color: var(--accent);
-		/* Brighter outer aura and reinforced rim light */
-		box-shadow: 
-			inset 0 1px 2px rgba(255, 255, 255, 0.2),
-			inset 0 30px 60px -15px rgba(168, 85, 247, 0.3),
-			0 0 30px rgba(168, 85, 247, 0.1);
-	}
-
-	.flap-content {
-		z-index: 10;
-		opacity: 0;
-		transform: translateZ(20px) scale(0.9);
-		transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-		width: 100%;
-		max-width: 800px;
-	}
-
-	.turbine-flap.active .flap-content {
-		opacity: 1;
-		transform: translateZ(80px) scale(1);
-	}
-
-	.event-icon {
-		font-size: clamp(3rem, 8vw, 5.5rem);
-		margin-bottom: 2vh;
-		filter: drop-shadow(0 0 25px var(--accent));
-	}
-
-	.event-title {
-		font-size: clamp(1.8rem, 6vw, 4rem);
-		font-weight: 900;
-		margin: 0 0 1vh 0;
+	.hero-title {
+		font-size: clamp(3rem, 12vw, 6rem);
+		font-weight: 950;
+		margin: 0 0 1rem 0;
 		letter-spacing: -0.03em;
-		background: linear-gradient(
-			180deg,
-			#fff 40%,
-			rgba(255, 255, 255, 0.6) 100%
-		);
+		background: linear-gradient(135deg, #ffffff 0%, #b48bff 100%);
+		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
 
-	.event-date {
-		font-size: clamp(0.9rem, 2vw, 1.2rem);
-		color: var(--purple-bright);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		margin-bottom: 2vh;
-	}
-
-	.event-desc {
-		font-size: clamp(0.85rem, 1.6vw, 1.1rem);
-		line-height: 1.6;
-		color: rgba(255, 255, 255, 0.75);
+	.hero-subtitle {
+		font-size: clamp(1rem, 2.5vw, 1.5rem);
+		color: #b48bff;
 		margin: 0;
+		opacity: 0.9;
+		letter-spacing: 0.02em;
 	}
 
-	.turbine-hinge {
-		position: absolute;
-		bottom: 0; /* Anchored to bottom edge */
-		left: 50%;
-		width: clamp(20px, 4vw, 40px);
-		height: clamp(20px, 4vw, 40px);
-		background: #fff;
-		border-radius: 50%;
-		transform: translate(-50%, 50%) translateZ(40px); /* Pivot point center */
-		box-shadow:
-			0 0 40px var(--purple-bright),
-			0 0 20px #fff;
-		z-index: 100;
-	}
-
-	.scroll-status {
-		position: absolute;
-		bottom: 2vh; /* Positioned just above pivot */
+	/* Staggered Bento Grid */
+	.bento-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(24px, 4vw, 48px);
 		width: 100%;
-		display: flex;
-		justify-content: center;
-		z-index: 110;
-		pointer-events: none;
+		align-items: start;
 	}
 
-	.status-inner {
+	.bento-column {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: 15px;
+		gap: clamp(20px, 3vw, 36px);
 	}
 
-	.mobile-hint {
-		display: none;
+	/* Column 1 & 3: Standard offset */
+	.col-1,
+	.col-3 {
+		margin-top: 0;
 	}
 
-	@media (max-width: 768px) {
-		.desktop-hint { display: none; }
-		.mobile-hint { display: block; }
+	/* Column 2: Dominant center, slightly offset */
+	.col-2 {
+		margin-top: 60px;
 	}
 
-	.status-text {
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		color: var(--purple-bright);
-		font-weight: 600;
-		animation: blink 2.5s infinite;
-	}
-
-	.status-bar {
-		width: 160px;
-		height: 3px;
-		background: rgba(255, 255, 255, 0.08);
-		border-radius: 2px;
+	/* Base Card Styles */
+	.bento-card {
+		position: relative;
+		border-radius: 24px;
 		overflow: hidden;
+		cursor: pointer;
+		transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+		background: rgba(20, 15, 40, 0.6);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.12);
 	}
 
-	.status-progress {
+	.bento-card:hover {
+		transform: translateY(-12px);
+		box-shadow: 0 30px 80px rgba(180, 139, 255, 0.2);
+		border-color: rgba(180, 139, 255, 0.4);
+	}
+
+	/* Text Cards */
+	.text-card {
+		padding: clamp(40px, 6vw, 60px);
+		min-height: 240px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(217, 70, 239, 0.05) 100%);
+	}
+
+	.text-card.small {
+		min-height: 180px;
+		padding: clamp(30px, 5vw, 45px);
+	}
+
+	.card-content {
+		text-align: center;
+		width: 100%;
+	}
+
+	.stat-number {
+		font-size: clamp(2.8rem, 7vw, 4.5rem);
+		font-weight: 900;
+		background: linear-gradient(135deg, #b48bff 0%, #d946ef 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		line-height: 1;
+		margin-bottom: 0.8rem;
+	}
+
+	.stat-label {
+		font-size: clamp(0.95rem, 2vw, 1.3rem);
+		color: rgba(255, 255, 255, 0.75);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-weight: 600;
+	}
+
+	/* Image Cards */
+	.image-card {
+		position: relative;
+		min-height: 280px;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.image-card.dominant {
+		min-height: 420px;
+		grid-row: span 1;
+	}
+
+	.image-card img {
+		width: 100%;
 		height: 100%;
-		width: 0%;
-		background: var(--purple-bright);
-		box-shadow: 0 0 15px var(--purple-bright);
+		object-fit: cover;
+		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
-	@keyframes blink {
-		0%,
-		100% {
-			opacity: 0.4;
+	.bento-card:hover .image-card img {
+		transform: scale(1.05);
+	}
+
+	/* Image Overlay Gradient */
+	.image-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, transparent 40%, rgba(10, 14, 26, 0.5) 100%);
+		display: flex;
+		align-items: flex-end;
+		padding: clamp(20px, 4vw, 32px);
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	.bento-card:hover .image-overlay {
+		opacity: 1;
+	}
+
+	.image-caption {
+		margin: 0;
+		font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+		color: rgba(255, 255, 255, 0.9);
+		font-weight: 600;
+		line-height: 1.4;
+	}
+
+	/* Tablet: 2 Columns */
+	@media (max-width: 1024px) {
+		.bento-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: clamp(20px, 3vw, 32px);
 		}
-		50% {
+
+		.col-2 {
+			margin-top: 0;
+		}
+
+		/* Stagger on tablet */
+		.col-2 {
+			grid-column: span 1;
+			margin-top: 40px;
+		}
+	}
+
+	/* Mobile: 1 Column */
+	@media (max-width: 768px) {
+		.hero-section {
+			min-height: auto;
+			padding: 60px 4vw;
+		}
+
+		.hero-header {
+			margin-bottom: 60px;
+		}
+
+		.bento-grid {
+			grid-template-columns: 1fr;
+			gap: clamp(16px, 2.5vw, 24px);
+		}
+
+		.bento-column {
+			gap: clamp(16px, 2.5vw, 24px);
+		}
+
+		.col-1,
+		.col-2,
+		.col-3 {
+			margin-top: 0;
+		}
+
+		.text-card {
+			min-height: 200px;
+		}
+
+		.text-card.small {
+			min-height: 160px;
+		}
+
+		.image-card {
+			min-height: 240px;
+		}
+
+		.image-card.dominant {
+			min-height: 280px;
+		}
+
+		.image-overlay {
 			opacity: 1;
 		}
 	}
 
-	/* ==================== TIMELINE (PHASE 2) ==================== */
+	/* ==================== TIMELINE (PHASE 2 - UNCHANGED) ==================== */
 	.timeline-section {
-		min-height: 350vh;
+		min-height: 150vh;
 		padding: 25vh 5vw;
 		background: var(--bg-dark);
 		position: relative;
 		z-index: 50;
-		opacity: 0;
-		transform: translateY(15vh);
+		opacity: 1;
+		transform: translateY(0);
 		transition:
 			opacity 1.2s ease,
 			transform 1.2s ease;
+	}
+
+	@media (max-width: 768px) {
+		.timeline-section {
+			min-height: 80vh;
+			padding: 15vh 5vw;
+		}
 	}
 
 	.timeline-section.visible {
@@ -622,7 +573,7 @@ const events = [
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 40vh;
+		gap: 25vh;
 		padding-top: 10vh;
 	}
 
@@ -643,7 +594,6 @@ const events = [
 		padding-right: 2vw;
 	}
 
-	/* Second and third cards aligned with path points */
 	.milestone-block:nth-child(2) {
 		margin-top: 5vh;
 	}
@@ -676,24 +626,6 @@ const events = [
 		background: rgba(255, 255, 255, 0.05);
 	}
 
-	.card-glow {
-		position: absolute;
-		inset: 0;
-		background: radial-gradient(
-			circle at 0% 0%,
-			var(--accent) 0%,
-			transparent 70%
-		);
-		opacity: 0.04;
-		border-radius: inherit;
-		pointer-events: none;
-	}
-
-	.card-icon {
-		font-size: clamp(2.5rem, 6vw, 3.5rem);
-		margin-bottom: 2.5vh;
-	}
-
 	.card-body h3 {
 		font-size: clamp(1.6rem, 4.5vw, 2.8rem);
 		margin: 0 0 1vh 0;
@@ -718,7 +650,42 @@ const events = [
 		margin: 0;
 	}
 
-	/* Card Connector Node */
+	.card-title {
+		font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+		margin: 0 0 0.8vh 0;
+		font-weight: 900;
+		letter-spacing: -0.02em;
+	}
+
+	.card-subtitle {
+		color: var(--purple-bright);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		margin: 0 0 1.2vh 0;
+	}
+
+	.card-divider {
+		width: 100%;
+		height: 1px;
+		background: rgba(255, 255, 255, 0.18);
+		margin: 1.2vh 0 1.8vh;
+	}
+
+	.card-section-title {
+		font-size: 1rem;
+		color: var(--accent);
+		text-transform: none;
+		letter-spacing: 0.03em;
+		margin: 0 0 0.6vh 0;
+	}
+
+	.card-text {
+		color: rgba(255, 255, 255, 0.75);
+		line-height: 1.8;
+		font-size: clamp(1rem, 1.7vw, 1.1rem);
+		margin: 0;
+	}
+
 	.card-connector {
 		position: absolute;
 		top: 50%;
@@ -736,7 +703,6 @@ const events = [
 		transform: scaleX(-1);
 	}
 
-	/* Desktop Adjustments for side-to-side */
 	@media (min-width: 1025px) {
 		.milestone-block:nth-child(2) {
 			padding-right: 5vw;
@@ -762,121 +728,34 @@ const events = [
 </style>
 
 <script>
-	// DOM Elements
-	const turbineHero = document.getElementById("turbineHero");
-	const turbine = document.getElementById("turbine");
-	const flaps = document.querySelectorAll(".turbine-flap");
-	const progress = document.getElementById("rotationProgress");
+	// Timeline animation
 	const timelineSection = document.getElementById("timelineSection");
-	const timelineMaskPath = document.getElementById(
-		"timelineMaskPath",
-	) as SVGPathElement | null;
+	const timelineMaskPath = document.getElementById("timelineMaskPath") as SVGPathElement | null;
 	const milestones = document.querySelectorAll(".milestone-block");
 
-	// --- BI-DIRECTIONAL SCRUBBING STATE ---
-	let targetRotation = 0;
-	let currentRotation = 0;
-	let isLocked = true;
-	const MAX_ROTATION = 360;
-	const SENSITIVITY = 0.45;
-
-	// --- SCROLL MANAGEMENT ---
-	function setLock(active: boolean) {
-		isLocked = active;
-		if (active) {
-			document.documentElement.classList.add("scroll-frozen");
-			window.scrollTo(0, 0);
-			if (turbineHero) turbineHero.style.position = "sticky";
-		} else {
-			document.documentElement.classList.remove("scroll-frozen");
-			if (timelineSection) timelineSection.classList.add("visible");
-			if (turbineHero) turbineHero.style.position = "relative";
-		}
-	}
-
-	// Init
-	setLock(true);
-
-	// --- WHEEL HANDLER ---
-	window.addEventListener(
-		"wheel",
-		(e) => {
-			if (isLocked) {
-				e.preventDefault();
-				targetRotation += e.deltaY * SENSITIVITY;
-				targetRotation = Math.max(
-					0,
-					Math.min(MAX_ROTATION, targetRotation),
-				);
-
-				if (targetRotation === MAX_ROTATION && e.deltaY > 0)
-					setLock(false);
-			} else {
-				// Re-locking when scrolling back up to the top
-				if (window.scrollY <= 2 && e.deltaY < 0) {
-					e.preventDefault();
-					setLock(true);
-					targetRotation += e.deltaY * SENSITIVITY;
-					targetRotation = Math.max(
-						0,
-						Math.min(MAX_ROTATION, targetRotation),
-					);
-				}
-			}
-		},
-		{ passive: false },
-	);
-
-	// --- TIMELINE MEASUREMENTS ---
 	let pathLength = 0;
 	if (timelineMaskPath) {
 		pathLength = timelineMaskPath.getTotalLength();
-		timelineMaskPath.style.strokeDasharray = `${pathLength}`;
 		timelineMaskPath.style.strokeDashoffset = `${pathLength}`;
 	}
 
-	const triggers = [0.05, 0.35, 0.7, 0.95];
+	const triggers = [0.05, 0.35, 0.7];
 
-	// --- ANIMATION CORE ---
-	const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
-
-	function tick() {
-		// Smooth Rotation
-		currentRotation = lerp(currentRotation, targetRotation, 0.12);
-
-		// Apply to Turbine
-		if (turbine) {
-			turbine.style.transform = `rotateX(${-currentRotation}deg)`;
+	// Show timeline on page load
+	window.addEventListener("load", () => {
+		if (timelineSection) {
+			timelineSection.classList.add("visible");
 		}
+	});
 
-		// Update Progress
-		if (progress) {
-			progress.style.width = `${(currentRotation / MAX_ROTATION) * 100}%`;
-		}
-
-		// Active Flap Logic & Reactive Reflections
-		flaps.forEach((flap, i) => {
-			const angle = i * 90;
-			const norm = ((currentRotation % 360) + 360) % 360;
-			let diff = Math.abs(norm - angle);
-			if (diff > 180) diff = 360 - diff;
-
-			if (diff < 30) (flap as HTMLElement).classList.add("active");
-			else (flap as HTMLElement).classList.remove("active");
-
-			// Shift glass reflection based on rotation (reactive motion)
-			const shift = (currentRotation - angle) * 0.5;
-			(flap as HTMLElement).style.setProperty('--scroll-offset', shift.toString());
-		});
-
-		// Timeline Trace Logic (Phase 2)
-		if (!isLocked && timelineSection) {
+	// Timeline trace on scroll
+	window.addEventListener("scroll", () => {
+		if (timelineSection && timelineMaskPath) {
 			const sy = window.scrollY;
 			const vh = window.innerHeight;
 			const top = timelineSection.offsetTop;
 			const h = timelineSection.offsetHeight;
 
-			// Progressive trace (reversible)
 			const scrollStart = top - vh * 0.4;
 			const scrollEnd = top + h - vh * 1.6;
 			const p = Math.max(
@@ -884,62 +763,14 @@ const events = [
 				Math.min(1, (sy - scrollStart) / (scrollEnd - scrollStart)),
 			);
 
-			if (timelineMaskPath) {
-				timelineMaskPath.style.strokeDashoffset = (
-					pathLength *
-					(1 - p)
-				).toString();
-			}
+			timelineMaskPath.style.strokeDashoffset = (
+				pathLength * (1 - p)
+			).toString();
 
-			// Milestone reveal
 			milestones.forEach((m, i) => {
 				if (p >= triggers[i]) m.classList.add("revealed");
 				else m.classList.remove("revealed");
 			});
 		}
-
-		requestAnimationFrame(tick);
-	}
-
-	requestAnimationFrame(tick);
-
-	// --- TOUCH SUPPORT ---
-	let startY = 0;
-	window.addEventListener(
-		"touchstart",
-		(e) => {
-			startY = e.touches[0].clientY;
-		},
-		{ passive: true },
-	);
-
-	window.addEventListener(
-		"touchmove",
-		(e) => {
-			if (isLocked) {
-				e.preventDefault();
-				const delta = startY - e.touches[0].clientY;
-				// Adjusted sensitivity for mobile swipe
-				targetRotation += delta * 1.5; 
-				targetRotation = Math.max(
-					0,
-					Math.min(MAX_ROTATION, targetRotation),
-				);
-				
-				if (targetRotation === MAX_ROTATION && delta > 0) {
-					setLock(false);
-				}
-				startY = e.touches[0].clientY;
-			} else {
-				// Re-locking when swiping back up at the top
-				if (window.scrollY <= 2 && (startY - e.touches[0].clientY) < 0) {
-					setLock(true);
-					// Optionally prevent scroll to capture first swipe back
-					// e.preventDefault(); 
-				}
-			}
-		},
-		{ passive: false },
-	);
+	});
 </script>
->>>>>>> 0466093 (Initialize repo with redesigned Events page and mobile support)
