@@ -51,6 +51,14 @@ const bentoCards = [
 ---
 
 <Layout title="Events - Triverse">
+	<!-- Background Video -->
+	<div class="video-background">
+		<video autoplay loop muted playsinline class="bg-video">
+			<source src="/Event_Background.mp4" type="video/mp4" />
+		</video>
+		<div class="video-overlay"></div>
+	</div>
+
 	<main class="events-container">
 		<!-- PHASE 1: STAGGERED BENTO HERO -->
 		<section class="hero-section" id="staticHero">
@@ -208,8 +216,12 @@ const bentoCards = [
 		--glass-border: rgba(255, 255, 255, 0.12);
 	}
 
-	body {
+	html {
 		background-color: var(--bg-dark);
+	}
+
+	body {
+		background-color: transparent;
 		color: #ffffff;
 		margin: 0;
 		font-family:
@@ -225,15 +237,59 @@ const bentoCards = [
 	.events-container {
 		position: relative;
 		width: 100%;
+		background: transparent;
+		z-index: 10;
+	}
+
+	/* ==================== BACKGROUND VIDEO ==================== */
+	.video-background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	.bg-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+		object-position: center;
+		filter: blur(12px);
+	}
+
+	.video-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			135deg,
+			rgba(10, 14, 26, 0.5) 0%,
+			rgba(18, 17, 31, 0.6) 100%
+		);
+		pointer-events: none;
+	}
+
+	/* Reduce blur on mobile for better performance */
+	@media (max-width: 768px) {
+		.bg-video {
+			filter: blur(12px);
+		}
 	}
 
 	/* ==================== STATIC HERO (PHASE 1) ==================== */
 	.hero-section {
 		min-height: 120vh;
 		padding: 80px 5vw 100px;
-		background: linear-gradient(135deg, #0a0e1a 0%, #12111f 100%);
 		position: relative;
-		z-index: 40;
+		z-index: 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -470,14 +526,30 @@ const bentoCards = [
 	.timeline-section {
 		min-height: 150vh;
 		padding: 25vh 5vw;
-		background: var(--bg-dark);
 		position: relative;
-		z-index: 50;
+		z-index: 1;
 		opacity: 1;
 		transform: translateY(0);
 		transition:
 			opacity 1.2s ease,
 			transform 1.2s ease;
+	}
+
+	/* Timeline-specific background overlay for enhanced video visibility */
+	.timeline-section::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			135deg,
+			rgba(10, 14, 26, 0.15) 0%,
+			rgba(18, 17, 31, 0.2) 100%
+		);
+		z-index: 0;
+		pointer-events: none;
 	}
 
 	@media (max-width: 768px) {
@@ -520,6 +592,7 @@ const bentoCards = [
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
+		z-index: 1;
 	}
 
 	.timeline-svg-stage {
@@ -772,5 +845,42 @@ const bentoCards = [
 				else m.classList.remove("revealed");
 			});
 		}
+	});
+
+	// Move video to fixed container outside scroll wrapper
+	const videoContainer = document.querySelector('.video-background');
+	const fixedContainer = document.getElementById('fixed-video-container');
+	if (videoContainer && fixedContainer) {
+		fixedContainer.appendChild(videoContainer);
+	}
+
+	// Footer reveal at timeline end
+	window.addEventListener('load', () => {
+		const footer = document.querySelector('footer');
+		if (!footer) return;
+		
+		// Start with footer hidden
+		footer.style.opacity = '0';
+		footer.style.filter = 'blur(10px)';
+		footer.style.transition = 'opacity 0.8s ease, filter 0.8s ease';
+		
+		window.addEventListener('scroll', () => {
+			const scrollHeight = document.documentElement.scrollHeight;
+			const scrollTop = window.scrollY;
+			const clientHeight = window.innerHeight;
+			const scrolledToBottom = scrollTop + clientHeight;
+			const totalHeight = scrollHeight;
+			
+			// Show footer when 80% scrolled through page
+			const scrollPercentage = scrolledToBottom / totalHeight;
+			
+			if (scrollPercentage > 0.8) {
+				footer.style.opacity = '1';
+				footer.style.filter = 'blur(0px)';
+			} else {
+				footer.style.opacity = '0';
+				footer.style.filter = 'blur(10px)';
+			}
+		});
 	});
 </script>
