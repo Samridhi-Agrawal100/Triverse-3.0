@@ -23,6 +23,19 @@
   justify-content: flex-end; /* Align content to bottom if it's tall */
 }
 
+.footer-animate {
+  opacity: 0;
+  filter: blur(10px);
+  visibility: hidden;
+  transition: opacity 0.8s ease, filter 0.8s ease, visibility 0.8s ease;
+}
+
+.footer-animate.footer-visible {
+  opacity: 1;
+  filter: blur(0px);
+  visibility: visible;
+}
+
 /* Background Pattern */
 .footer-bg-pattern {
   position: absolute;

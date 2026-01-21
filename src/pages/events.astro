@@ -858,11 +858,10 @@ const bentoCards = [
 	window.addEventListener('load', () => {
 		const footer = document.querySelector('footer');
 		if (!footer) return;
-		
-		// Start with footer hidden
-		footer.style.opacity = '0';
-		footer.style.filter = 'blur(10px)';
-		footer.style.transition = 'opacity 0.8s ease, filter 0.8s ease';
+
+		// Ensure we start hidden using the animated state
+		footer.classList.add('footer-animate');
+		footer.classList.remove('footer-visible');
 		
 		window.addEventListener('scroll', () => {
 			const scrollHeight = document.documentElement.scrollHeight;
@@ -875,11 +874,9 @@ const bentoCards = [
 			const scrollPercentage = scrolledToBottom / totalHeight;
 			
 			if (scrollPercentage > 0.8) {
-				footer.style.opacity = '1';
-				footer.style.filter = 'blur(0px)';
+				footer.classList.add('footer-visible');
 			} else {
-				footer.style.opacity = '0';
-				footer.style.filter = 'blur(10px)';
+				footer.classList.remove('footer-visible');
 			}
 		});
 	});
