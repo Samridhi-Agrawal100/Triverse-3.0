@@ -1,12 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoCff from "../assets/event/LOGO_cff.png";
+import theDropt from "../assets/event/TheDropt.png";
+import frame87 from "../assets/event/Frame 87 (1).png";
+import eventBg from "../assets/event/Event_Background.mp4?url";
 
 // Event data for timeline (unchanged)
 const events = [
 	{
 		id: 1,
 		icon: "",
-		image: "/Media/LOGO_cff.png",
+		image: logoCff,
 		cardTitle: "EVENT 1: BREAKIT",
 		cardSubtitle: "Deconstruct. Stress Test. Redesign.",
 		objectiveTitle: "🎯 Objective",
@@ -16,7 +21,7 @@ const events = [
 	{
 		id: 2,
 		icon: "",
-		image: "/Media/TheDropt.png",
+		image: theDropt,
 		cardTitle: "🚀 EVENT 2: THE DROP",
 		cardSubtitle: "Launch the Future. Even If It's Fake.",
 		objectiveTitle: "🎯 Objective",
@@ -26,7 +31,7 @@ const events = [
 	{
 		id: 3,
 		icon: "",
-		image: "/Media/Frame 87 (1).png",
+		image: frame87,
 		cardTitle: "Event 3 : Bet for Tech 3.0",
 		objectiveTitle: "Objective",
 		objective: "tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
@@ -54,7 +59,7 @@ const bentoCards = [
 	<!-- Background Video -->
 	<div class="video-background">
 		<video autoplay loop muted playsinline class="bg-video">
-			<source src="/Event_Background.mp4" type="video/mp4" />
+			<source src={eventBg} type="video/mp4" />
 		</video>
 		<div class="video-overlay"></div>
 	</div>
@@ -82,7 +87,7 @@ const bentoCards = [
 
 						{/* Image Card */}
 						<div class="bento-card image-card card-b">
-							<img src={events[0].image} alt={events[0].cardTitle} />
+						<Image src={events[0].image} alt={events[0].cardTitle} />
 							<div class="image-overlay">
 								<p class="image-caption">{events[0].cardTitle}</p>
 							</div>
@@ -93,7 +98,7 @@ const bentoCards = [
 					<div class="bento-column col-2">
 						{/* Large Image Card (Dominant) */}
 						<div class="bento-card image-card dominant card-c">
-							<img src={events[1].image} alt={events[1].cardTitle} />
+					<Image src={events[1].image} alt={events[1].cardTitle} />
 							<div class="image-overlay">
 								<p class="image-caption">{events[1].cardTitle}</p>
 							</div>
@@ -120,7 +125,7 @@ const bentoCards = [
 
 						{/* Image Card */}
 						<div class="bento-card image-card card-f">
-							<img src={events[2].image} alt={events[2].cardTitle} />
+						<Image src={events[2].image} alt={events[2].cardTitle} />
 							<div class="image-overlay">
 								<p class="image-caption">{events[2].cardTitle}</p>
 							</div>
