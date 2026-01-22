@@ -19,6 +19,19 @@
   font-family: var(--footer-font-main);
 }
 
+.footer-animate {
+  opacity: 0;
+  filter: blur(10px);
+  visibility: hidden;
+  transition: opacity 0.8s ease, filter 0.8s ease, visibility 0.8s ease;
+}
+
+.footer-animate.footer-visible {
+  opacity: 1;
+  filter: blur(0px);
+  visibility: visible;
+}
+
 /* Background Pattern */
 .footer-bg-pattern {
   position: absolute;

@@ -4,10 +4,13 @@ import '../assets/footer.css';
 import { Image } from 'astro:assets';
 import clubLogo from '../images/club.png';
 import triverseLogo from '../images/logo.png';
+
+const isEventsPage = Astro.url.pathname === '/events';
+const footerClass = `footer${isEventsPage ? ' footer-animate' : ''}`;
 import benuniLogo from '../images/benuni.png';
 ---
 
-<footer class="footer" id="footer">
+<footer class={footerClass} id="footer">
   <div class="footer-bg-pattern"></div>
 
   <!-- Subtle large logo watermark in the background -->

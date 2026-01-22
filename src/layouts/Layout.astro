@@ -44,14 +44,14 @@ const {
                 overflow: hidden;
                 position: relative;
                 width: 100%;
-                z-index: 2; /* Above footer initially */
+                z-index: 2;
                 pointer-events: none;
             }
             
             .content-wrapper {
                 position: relative;
-                z-index: 2;
-                background-color: #010418; /* Ensure content has background to cover footer */
+                z-index: 3;
+                background: transparent;
                 width: 100%;
                 will-change: transform;
                 pointer-events: auto;
@@ -63,10 +63,23 @@ const {
                 pointer-events: none;
                 visibility: hidden;
             }
+            
+            #fixed-video-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 1;
+                pointer-events: none;
+            }
         </style>
 	</head>
 	<body>
         <Menu />
+        
+        <!-- Fixed video container for events page -->
+        <div id="fixed-video-container"></div>
         
         <div id="smooth-wrapper">
             <div id="smooth-content">
