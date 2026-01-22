@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import logoCff from "../assets/event/LOGO_cff.png";
 import theDropt from "../assets/event/TheDropt.png";
 import frame87 from "../assets/event/Frame 87 (1).png";
-import eventBg from "../assets/event/Event_Background.mp4";
+import eventBg from "../assets/event/Event_Background.mp4?url";
 
 // Event data for timeline (unchanged)
 const events = [
@@ -59,7 +59,7 @@ const bentoCards = [
 	<!-- Background Video -->
 	<div class="video-background">
 		<video autoplay loop muted playsinline class="bg-video">
-			<source src={eventBg.src} type="video/mp4" />
+			<source src={eventBg} type="video/mp4" />
 		</video>
 		<div class="video-overlay"></div>
 	</div>
