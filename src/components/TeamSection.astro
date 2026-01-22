@@ -1,0 +1,226 @@
+---
+import teamData from '../data/team-details.json';
+
+interface Props {
+  teamName: string;
+}
+
+const { teamName } = Astro.props;
+
+const team = teamData.teams.find(
+  t => t.name.toLowerCase() === teamName.toLowerCase()
+);
+
+if (!team) {
+  console.error(`Team "${teamName}" not found`);
+}
+
+// 🔥 exception handling (ONLY addition)
+const hasCoLead = Boolean(team?.colead);
+---
+{team && (
+  <section class="team-section">
+
+    <!-- LEAD -->
+    <div
+      class="lead-row left"
+      style={hasCoLead ? '' : 'margin-bottom: 2rem;'}
+    >
+      <div class="avatar-wrap lead-avatar">
+        <img src={team.lead.image} alt={team.lead.name} />
+      </div>
+      <div class="info">
+        <h3>{team.lead.name}</h3>
+        <p>{team.lead.role}</p>
+      </div>
+    </div>
+
+    <!-- CO-LEAD -->
+    {hasCoLead && (
+      <div class="lead-row right">
+        <div class="info">
+          <h3>{team.colead.name}</h3>
+          <p>{team.colead.role}</p>
+        </div>
+        <div class="avatar-wrap lead-avatar">
+          <img src={team.colead.image} alt={team.colead.name} />
+        </div>
+      </div>
+    )}
+
+    <!-- MEMBERS -->
+    {team.members.length > 0 && (
+      <div class="members-grid">
+        {team.members.map(member => (
+          <div class="member-card">
+            <div class="avatar-wrap member-avatar">
+              <img src={member.image} alt={member.name} />
+            </div>
+            <h4>{member.name}</h4>
+            <p>{member.role}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+  </section>
+)}
+
+<style>
+/* ---------- SECTION ---------- */
+.team-section {
+  max-width: 1100px;
+  margin: -3rem auto 0;
+  padding: 0 1rem;
+}
+
+/* ---------- AVATAR WITH GALAXY BACKGROUND ---------- */
+.avatar-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  background-image: url('/galaxy.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 3px solid white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- STICKER IMAGE ---------- */
+.avatar-wrap img {
+  width: 98%;
+  height: 105%;
+  object-fit: contain;
+  z-index: 1;
+  background: transparent;
+
+  filter:
+    drop-shadow(2px 0 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(0 -2px 0 white);
+
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+
+.avatar-wrap img:hover {
+  transform: scale(1.06);
+}
+
+/* ---------- LEAD / CO-LEAD ---------- */
+.lead-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lead-row.left {
+  justify-content: flex-start;
+  margin-bottom: -8rem;
+}
+
+.lead-row.right {
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.lead-row h3 {
+  font-size: 1.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.lead-row p {
+  font-size: 1.1rem;
+  color: #bbb;
+}
+
+/* ---------- MEMBERS GRID ---------- */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  justify-items: center;
+}
+
+/* ---------- MEMBER CARD ---------- */
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-10px);
+}
+
+.member-avatar {
+  margin-bottom: 0.45rem;
+}
+
+.member-card h4 {
+  font-size: 0.95rem;
+  margin: 0.1rem 0 0;
+}
+
+.member-card p {
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  color: #aaa;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 941px) {
+  .lead-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .lead-row.left {
+    margin-top: 2.5rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .lead-row.right {
+    flex-direction: column-reverse;
+    margin-bottom: 2.5rem;
+  }
+
+  .avatar-wrap {
+    width: 150px;
+    height: 150px;
+  }
+
+  .lead-avatar {
+    margin-top: 2.2rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .lead-row .info h3 {
+    margin-top: 0.15rem;
+    margin-bottom: 0.1rem;
+    font-size: 1.5rem;
+  }
+
+  .lead-row .info p {
+    margin-top: 0;
+    font-size: 0.95rem;
+  }
+
+  .avatar-wrap img {
+    width: 95%;
+    height: 100%;
+  }
+}
+</style>
