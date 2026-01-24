@@ -54,11 +54,6 @@ const bentoCards = [
 	{ type: "image", image: events[2].image, title: events[2].cardTitle, column: 3, order: 2 },
 ];
 
-const eventVideoUrl = getCldVideoUrl({
-	src: "Event_Background_vpzjlx",
-	sourceTypes: ["mp4"],
-	transformation: { quality: "auto", fetch_format: "auto" },
-});
 ---
 
 <Layout title="Events - Triverse">
@@ -72,7 +67,7 @@ const eventVideoUrl = getCldVideoUrl({
 			preload="auto"
 			class="bg-video"
 		>
-			<source src={eventVideoUrl} type="video/mp4" />
+			<source src="https://res.cloudinary.com/dtxhjkgdu/video/upload/v1769102015/Event_Background_vpzjlx.mp4" type="video/mp4" />
 		</video>
 		<div class="video-overlay"></div>
 	</div>
