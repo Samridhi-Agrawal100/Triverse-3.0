@@ -9,6 +9,18 @@
 	justify-content: center;
 }
 
+.hero-container::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 15%;
+	background: linear-gradient(to bottom, transparent 0%, #08080c 100%);
+	z-index: 10;
+	pointer-events: none;
+}
+
 /* Background gradient - lightweight replacement for stars */
 .hero-container {
 	background: radial-gradient(ellipse at bottom, #1a0033 0%, #000000 100%);
@@ -23,15 +35,50 @@
 	width: 80%;
 	height: 70%;
 	background: radial-gradient(ellipse 80% 100% at 50% 0%,
-			rgba(138, 43, 226, 0.3) 0%,
-			rgba(186, 85, 211, 0.2) 30%,
-			rgba(221, 160, 221, 0.15) 50%,
-			rgba(255, 20, 147, 0.08) 70%,
+			rgba(138, 43, 226, 0.45) 0%,
+			rgba(186, 85, 211, 0.3) 30%,
+			rgba(221, 160, 221, 0.2) 50%,
+			rgba(255, 20, 147, 0.1) 70%,
 			transparent 100%);
 	z-index: 3;
 	transform-origin: top center;
-	filter: blur(20px);
+	filter: blur(25px);
 	pointer-events: none;
+}
+
+.stars {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		radial-gradient(1px 1px at 15% 15%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(1px 1px at 35% 25%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(1px 1px at 55% 45%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(1px 1px at 75% 65%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(1px 1px at 85% 15%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(2px 2px at 10% 80%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+		radial-gradient(1px 1px at 60% 85%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(2px 2px at 40% 40%, rgba(255, 255, 255, 0.6) 50%, transparent 100%),
+		radial-gradient(1px 1px at 90% 50%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+		radial-gradient(2px 2px at 20% 40%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+	background-size: 550px 550px;
+	opacity: 0.6;
+	z-index: 1;
+	animation: twinkle 10s infinite alternate;
+}
+
+@keyframes twinkle {
+	0% {
+		opacity: 0.4;
+		transform: translateY(0);
+	}
+
+	100% {
+		opacity: 0.7;
+		transform: translateY(-10px);
+	}
 }
 
 /* Bottom Purple Glow Arc - Horizontal across bottom - Positioned at planet arc edge */
@@ -96,10 +143,10 @@
 }
 
 .triverse-logo {
-	font-family: 'Centauri', sans-serif;
-	font-size: clamp(3rem, 12vw, 10rem);
+	font-family: var(--font-centauri);
+	font-size: clamp(1.2rem, 10vw, 8rem);
 	font-weight: 400;
-	letter-spacing: 0.15em;
+	letter-spacing: 0.1em;
 	margin: 0;
 	background: linear-gradient(180deg,
 			#ffffff 0%,
@@ -126,10 +173,25 @@
 	will-change: transform, opacity, filter;
 }
 
+.tagline {
+	font-family: var(--font-sf-pro), sans-serif;
+	font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+	text-transform: uppercase;
+	letter-spacing: 0.5em;
+	color: rgba(255, 255, 255, 0.6);
+	margin-top: 1.5rem;
+	text-align: center;
+	display: block;
+	font-weight: 300;
+
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
 	.triverse-logo {
-		max-width: 90vw;
+		max-width: 95vw;
+		width: 100%;
+		overflow-wrap: break-word;
 	}
 
 	.top-spotlight {
@@ -155,5 +217,14 @@
 
 	.bottom-glow-arc {
 		height: 120px;
+	}
+
+	.triverse-logo {
+		font-size: 8vw;
+		/* Scale relative to viewport width */
+		letter-spacing: 0px;
+		/* Remove spacing to save width */
+		width: 100%;
+		max-width: 100%;
 	}
 }

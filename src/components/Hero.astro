@@ -9,6 +9,7 @@ import triLogo from "../images/Tri.png";
 <div class="hero-container">
 	<!-- Top Spotlight - Cone beam from top center -->
 	<div class="top-spotlight" id="topSpotlight"></div>
+	<div class="stars"></div>
 
 	<!-- Bottom Purple Glow Arc -->
 	<div class="bottom-glow-arc" id="bottomGlow"></div>
@@ -87,14 +88,18 @@ import triLogo from "../images/Tri.png";
 
 			gsap.set(logoImg, {
 				opacity: 0,
-				x: -50,
+				y: -100,
+				rotationX: 90,
+				skewX: -20,
 				scale: 0.5,
 				filter: "blur(10px)",
 			});
 
 			gsap.set(letters, {
 				opacity: 0,
-				y: 50,
+				y: -100,
+				rotationX: 90,
+				skewX: -20,
 				scale: 0.5,
 				filter: "blur(10px)",
 			});
@@ -160,11 +165,13 @@ import triLogo from "../images/Tri.png";
 					logoImg,
 					{
 						opacity: 1,
-						x: 0,
+						y: 0,
+						rotationX: 0,
+						skewX: 0,
 						scale: 1,
 						filter: "blur(0px)",
-						duration: 0.8,
-						ease: "back.out(1.7)",
+						duration: 1,
+						ease: "power3.out",
 					},
 					"-=0.5",
 				)
@@ -174,13 +181,21 @@ import triLogo from "../images/Tri.png";
 					{
 						opacity: 1,
 						y: 0,
+						rotationX: 0,
+						skewX: 0,
 						scale: 1,
 						filter: "blur(0px)",
-						duration: 0.8,
+						duration: 1,
 						stagger: 0.05,
-						ease: "back.out(1.2)",
+						ease: "power3.out",
 					},
-					"-=0.6",
+					"<",
+				)
+				.fromTo(
+					".tagline",
+					{ opacity: 0, y: 10 },
+					{ opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+					"-=0.5",
 				);
 
 			// Start floating animation after fade in

@@ -27,9 +27,16 @@ import img10 from "../images/old_triverse/20250328_131135135_iOS.jpg";
             <span class="header-label">DISCOVER</span>
             <h2 class="about-title">About Triverse</h2>
             <p class="about-subtitle">
-                Where innovation meets imagination, and dreams take flight into
-                the cosmos. Join us on a journey through technology, creativity,
-                and boundless possibilities.
+                Triverse is a high-intensity tech event where thinking matters
+                more than building. Across three distinct formats, participants
+                break real products, launch absurd-yet-believable future tech,
+                and compete in strategy-driven coding battles that reward
+                judgment, risk-taking, and psychological play. There are no
+                templates, no rote hacks, and no safe answers — only pressure,
+                clarity, and sharp decision-making. Triverse is built for people
+                who question systems, challenge assumptions, and can defend
+                their ideas when it counts. Think deeper. Play smarter. Ship
+                nothing — prove everything.
             </p>
         </div>
 
@@ -49,14 +56,8 @@ import img10 from "../images/old_triverse/20250328_131135135_iOS.jpg";
                 <div class="item-overlay"></div>
                 <div class="item-content">
                     <span class="item-tag">Featured</span>
-                    <h3>The Beginning of Something Extraordinary</h3>
-                    <p>
-                        Triverse 3.0 marks the culmination of years of
-                        dedication, bringing together the brightest minds from
-                        across the nation. Our flagship tech festival showcases
-                        cutting-edge innovations, thought-provoking discussions,
-                        and boundless creative energy that defines the future of
-                        technology.
+                    <p class="item-description">
+                        Closing ceremony showcases the winners of Triverse 2.0.
                     </p>
                 </div>
                 <div class="item-shine"></div>
@@ -493,7 +494,26 @@ import img10 from "../images/old_triverse/20250328_131135135_iOS.jpg";
             #08080c 100%
         );
         overflow: hidden;
-        font-family: "Space Grotesk", sans-serif;
+        overflow: hidden;
+        font-family: var(--font-space-grotesk), sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .about-title,
+    .stat-value {
+        font-family: var(--font-space-grotesk), sans-serif;
+    }
+
+    p,
+    .about-subtitle,
+    .stat-label,
+    blockquote {
+        font-family: var(--font-space-grotesk), sans-serif;
     }
 
     /* Animated Background Orbs */
@@ -572,7 +592,7 @@ import img10 from "../images/old_triverse/20250328_131135135_iOS.jpg";
     }
 
     .about-title {
-        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-size: clamp(2rem, 6vw, 4.5rem);
         font-weight: 700;
         margin-bottom: 20px;
         background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #ec4899 100%);
@@ -1259,11 +1279,25 @@ import img10 from "../images/old_triverse/20250328_131135135_iOS.jpg";
         }
 
         .item-hero {
-            min-height: 320px;
+            min-height: 360px;
+        }
+
+        .item-content {
+            padding: 20px;
         }
 
         .item-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .item-content p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .stat-value {

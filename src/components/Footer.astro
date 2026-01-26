@@ -28,7 +28,7 @@ import shrutiImg from "../images/team/tech/shruti.png";
       <!-- Left Section: Nav & Logo -->
       <div class="footer-column footer-left">
         <div class="footer-logo-wrapper">
-          <Image src={clubLogo} alt="IEEE" width={200} format="png" />
+          <Image src={clubLogo} alt="IEEE" width={150} format="png" />
         </div>
         <nav class="footer-nav">
           <ul>
@@ -38,6 +38,20 @@ import shrutiImg from "../images/team/tech/shruti.png";
             <li><a href="/sponsors">SPONSORS</a></li>
           </ul>
         </nav>
+
+        <!-- Moved from Center: Bennett Logo & Tagline -->
+        <div class="partner-logos">
+          <Image
+            src={benuniLogo}
+            alt="Bennett University"
+            width={150}
+            format="png"
+            class="partner-logo-img"
+          />
+        </div>
+        <p class="footer-description" style="text-align: left;">
+          A cosmic journey through space and innovation
+        </p>
       </div>
 
       <!-- Center Section: IEEE & Partners -->
@@ -50,18 +64,6 @@ import shrutiImg from "../images/team/tech/shruti.png";
             height={167}
             format="png"
             class="footer-center-logo-img"
-          />
-          <p class="footer-description">
-            A cosmic journey through space and innovation
-          </p>
-        </div>
-        <div class="partner-logos">
-          <Image
-            src={benuniLogo}
-            alt="Bennett University"
-            width={200}
-            format="png"
-            class="partner-logo-img"
           />
         </div>
         <!-- Tech Club Logo Placeholder -->
