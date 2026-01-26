@@ -1,16 +1,13 @@
 ---
-import Footer from '../components/Footer.astro';
-import Menu from '../components/Menu.astro';
+import Footer from "../components/Footer.astro";
+import Menu from "../components/Menu.astro";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { 
-  title = "Triverse-3.0",
-  description = ""
-} = Astro.props;
+const { title = "Triverse-3.0", description = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,14 +21,21 @@ const {
     <title>{title}</title>
 
     <!-- GSAP Core & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer></script>
 
     <!-- ScrollSmoother (desktop only – guarded in JS) -->
-    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js" defer></script>
+    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js" defer
+    ></script>
 
     <!-- Lenis fallback -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"
+      defer></script>
 
     <style>
       body {
@@ -57,13 +61,6 @@ const {
         pointer-events: auto;
       }
 
-      .footer-spacer {
-        height: 100vh;
-        width: 100%;
-        pointer-events: none;
-        visibility: hidden;
-      }
-
       #fixed-video-container {
         position: fixed;
         inset: 0;
@@ -80,10 +77,6 @@ const {
 
         #smooth-content {
           transform: none !important;
-        }
-
-        .footer-spacer {
-          display: none !important;
         }
 
         .footer {
@@ -103,15 +96,16 @@ const {
         <div class="content-wrapper">
           <slot />
         </div>
-        <div class="footer-spacer"></div>
+        <Footer />
       </div>
     </div>
 
-    <Footer />
-
     <script is:inline>
       document.addEventListener("DOMContentLoaded", () => {
-        const isMobile = window.innerWidth <= 768;
+        let currentIsMobile = window.innerWidth <= 768;
+        let scrollSmoother = null;
+        let lenis = null;
+        let scrollTriggers = [];
 
         const check = setInterval(() => {
           if (window.gsap && window.ScrollTrigger) {
@@ -120,54 +114,55 @@ const {
           }
         }, 100);
 
+        function cleanup() {
+          // Clean up ScrollTriggers
+          scrollTriggers.forEach((st) => st.kill());
+          scrollTriggers = [];
+          ScrollTrigger.getAll().forEach((st) => st.kill());
+
+          // Clean up ScrollSmoother
+          if (scrollSmoother) {
+            scrollSmoother.kill();
+            scrollSmoother = null;
+          }
+
+          // Clean up Lenis
+          if (lenis) {
+            lenis.destroy();
+            lenis = null;
+          }
+        }
+
         function init() {
+          cleanup();
+
+          const isMobile = window.innerWidth <= 768;
           gsap.registerPlugin(ScrollTrigger);
 
           if (!isMobile && window.ScrollSmoother) {
-            ScrollSmoother.create({
+            scrollSmoother = ScrollSmoother.create({
               wrapper: "#smooth-wrapper",
               content: "#smooth-content",
               smooth: 3,
               effects: true,
-              normalizeScroll: true
+              normalizeScroll: true,
             });
           } else if (!window.ScrollSmoother && !isMobile) {
             initLenis();
           }
 
           if (!isMobile) {
-            handleFooterReveal();
             initParallax();
           }
-        }
-
-        function handleFooterReveal() {
-          const footer = document.querySelector('.footer');
-          const spacer = document.querySelector('.footer-spacer');
-          if (!footer || !spacer) return;
-
-          const updateHeight = () => {
-            spacer.style.height = `${footer.offsetHeight}px`;
-          };
-
-          updateHeight();
-          window.addEventListener('resize', updateHeight);
-
-          ScrollTrigger.create({
-            trigger: spacer,
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: true
-          });
         }
 
         function initLenis() {
           if (!window.Lenis) return;
 
-          const lenis = new Lenis({
+          lenis = new Lenis({
             duration: 1.5,
             smooth: true,
-            smoothTouch: false
+            smoothTouch: false,
           });
 
           function raf(time) {
@@ -176,7 +171,7 @@ const {
           }
           requestAnimationFrame(raf);
 
-          lenis.on('scroll', ScrollTrigger.update);
+          lenis.on("scroll", ScrollTrigger.update);
           gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
           });
@@ -184,20 +179,35 @@ const {
         }
 
         function initParallax() {
-          document.querySelectorAll('[data-scroll]').forEach(el => {
+          document.querySelectorAll("[data-scroll]").forEach((el) => {
             const speed = parseFloat(el.dataset.scrollSpeed) || 0.5;
-            gsap.to(el, {
+            const st = gsap.to(el, {
               y: () => window.innerHeight * speed * 0.3,
-              ease: 'none',
+              ease: "none",
               scrollTrigger: {
                 trigger: el,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-              }
-            });
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }).scrollTrigger;
+
+            if (st) scrollTriggers.push(st);
           });
         }
+
+        // Handle viewport resize
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const newIsMobile = window.innerWidth <= 768;
+            if (newIsMobile !== currentIsMobile) {
+              currentIsMobile = newIsMobile;
+              init(); // Reinitialize when switching between mobile/desktop
+            }
+          }, 250);
+        });
       });
     </script>
   </body>
