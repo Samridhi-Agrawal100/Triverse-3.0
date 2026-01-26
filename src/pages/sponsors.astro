@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import { Image } from "astro:assets";
+import benuniLogo from "../images/benuni.png";
+
 // DATA: Divided into Tiers
 const sponsorTiers = [
   {
@@ -8,7 +11,7 @@ const sponsorTiers = [
     id: "gold",
     color: "#FFD700", // Gold Color
     sponsors: [
-      { name: "Bennett University", logo: "/src/images/logo.png" },
+      { name: "Bennett University", logo: benuniLogo },
       {
         name: "Tech Giant",
         logo: "https://placehold.co/300x300/1a1a1a/FFF?text=Tech+Giant",
@@ -89,11 +92,15 @@ const sponsorTiers = [
                   <div class="diamond-shape">
                     <div class="shine" />
                     <div class="diamond-content">
-                      <img
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        loading="lazy"
-                      />
+                      {typeof sponsor.logo === "string" ? (
+                        <img
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <Image src={sponsor.logo} alt={sponsor.name} />
+                      )}
                     </div>
                   </div>
                 </div>

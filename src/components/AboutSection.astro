@@ -1,0 +1,1282 @@
+---
+// Enhanced Bento Grid About Section with SVG icons and contained images
+import { Image } from "astro:assets";
+
+// Import all images from old_triverse
+import img1 from "../images/old_triverse/IMG-20250417-WA0012.jpg";
+import img2 from "../images/old_triverse/IMG-20250417-WA0014.jpg";
+import img3 from "../images/old_triverse/IMG-20250417-WA0015.jpg";
+import img4 from "../images/old_triverse/IMG-20250417-WA0017.jpg";
+import img5 from "../images/old_triverse/IMG-20250418-WA0037.jpg";
+import img6 from "../images/old_triverse/IMG_0460.jpeg";
+import img7 from "../images/old_triverse/IMG_6610.jpg";
+import img8 from "../images/old_triverse/IMG_6842.jpg";
+import img9 from "../images/old_triverse/20250327_123625744_iOS.jpg";
+import img10 from "../images/old_triverse/20250328_131135135_iOS.jpg";
+---
+
+<section class="about-section" id="aboutSection">
+    <!-- Animated Background -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <div class="about-container">
+        <!-- Header -->
+        <div class="about-header">
+            <span class="header-label">DISCOVER</span>
+            <h2 class="about-title">About Triverse</h2>
+            <p class="about-subtitle">
+                Where innovation meets imagination, and dreams take flight into
+                the cosmos. Join us on a journey through technology, creativity,
+                and boundless possibilities.
+            </p>
+        </div>
+
+        <!-- Main Bento Grid -->
+        <div class="bento-grid">
+            <!-- Row 1 -->
+            <div class="bento-item item-hero">
+                <div class="image-container">
+                    <Image
+                        src={img1}
+                        alt="Triverse Opening Ceremony"
+                        class="item-image"
+                        width={800}
+                        height={600}
+                    />
+                </div>
+                <div class="item-overlay"></div>
+                <div class="item-content">
+                    <span class="item-tag">Featured</span>
+                    <h3>The Beginning of Something Extraordinary</h3>
+                    <p>
+                        Triverse 3.0 marks the culmination of years of
+                        dedication, bringing together the brightest minds from
+                        across the nation. Our flagship tech festival showcases
+                        cutting-edge innovations, thought-provoking discussions,
+                        and boundless creative energy that defines the future of
+                        technology.
+                    </p>
+                </div>
+                <div class="item-shine"></div>
+            </div>
+
+            <div class="bento-item item-stats">
+                <div class="stats-header">
+                    <svg
+                        class="stats-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                    </svg>
+                    <span>Event Highlights</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">3.0</span>
+                        <span class="stat-label">Edition</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">500+</span>
+                        <span class="stat-label">Participants</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">20+</span>
+                        <span class="stat-label">Events</span>
+                    </div>
+                </div>
+                <div class="floating-badge">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        width="16"
+                        height="16"
+                    >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <span>Coming Soon</span>
+                </div>
+            </div>
+
+            <div class="bento-item item-image-1">
+                <div class="image-container">
+                    <Image
+                        src={img2}
+                        alt="Triverse Award Ceremony"
+                        class="item-image"
+                        width={400}
+                        height={400}
+                    />
+                </div>
+                <div class="item-hover-content">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="hover-icon-svg"
+                    >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                        <path d="M11 8v6M8 11h6"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="bento-item item-text-1">
+                <div class="text-icon-container">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="text-icon-svg"
+                    >
+                        <path
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                        ></path>
+                    </svg>
+                </div>
+                <h3>Innovation Hub</h3>
+                <p>
+                    At the heart of Triverse lies our Innovation Hub - a space
+                    where ideas transform into reality. Participants engage in
+                    hands-on workshops, hackathons, and collaborative sessions
+                    that push the boundaries of what's possible. From AI and
+                    machine learning to blockchain and IoT, we explore the
+                    technologies shaping tomorrow.
+                </p>
+                <div class="text-decoration"></div>
+            </div>
+
+            <div class="bento-item item-image-2">
+                <div class="image-container">
+                    <Image
+                        src={img3}
+                        alt="Triverse Tech Expo"
+                        class="item-image"
+                        width={600}
+                        height={400}
+                    />
+                </div>
+                <div class="item-overlay-gradient"></div>
+                <div class="chip-list">
+                    <span class="chip">Technology</span>
+                    <span class="chip">Innovation</span>
+                    <span class="chip">Future</span>
+                    <span class="chip">Community</span>
+                </div>
+            </div>
+
+            <div class="bento-item item-image-3">
+                <div class="image-container">
+                    <Image
+                        src={img4}
+                        alt="Triverse Participants"
+                        class="item-image"
+                        width={400}
+                        height={400}
+                    />
+                </div>
+                <div class="item-hover-content">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="hover-icon-svg"
+                    >
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                        ></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="bento-item item-quote">
+                <div class="quote-deco">"</div>
+                <blockquote>
+                    Technology is best when it brings people together. At
+                    Triverse, we don't just celebrate innovation - we cultivate
+                    a community of dreamers, builders, and changemakers who will
+                    shape the future of our digital world.
+                </blockquote>
+                <div class="quote-author">
+                    <div class="author-avatar">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
+                            ></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="author-info">
+                        <span class="author-name"
+                            >Triverse Organizing Committee</span
+                        >
+                        <span class="author-role"
+                            >IEEE Student Branch, Bennett University</span
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-item item-image-4">
+                <div class="image-container">
+                    <Image
+                        src={img5}
+                        alt="Triverse Workshop"
+                        class="item-image"
+                        width={400}
+                        height={300}
+                    />
+                </div>
+                <div class="item-hover-content">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="hover-icon-svg"
+                    >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4M12 8h.01"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bento-item item-text-2">
+                <div class="text-icon-container">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="text-icon-svg"
+                    >
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                        ></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path
+                            d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"
+                        ></path>
+                    </svg>
+                </div>
+                <h3>Connecting Minds Across Boundaries</h3>
+                <p>
+                    Triverse serves as a bridge connecting students,
+                    professionals, and industry leaders. Through networking
+                    sessions, panel discussions, and mentorship programs, we
+                    create opportunities for meaningful connections that extend
+                    far beyond the event itself. Our alumni network spans across
+                    leading tech companies worldwide.
+                </p>
+                <div class="animated-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="bento-item item-wide">
+                <div class="image-container">
+                    <Image
+                        src={img6}
+                        alt="Triverse Main Stage"
+                        class="item-image"
+                        width={800}
+                        height={400}
+                    />
+                </div>
+                <div class="item-overlay"></div>
+                <div class="item-content wide-content">
+                    <h3>Capturing Unforgettable Moments</h3>
+                    <p>
+                        Every edition of Triverse creates memories that last a
+                        lifetime. From breakthrough presentations to spontaneous
+                        collaborations, these moments define our community's
+                        spirit.
+                    </p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="bento-item item-cta">
+                <div class="cta-content">
+                    <div class="cta-icon">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                            <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                    </div>
+                    <h3>Join the Journey</h3>
+                    <p>
+                        Be part of the next chapter in our story. Register now
+                        and experience the magic of Triverse firsthand. Connect,
+                        learn, and grow with like-minded innovators.
+                    </p>
+                    <div class="cta-arrow">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cta-glow"></div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="bento-item item-image-5">
+                <div class="image-container">
+                    <Image
+                        src={img7}
+                        alt="Triverse Networking"
+                        class="item-image"
+                        width={400}
+                        height={300}
+                    />
+                </div>
+                <div class="item-hover-content">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="hover-icon-svg"
+                    >
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"
+                        ></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <path d="M21 15l-5-5L5 21"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bento-item item-image-6">
+                <div class="image-container">
+                    <Image
+                        src={img8}
+                        alt="Triverse Competition"
+                        class="item-image"
+                        width={600}
+                        height={400}
+                    />
+                </div>
+                <div class="item-overlay-gradient"></div>
+                <div class="item-badge">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        width="14"
+                        height="14"
+                    >
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                        ></polygon>
+                    </svg>
+                    Featured
+                </div>
+            </div>
+
+            <div class="bento-item item-image-7">
+                <div class="image-container">
+                    <Image
+                        src={img9}
+                        alt="Triverse Team"
+                        class="item-image"
+                        width={400}
+                        height={300}
+                    />
+                </div>
+                <div class="item-hover-content">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="hover-icon-svg"
+                    >
+                        <path
+                            d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"
+                        ></path>
+                        <path
+                            d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                        ></path>
+                        <path
+                            d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"
+                        ></path>
+                        <path
+                            d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"
+                        ></path>
+                        <path
+                            d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"
+                        ></path>
+                        <path
+                            d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"
+                        ></path>
+                        <path
+                            d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"
+                        ></path>
+                        <path
+                            d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"
+                        ></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bento-item item-image-8">
+                <div class="image-container">
+                    <Image
+                        src={img10}
+                        alt="Triverse Celebration"
+                        class="item-image"
+                        width={400}
+                        height={300}
+                    />
+                </div>
+                <div class="item-hover-content">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="hover-icon-svg"
+                    >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-section {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        padding: 80px 20px 120px;
+        background: linear-gradient(
+            180deg,
+            #08080c 0%,
+            #0c0c14 50%,
+            #08080c 100%
+        );
+        overflow: hidden;
+        font-family: "Space Grotesk", sans-serif;
+    }
+
+    /* Animated Background Orbs */
+    .bg-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.5;
+        animation: float 20s ease-in-out infinite;
+    }
+
+    .orb-1 {
+        top: 10%;
+        left: 10%;
+        width: 500px;
+        height: 500px;
+        background: rgba(147, 51, 234, 0.15);
+        animation-delay: 0s;
+    }
+
+    .orb-2 {
+        top: 50%;
+        right: 10%;
+        width: 400px;
+        height: 400px;
+        background: rgba(236, 72, 153, 0.12);
+        animation-delay: -7s;
+    }
+
+    .orb-3 {
+        bottom: 10%;
+        left: 30%;
+        width: 350px;
+        height: 350px;
+        background: rgba(59, 130, 246, 0.1);
+        animation-delay: -14s;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(30px, -30px) scale(1.05);
+        }
+        66% {
+            transform: translate(-20px, 20px) scale(0.95);
+        }
+    }
+
+    .about-container {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* Header */
+    .about-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .header-label {
+        display: inline-block;
+        padding: 8px 20px;
+        background: rgba(147, 51, 234, 0.15);
+        border: 1px solid rgba(147, 51, 234, 0.3);
+        border-radius: 100px;
+        color: #a78bfa;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        margin-bottom: 20px;
+    }
+
+    .about-title {
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .about-subtitle {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: rgba(255, 255, 255, 0.5);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* Bento Grid */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(200px, auto);
+        gap: 16px;
+    }
+
+    .bento-item {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .bento-item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(147, 51, 234, 0.3);
+        box-shadow: 0 20px 40px rgba(147, 51, 234, 0.1);
+    }
+
+    /* Image Container - cover to fill space */
+    .image-container {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+
+    .item-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition:
+            transform 0.7s ease,
+            opacity 0.5s ease;
+    }
+
+    .bento-item:hover .item-image {
+        transform: scale(1.08);
+    }
+
+    .item-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            transparent 30%,
+            rgba(0, 0, 0, 0.9) 100%
+        );
+    }
+
+    .item-overlay-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(147, 51, 234, 0.2) 0%,
+            transparent 60%
+        );
+    }
+
+    /* Grid Items */
+    .item-hero {
+        grid-column: span 2;
+        grid-row: span 2;
+        min-height: 450px;
+    }
+
+    .item-stats {
+        grid-column: span 1;
+        background: linear-gradient(
+            135deg,
+            rgba(147, 51, 234, 0.2),
+            rgba(236, 72, 153, 0.15)
+        );
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .item-image-1,
+    .item-image-3,
+    .item-image-4,
+    .item-image-5,
+    .item-image-7,
+    .item-image-8 {
+        grid-column: span 1;
+        min-height: 220px;
+    }
+
+    .item-text-1,
+    .item-text-2 {
+        grid-column: span 1;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .item-image-2 {
+        grid-column: span 2;
+        min-height: 260px;
+    }
+
+    .item-quote {
+        grid-column: span 1;
+        grid-row: span 2;
+        padding: 28px;
+        background: linear-gradient(
+            180deg,
+            rgba(147, 51, 234, 0.1),
+            transparent
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .item-wide {
+        grid-column: span 2;
+        min-height: 260px;
+    }
+
+    .item-cta {
+        grid-column: span 2;
+        background: linear-gradient(
+            135deg,
+            rgba(147, 51, 234, 0.25),
+            rgba(236, 72, 153, 0.2)
+        );
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .item-image-6 {
+        grid-column: span 2;
+        min-height: 260px;
+    }
+
+    /* Content Styles */
+    .item-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 32px;
+        z-index: 10;
+    }
+
+    .item-tag {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(147, 51, 234, 0.8);
+        border-radius: 100px;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .item-content h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+
+    .item-content p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Shine Effect */
+    .item-shine {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        transform: skewX(-15deg);
+        transition: left 0.7s ease;
+    }
+
+    .bento-item:hover .item-shine {
+        left: 150%;
+    }
+
+    /* Stats */
+    .stats-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .stats-icon {
+        width: 24px;
+        height: 24px;
+        color: #a78bfa;
+    }
+
+    .stats-header span {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .stats-grid {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-value {
+        font-size: 2.2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #a78bfa, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+    }
+
+    .stat-label {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        margin-top: 4px;
+    }
+
+    .stat-divider {
+        width: 1px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .floating-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(34, 197, 94, 0.2);
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        border-radius: 100px;
+        color: #4ade80;
+        font-size: 0.8rem;
+        font-weight: 500;
+        animation: pulse 2s ease-in-out infinite;
+        width: fit-content;
+    }
+
+    .floating-badge svg {
+        flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.7;
+        }
+    }
+
+    /* Text Items with SVG Icons */
+    .text-icon-container {
+        width: 48px;
+        height: 48px;
+        background: rgba(147, 51, 234, 0.15);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .text-icon-svg {
+        width: 24px;
+        height: 24px;
+        color: #a78bfa;
+    }
+
+    .text-decoration {
+        width: 40px;
+        height: 4px;
+        background: linear-gradient(90deg, #a78bfa, transparent);
+        border-radius: 2px;
+        margin-top: 20px;
+    }
+
+    .bento-item h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+
+    .bento-item p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    /* Chips */
+    .chip-list {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        z-index: 10;
+    }
+
+    .chip {
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 100px;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    /* Quote */
+    .quote-deco {
+        font-size: 5rem;
+        line-height: 0.5;
+        color: rgba(147, 51, 234, 0.3);
+        font-family: Georgia, serif;
+        margin-bottom: 20px;
+    }
+
+    blockquote {
+        font-size: 1rem;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+
+    .quote-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .author-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #a78bfa, #ec4899);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .author-avatar svg {
+        width: 20px;
+        height: 20px;
+        color: #fff;
+    }
+
+    .author-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author-name {
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .author-role {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+    }
+
+    /* Hover Content with SVG */
+    .item-hover-content {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .bento-item:hover .item-hover-content {
+        opacity: 1;
+    }
+
+    .hover-icon-svg {
+        width: 40px;
+        height: 40px;
+        color: #fff;
+        transform: scale(0.8);
+        transition: transform 0.4s ease;
+    }
+
+    .bento-item:hover .hover-icon-svg {
+        transform: scale(1);
+    }
+
+    /* Badge with SVG */
+    .item-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        padding: 6px 14px;
+        background: rgba(147, 51, 234, 0.9);
+        border-radius: 8px;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Animated Dots */
+    .animated-dots {
+        display: flex;
+        gap: 6px;
+        margin-top: 20px;
+    }
+
+    .animated-dots span {
+        width: 8px;
+        height: 8px;
+        background: rgba(147, 51, 234, 0.6);
+        border-radius: 50%;
+        animation: dotPulse 1.5s ease-in-out infinite;
+    }
+
+    .animated-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .animated-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes dotPulse {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.5;
+        }
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 75%;
+        background: linear-gradient(90deg, #a78bfa, #ec4899);
+        animation: progressGrow 2s ease-out forwards;
+    }
+
+    @keyframes progressGrow {
+        from {
+            width: 0;
+        }
+        to {
+            width: 75%;
+        }
+    }
+
+    /* CTA with SVG */
+    .cta-content {
+        text-align: center;
+        z-index: 10;
+        max-width: 400px;
+    }
+
+    .cta-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    .cta-icon svg {
+        width: 28px;
+        height: 28px;
+        color: #4ade80;
+    }
+
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-6px);
+        }
+    }
+
+    .cta-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 16px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition:
+            transform 0.3s ease,
+            background 0.3s ease;
+    }
+
+    .cta-arrow svg {
+        width: 20px;
+        height: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.3s ease;
+    }
+
+    .item-cta:hover .cta-arrow {
+        transform: translateX(6px);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .item-cta:hover .cta-arrow svg {
+        color: #fff;
+    }
+
+    .cta-glow {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+            circle,
+            rgba(147, 51, 234, 0.3),
+            transparent 70%
+        );
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.5;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+    }
+
+    /* Wide Content */
+    .wide-content {
+        bottom: 20px;
+        padding: 24px;
+    }
+
+    .wide-content h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .item-hero {
+            grid-column: span 2;
+            grid-row: span 1;
+            min-height: 380px;
+        }
+
+        .item-quote {
+            grid-row: span 1;
+        }
+
+        .item-image-2,
+        .item-image-6,
+        .item-wide,
+        .item-cta {
+            grid-column: span 2;
+        }
+
+        .stats-grid {
+            gap: 12px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about-section {
+            padding: 60px 16px 80px;
+        }
+
+        .bento-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .item-hero,
+        .item-stats,
+        .item-text-1,
+        .item-text-2,
+        .item-image-1,
+        .item-image-2,
+        .item-image-3,
+        .item-image-4,
+        .item-image-5,
+        .item-image-6,
+        .item-image-7,
+        .item-image-8,
+        .item-quote,
+        .item-wide,
+        .item-cta {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .item-hero {
+            min-height: 320px;
+        }
+
+        .item-content h3 {
+            font-size: 1.3rem;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+        }
+
+        .item-image-7,
+        .item-image-8 {
+            display: none;
+        }
+
+        .cta-content {
+            padding: 0 16px;
+        }
+    }
+</style>

@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import teamData from '../data/team-details.json';
+import galaxyImage from '../images/galaxy.png';
 
 interface Props {
   teamName: string;
@@ -17,6 +19,25 @@ if (!team) {
 
 // 🔥 exception handling (ONLY addition)
 const hasCoLead = Boolean(team?.colead);
+
+// Load all team images eagerly
+const teamImages = import.meta.glob<{ default: ImageMetadata }>('/src/images/team/**/*.{png,jpg,jpeg,webp}', { eager: true });
+
+function resolveImage(path: string | undefined | null) {
+  if (!path) return null;
+  // Normalize path: replace backslashes with forward slashes
+  const normalizedPath = path.replace(/\\/g, '/');
+  // Ensure it starts with /team
+  const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : '/' + normalizedPath;
+  // Construct full path
+  const fullPath = `/src/images${cleanPath}`;
+  
+  const imageModule = teamImages[fullPath];
+  return imageModule ? imageModule.default : null;
+}
+
+const leadImage = resolveImage(team?.lead?.image);
+const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
 ---
 {team && (
   <section class="team-section">
@@ -26,8 +47,12 @@ const hasCoLead = Boolean(team?.colead);
       class="lead-row left"
       style={hasCoLead ? '' : 'margin-bottom: 2rem;'}
     >
-      <div class="avatar-wrap lead-avatar">
-        <img src={team.lead.image} alt={team.lead.name} />
+      <div class="avatar-wrap lead-avatar" style={`background-image: url(${galaxyImage.src})`}>
+        {leadImage ? (
+            <Image src={leadImage} alt={team.lead.name} class="team-img" />
+        ) : (
+            <div class="placeholder-img"></div>
+        )}
       </div>
       <div class="info">
         <h3>{team.lead.name}</h3>
@@ -39,11 +64,15 @@ const hasCoLead = Boolean(team?.colead);
     {hasCoLead && (
       <div class="lead-row right">
         <div class="info">
-          <h3>{team.colead.name}</h3>
-          <p>{team.colead.role}</p>
+          <h3>{team.colead?.name}</h3>
+          <p>{team.colead?.role}</p>
         </div>
-        <div class="avatar-wrap lead-avatar">
-          <img src={team.colead.image} alt={team.colead.name} />
+        <div class="avatar-wrap lead-avatar" style={`background-image: url(${galaxyImage.src})`}>
+         {coleadImage ? (
+            <Image src={coleadImage} alt={team.colead?.name ?? ''} class="team-img" />
+        ) : (
+            <div class="placeholder-img"></div>
+        )}
         </div>
       </div>
     )}
@@ -51,15 +80,21 @@ const hasCoLead = Boolean(team?.colead);
     <!-- MEMBERS -->
     {team.members.length > 0 && (
       <div class="members-grid">
-        {team.members.map(member => (
+        {team.members.map(member => {
+           const memberImage = resolveImage(member.image);
+           return (
           <div class="member-card">
-            <div class="avatar-wrap member-avatar">
-              <img src={member.image} alt={member.name} />
+            <div class="avatar-wrap member-avatar" style={`background-image: url(${galaxyImage.src})`}>
+              {memberImage ? (
+                <Image src={memberImage} alt={member.name} class="team-img" />
+              ) : (
+                <div class="placeholder-img"></div>
+              )}
             </div>
             <h4>{member.name}</h4>
             <p>{member.role}</p>
           </div>
-        ))}
+        )})}
       </div>
     )}
 
@@ -82,7 +117,9 @@ const hasCoLead = Boolean(team?.colead);
   border-radius: 50%;
   overflow: hidden;
 
-  background-image: url('/galaxy.png');
+  overflow: hidden;
+
+  /* background-image set via inline style */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,7 +132,7 @@ const hasCoLead = Boolean(team?.colead);
 }
 
 /* ---------- STICKER IMAGE ---------- */
-.avatar-wrap img {
+.team-img {
   width: 98%;
   height: 105%;
   object-fit: contain;
@@ -112,7 +149,7 @@ const hasCoLead = Boolean(team?.colead);
   transition: transform 0.3s ease;
 }
 
-.avatar-wrap img:hover {
+.team-img:hover {
   transform: scale(1.06);
 }
 

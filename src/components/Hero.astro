@@ -1,7 +1,9 @@
 ---
 // Hero section matching the reference image
+import { Image } from "astro:assets";
 import "../assets/hero.css";
 import arcImage from "../images/arc.png";
+import triLogo from "../images/Tri.png";
 ---
 
 <div class="hero-container">
@@ -13,8 +15,8 @@ import arcImage from "../images/arc.png";
 
 	<!-- Planet Arc Image -->
 	<div class="planet-arc-wrapper">
-		<img
-			src={arcImage.src}
+		<Image
+			src={arcImage}
 			alt="Planet Arc"
 			class="planet-arc"
 			id="planetArc"
@@ -24,13 +26,16 @@ import arcImage from "../images/arc.png";
 	<!-- Logo and Text Container -->
 	<div class="logo-text-container" id="logoContainer">
 		<div class="logo-blend-wrapper">
-			<h1 class="triverse-logo" id="triverseLogo">
-				{
-					"TRIVERSE"
-						.split("")
-						.map((char) => <span class="letter">{char}</span>)
-				}
-			</h1>
+			<div class="logo-wrapper">
+				<Image src={triLogo} alt="Triverse Logo" class="tri-logo-img" />
+				<h1 class="triverse-logo" id="triverseLogo">
+					{
+						"TRIVERSE"
+							.split("")
+							.map((char) => <span class="letter">{char}</span>)
+					}
+				</h1>
+			</div>
 		</div>
 	</div>
 </div>
@@ -72,11 +77,19 @@ import arcImage from "../images/arc.png";
 
 			// Set initial states
 
+			const logoImg = logoContainer.querySelector(".tri-logo-img");
 			const letters = triverseLogo.querySelectorAll(".letter");
 
 			// Set initial states
 			gsap.set([logoContainer, topSpotlight, bottomGlow, planetArc], {
 				opacity: 0,
+			});
+
+			gsap.set(logoImg, {
+				opacity: 0,
+				x: -50,
+				scale: 0.5,
+				filter: "blur(10px)",
 			});
 
 			gsap.set(letters, {
@@ -142,6 +155,19 @@ import arcImage from "../images/arc.png";
 					},
 					"-=1.0",
 				)
+				// Animate logo image first
+				.to(
+					logoImg,
+					{
+						opacity: 1,
+						x: 0,
+						scale: 1,
+						filter: "blur(0px)",
+						duration: 0.8,
+						ease: "back.out(1.7)",
+					},
+					"-=0.5",
+				)
 				// Stagger animate letters
 				.to(
 					letters,
@@ -150,11 +176,11 @@ import arcImage from "../images/arc.png";
 						y: 0,
 						scale: 1,
 						filter: "blur(0px)",
-						duration: 1,
+						duration: 0.8,
 						stagger: 0.05,
-						ease: "back.out(1.7)",
+						ease: "back.out(1.2)",
 					},
-					"-=0.5",
+					"-=0.6",
 				);
 
 			// Start floating animation after fade in
@@ -185,3 +211,30 @@ import arcImage from "../images/arc.png";
 		}
 	})();
 </script>
+
+<style>
+	.logo-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+	}
+
+	.tri-logo-img {
+		height: clamp(4rem, 10vw, 8rem);
+		width: auto;
+		object-fit: contain;
+		margin-bottom: 5px;
+	}
+
+	@media (max-width: 768px) {
+		.logo-wrapper {
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.tri-logo-img {
+			height: clamp(2.5rem, 6vw, 4rem);
+		}
+	}
+</style>

@@ -1,13 +1,18 @@
 ---
-import '../assets/footer.css';
+import "../assets/footer.css";
 
-import { Image } from 'astro:assets';
-import clubLogo from '../images/club.png';
-import triverseLogo from '../images/logo.png';
+import { Image } from "astro:assets";
+import clubLogo from "../images/club.png";
+import triverseLogo from "../images/logo.png";
 
-const isEventsPage = Astro.url.pathname === '/events';
-const footerClass = `footer${isEventsPage ? ' footer-animate' : ''}`;
-import benuniLogo from '../images/benuni.png';
+const isEventsPage = Astro.url.pathname === "/events";
+const footerClass = `footer${isEventsPage ? " footer-animate" : ""}`;
+import benuniLogo from "../images/benuni.png";
+import rishabhImg from "../images/team/office-bearer/Rishabh_Verma.png";
+import gyanendraImg from "../images/team/tech/gyanendra.png";
+import samridhiImg from "../images/team/tech/samridhi-agrawal.png";
+import lakshyaImg from "../images/team/tech/Lakshya.png";
+import shrutiImg from "../images/team/tech/shruti.png";
 ---
 
 <footer class={footerClass} id="footer">
@@ -38,16 +43,31 @@ import benuniLogo from '../images/benuni.png';
       <!-- Center Section: IEEE & Partners -->
       <div class="footer-column footer-center">
         <div class="footer-center-logo-wrapper">
-          <Image src={triverseLogo} alt="Triverse Logo" width={500} height={167} format="png" class="footer-center-logo-img" />
-          <p class="footer-description">A cosmic journey through space and innovation</p>
+          <Image
+            src={triverseLogo}
+            alt="Triverse Logo"
+            width={500}
+            height={167}
+            format="png"
+            class="footer-center-logo-img"
+          />
+          <p class="footer-description">
+            A cosmic journey through space and innovation
+          </p>
         </div>
         <div class="partner-logos">
-          <Image src={benuniLogo} alt="Bennett University" width={200} format="png" class="partner-logo-img" />
+          <Image
+            src={benuniLogo}
+            alt="Bennett University"
+            width={200}
+            format="png"
+            class="partner-logo-img"
+          />
         </div>
         <!-- Tech Club Logo Placeholder -->
-         <div class="tech-club-logo">
-            <span class="icon-tech-club"></span>
-         </div>
+        <div class="tech-club-logo">
+          <span class="icon-tech-club"></span>
+        </div>
       </div>
 
       <!-- Right Section: Contact Information -->
@@ -58,16 +78,22 @@ import benuniLogo from '../images/benuni.png';
             <div class="contact-item">
               <span class="contact-label">Chairperson</span>
               <span class="contact-value">Devansh Kumar</span>
-              <a href="tel:+91XXXXXXXXXX" class="contact-phone">+91 70074 84933</a>
+              <a href="tel:+91XXXXXXXXXX" class="contact-phone"
+                >+91 70074 84933</a
+              >
             </div>
             <div class="contact-item">
               <span class="contact-label">Vice Chairperson</span>
               <span class="contact-value">Manya Chaubey</span>
-              <a href="tel:+91XXXXXXXXXX" class="contact-phone">+91 87070 98081</a>
+              <a href="tel:+91XXXXXXXXXX" class="contact-phone"
+                >+91 87070 98081</a
+              >
             </div>
             <div class="contact-item">
               <span class="contact-label">Email</span>
-              <a href="mailto:ieee@bennett.edu.in" class="contact-value">ieee@bennett.edu.in</a>
+              <a href="mailto:ieee@bennett.edu.in" class="contact-value"
+                >ieee@bennett.edu.in</a
+              >
             </div>
           </div>
         </div>
@@ -76,28 +102,36 @@ import benuniLogo from '../images/benuni.png';
 
     <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <div class="copyright">
-        &copy; TRIVERSE / ALL RIGHTS RESERVED
-      </div>
+      <div class="copyright">&copy; TRIVERSE / ALL RIGHTS RESERVED</div>
 
       <div class="footer-made-by">
         <span class="made-by-label">Made with ❤️ by:</span>
         <div class="team-grid">
           <!-- Add team member avatars here -->
           <div class="team-member">
-            <div class="team-avatar"> <img src="/team/office-bearer/Rishabh_Verma.png"></div>
+            <div class="team-avatar">
+              <Image src={rishabhImg} alt="Rishabh Verma" />
+            </div>
           </div>
           <div class="team-member">
-            <div class="team-avatar"><img src="/team/tech/gyanendra.png"></div>
+            <div class="team-avatar">
+              <Image src={gyanendraImg} alt="Gyanendra" />
+            </div>
           </div>
           <div class="team-member">
-            <div class="team-avatar"><img src="/team/tech/samridhi-agrawal.png"></div>
+            <div class="team-avatar">
+              <Image src={samridhiImg} alt="Samridhi" />
+            </div>
           </div>
           <div class="team-member">
-            <div class="team-avatar"><img src="/team/tech/Lakshya.png"></div>
+            <div class="team-avatar">
+              <Image src={lakshyaImg} alt="Lakshya" />
+            </div>
           </div>
           <div class="team-member">
-            <div class="team-avatar"><img src="/team/tech/shruti.png"></div>
+            <div class="team-avatar">
+              <Image src={shrutiImg} alt="Shruti" />
+            </div>
           </div>
           <!-- Add more team members as needed -->
         </div>
