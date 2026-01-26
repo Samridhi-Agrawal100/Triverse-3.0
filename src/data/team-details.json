@@ -262,25 +262,6 @@
         }
       ]
     },{
-      "name": "logistics team",
-      "lead": {
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "-",
-        "role": "Co-Lead",
-        "image": ""
-      },
-      "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
-      ]
-    },{
       "name": "research team",
       "lead": {
         "name": "Dhruv Gupta",
