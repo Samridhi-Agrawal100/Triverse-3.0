@@ -10,14 +10,20 @@
       "colead": {
         "name": "Manya Chaubey",
         "role": "Vice Chairperson",
-        "image": "/team/office-bearer/Manya_Chaudhray.png"
+        "image": "\\team\\office-bearer\\manya.png"
       },
       "members": [
+        {
+          "name": "Satvik",
+          "role": "Treasurer",
+          "image": "\\team\\office-bearer\\Satvik.png"
+        },
          {
           "name": "Rishabh Verma",
           "role": "Web Master",
           "image": "/team/office-bearer/Rishabh_Verma.png"
         }
+        
       ]
     },
     {
@@ -59,14 +65,14 @@
     {
       "name": "Content team",
       "lead": {
-        "name": "_",
+        "name": "Venugopal Chepuri",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\Content\\venugopal_Chepuri.png"
       },
       "colead": {
-        "name": "_",
+        "name": "Krishna Gaur",
         "role": "Co-Lead",
-        "image": ""
+        "image": "\\team\\Content\\krishna_Gaur.png"
       },
       "members": [
         {
@@ -98,7 +104,7 @@
         "image": ""
       },
       "colead": {
-        "name": "Apoorv_Verma",
+        "name": "Apoorv Verma",
         "role": "Co-Lead",
         "image": "\\team\\Design\\Apoorv_Verma.png"
       },
@@ -151,9 +157,14 @@
     },{
       "name": "Management Team",
       "lead": {
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
+        "name": "Atharv Krishna",
+        "role": "Management Head",
+        "image": "\\team\\Management\\Atharv_Krishna.png"
+      },
+      "colead": {
+        "name": "Saharsh jaishwal",
+        "role": "Logistics Head",
+        "image": "\\team\\Management\\Saharsh_jaishwal.png"
       },
       "members": [
         {
@@ -233,25 +244,6 @@
       ]
     },{
       "name": "Social Media Team",
-      "lead": {
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "-",
-        "role": "Co-Lead",
-        "image": ""
-      },
-      "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
-      ]
-    },{
-      "name": "logistics team",
       "lead": {
         "name": "-",
         "role": "Team Lead",
