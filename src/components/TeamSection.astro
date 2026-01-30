@@ -8,18 +8,17 @@ interface Props {
 
 const { teamName } = Astro.props;
 
-const team = teamData.teams.find(
-  t => t.name.toLowerCase() === teamName.toLowerCase()
-);
+const normalizeTeamName = (value: string | undefined | null) =>
+  value?.trim().toLowerCase() ?? '';
+
+const normalizedTeamName = normalizeTeamName(teamName);
+const team = teamData.teams.find(t => normalizeTeamName(t.name) === normalizedTeamName);
 
 if (!team) {
   console.error(`Team "${teamName}" not found`);
 }
 
-// 🔥 exception handling (ONLY addition)
 const hasCoLead = Boolean(team?.colead);
-
-// Check if this is Office Bearer team for special layout
 const isOfficeBearerTeam = team?.name.toLowerCase() === 'office bearer';
 
 // Load all team images eagerly
@@ -38,76 +37,49 @@ function resolveImage(path: string | undefined | null) {
   return imageModule ? imageModule.default : null;
 }
 
-const leadImage = resolveImage(team?.lead?.image);
-const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
+type PersonCard = {
+  name: string;
+  role: string;
+  image?: string | null;
+  heading: 'h3' | 'h4';
+};
+
+const people: PersonCard[] = team
+  ? [
+      { ...team.lead, heading: 'h3' as const },
+      ...(hasCoLead ? [{ ...team.colead, heading: 'h3' as const }] : []),
+      ...team.members.map(member => ({ ...member, heading: 'h4' as const })),
+    ]
+  : [];
 ---
 {team && (
   <section class="team-section">
 
     <!-- ALL MEMBERS IN GRID -->
     <div class="members-grid" class:list={isOfficeBearerTeam ? 'office-bearer-layout' : ''}>
-      <!-- LEAD -->
-      <div class="member-card reveal">
-        <div class="avatar-wrap member-avatar">
-          {leadImage ? (
-            <Image src={leadImage} alt={team.lead.name} class="team-img" />
-          ) : (
-            <div class="placeholder-img"></div>
-          )}
-          <div class="info">
-            <h3>{team.lead.name}</h3>
-            <p>{team.lead.role}</p>
-          </div>
-          <div class="info info-hover">
-            <h3>{team.lead.name}</h3>
-            <p>{team.lead.role}</p>
-          </div>
-        </div>
-      </div>
+      {people.map(person => {
+        const personImage = resolveImage(person.image);
+        const HeadingTag = person.heading;
+        const infoContent = (
+          <>
+            <HeadingTag>{person.name}</HeadingTag>
+            <p>{person.role}</p>
+          </>
+        );
 
-      <!-- CO-LEAD -->
-      {hasCoLead && (
-        <div class="member-card reveal">
-          <div class="avatar-wrap member-avatar">
-            {coleadImage ? (
-              <Image src={coleadImage} alt={team.colead?.name ?? ''} class="team-img" />
-            ) : (
-              <div class="placeholder-img"></div>
-            )}
-            <div class="info">
-              <h3>{team.colead?.name}</h3>
-              <p>{team.colead?.role}</p>
-            </div>
-            <div class="info info-hover">
-              <h3>{team.colead?.name}</h3>
-              <p>{team.colead?.role}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <!-- MEMBERS -->
-      {team.members.map(member => {
-        const memberImage = resolveImage(member.image);
         return (
           <div class="member-card reveal">
             <div class="avatar-wrap member-avatar">
-              {memberImage ? (
-                <Image src={memberImage} alt={member.name} class="team-img" />
+              {personImage ? (
+                <Image src={personImage} alt={person.name} class="team-img" />
               ) : (
                 <div class="placeholder-img"></div>
               )}
-              <div class="info">
-                <h4>{member.name}</h4>
-                <p>{member.role}</p>
-              </div>
-              <div class="info info-hover">
-                <h4>{member.name}</h4>
-                <p>{member.role}</p>
-              </div>
+              <div class="info">{infoContent}</div>
+              <div class="info info-hover">{infoContent}</div>
             </div>
           </div>
-        )
+        );
       })}
     </div>
 
