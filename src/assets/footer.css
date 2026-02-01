@@ -35,7 +35,31 @@ body {
   left: 0;
   right: 0;
 }
+/* background container */
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
 
+/* behaves like background-image */
+.footer-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* like background-size: cover */
+  object-position: bottom; /* adjust like background-position */
+  transform: scaleY(-1);
+  filter: blur(10px);
+  opacity: 0.9;
+  object-position: center 90%;
+}
+
+/* content stays on top */
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
 #footer::before {
   content: "";
   position: absolute;

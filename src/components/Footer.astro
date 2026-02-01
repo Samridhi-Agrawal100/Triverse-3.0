@@ -16,13 +16,17 @@ import lakshyaImg from "../images/team/tech/Lakshya.png";
 import shrutiImg from "../images/team/tech/shruti.png";
 ---
 
-<footer
-  class={footerClass}
-  id="footer"
-  style={`
-  --arc-bg: url(${arcBg.src});
-  `}
->
+<footer class={footerClass} id="footer">
+  <!-- BACKGROUND IMAGE -->
+  <div class="footer-bg">
+    <Image
+      src={arcBg}
+      alt=""
+      class="footer-bg-img"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
   <div class="footer-bg-pattern"></div>
 
   <!-- Subtle large logo watermark in the background -->
