@@ -104,9 +104,9 @@
     },{
       "name": "Design Team",
       "lead": {
-        "name": "-",
+        "name": "Amogh Sharma",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\Placeholder.png"
       },
       "colead": {
         "name": "Apoorv Verma",
@@ -118,6 +118,16 @@
           "name": "Nandani Khandelwa",
           "role": "Core Member",
           "image": "\\team\\Design\\nandani_khandelwal.png"
+        },
+        {
+          "name": "Astitva Agarwal",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
+        },
+        {
+          "name": "Illyas",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
         }
       ]
     },{
@@ -152,11 +162,6 @@
           "name": "Prabhavi Gupta",
           "role": "Core Member",
           "image": "\\team\\PRandOutreach\\Prabhavi_Gupta.png"
-        },
-        {
-          "name": "Samar Kumar",
-          "role": "Core Member",
-          "image": "\\team\\PRandOutreach\\Samar_Kumar.png"
         }
       ]
     },{
@@ -221,6 +226,11 @@
           "name": "Sivant Raj",
           "role": "Core Member",
           "image": "\\team\\Management\\Sivant_Raj.png"
+        },
+        {
+          "name": "Vaishnavi Awasthi",
+          "role": "Core Member",
+          "image": "\\team\\Management\\vaishnavi.PNG"
         }
       ]
     },{
@@ -237,14 +247,14 @@
       },
       "members": [
         {
-          "name": "-",
+          "name": "Ashrith Jangam",
           "role": "Core Member",
-          "image": ""
+          "image": "\\team\\Media\\Ashrith_Jangam.png"
         },
         {
-          "name": "-",
+          "name": "Sagar Yadav",
           "role": "Core Member",
-          "image": ""
+          "image": "\\team\\Media\\Sagar_yadav.png"
         }
       ]
     },{
@@ -255,16 +265,11 @@
         "image": "\\team\\Media\\gaurika.PNG"
       },
       "colead": {
-        "name": "-",
+        "name": "Vansh Singhal",
         "role": "Co-Lead",
-        "image": ""
+        "image": "\\team\\Media\\vansh.png"
       },
       "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
       ]
     },{
       "name": "research team",
@@ -283,6 +288,26 @@
           "name": "Dhaanvee Mathur",
           "role": "Core Member",
           "image": "\\team\\Research\\Dhaanvee_mathur.png"
+        },
+        {
+          "name": "Tanmay Sahai",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
+        },
+        {
+          "name": "Osil Nanda",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
+        },
+        {
+          "name": "Maahi",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
+        },
+        {
+          "name": "Subhi",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
         }
       ]
     }
