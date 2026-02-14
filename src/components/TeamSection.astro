@@ -26,11 +26,8 @@ const teamImages = import.meta.glob<{ default: ImageMetadata }>('/src/images/tea
 
 function resolveImage(path: string | undefined | null) {
   if (!path) return null;
-  // Normalize path: replace backslashes with forward slashes
   const normalizedPath = path.replace(/\\/g, '/');
-  // Ensure it starts with /team
   const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : '/' + normalizedPath;
-  // Construct full path
   const fullPath = `/src/images${cleanPath}`;
   
   const imageModule = teamImages[fullPath];
@@ -52,6 +49,7 @@ const people: PersonCard[] = team
     ]
   : [];
 ---
+
 {team && (
   <section class="team-section">
 
@@ -71,7 +69,10 @@ const people: PersonCard[] = team
           <div class="member-card reveal">
             <div class="avatar-wrap member-avatar">
               {personImage ? (
-                <Image src={personImage} alt={person.name} class="team-img" />
+                <div class="image-protect-wrapper">
+                  <Image src={personImage} alt={person.name} class="team-img" />
+                  <div class="overlay"></div>
+                </div>
               ) : (
                 <div class="placeholder-img"></div>
               )}
@@ -87,6 +88,7 @@ const people: PersonCard[] = team
 )}
 
 <script>
+  // Scroll reveal
   const revealCards = () => {
     const cards = document.querySelectorAll('.member-card.reveal');
     if (!('IntersectionObserver' in window)) {
@@ -113,7 +115,136 @@ const people: PersonCard[] = team
   } else {
     revealCards();
   }
+
+  // Optional: disable right-click on images
+  document.addEventListener("contextmenu", function(e){
+    if (e.target.closest('.image-protect-wrapper')) {
+      e.preventDefault();
+    }
+  });
 </script>
+
+<style>
+/* ---------- SECTION ---------- */
+.team-section {
+  max-width: 1100px;
+  margin: 0rem auto 0;
+  padding: 0 1rem;
+}
+
+/* ---------- AVATAR ---------- */
+.avatar-wrap {
+  position: relative;
+  width: 240px;
+  height: 320px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(15, 5, 20, 0.3) 0%, rgba(30, 15, 45, 0.5) 30%, rgba(60, 20, 100, 0.85) 60%, rgba(100, 40, 160, 0.9) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(100, 50, 200, 0.1);
+  z-index: 100;
+}
+
+.avatar-wrap .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 15px 15px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 2;
+  text-align: center;
+}
+
+.avatar-wrap .info h3,
+.avatar-wrap .info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.avatar-wrap .info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* ---------- IMAGE ---------- */
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  background: transparent;
+  transform: none;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+.avatar-wrap:hover .team-img {
+  transform: scale(1.02);
+}
+
+.avatar-wrap:hover .info:not(.info-hover) {
+  opacity: 0;
+}
+
+.avatar-wrap .info-hover {
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.avatar-wrap:hover .info-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- IMAGE PROTECTION ---------- */
+.image-protect-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image-protect-wrapper .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  cursor: default;
+}
+
+/* ---------- MEMBERS GRID ---------- */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  justify-items: center;
+}
+
+/* ---------- REMAINING CSS KEPT AS IS ---------- */
+.members-grid.office-bearer-layout { /* ... your previous office-bearer layout styles ... */ }
+.member-card { /* ... */ }
+.member-card.reveal { /* ... */ }
+.member-card.reveal.is-visible { /* ... */ }
+.member-card:hover { /* ... */ }
+.avatar-wrap { /* ... */ }
+@media (max-width: 941px) { /* ... */ }
+</style>
 
 <style>
 /* ---------- SECTION ---------- */
