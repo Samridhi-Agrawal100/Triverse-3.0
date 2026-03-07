@@ -1,0 +1,20 @@
+[33m3de14dd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msaksham[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{0}: merge main: Fast-forward
+[33mb2a0dad[m[33m ([m[1;31morigin/saksham[m[33m)[m HEAD@{1}: checkout: moving from main to saksham
+[33m3de14dd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msaksham[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{2}: pull origin main: Fast-forward
+[33m1887550[m HEAD@{3}: checkout: moving from saksham to main
+[33mb2a0dad[m[33m ([m[1;31morigin/saksham[m[33m)[m HEAD@{4}: checkout: moving from main to saksham
+[33m1887550[m HEAD@{5}: checkout: moving from saksham to main
+[33mb2a0dad[m[33m ([m[1;31morigin/saksham[m[33m)[m HEAD@{6}: commit: feat: add image protection overlay on team page
+[33m1887550[m HEAD@{7}: reset: moving to main
+[33m7b8898f[m HEAD@{8}: checkout: moving from main to saksham
+[33m1887550[m HEAD@{9}: pull origin main: Fast-forward
+[33m7b8898f[m HEAD@{10}: checkout: moving from saksham to main
+[33m7b8898f[m HEAD@{11}: reset: moving to main
+[33mf8468d2[m HEAD@{12}: checkout: moving from main to saksham
+[33m7b8898f[m HEAD@{13}: checkout: moving from saksham to main
+[33mf8468d2[m HEAD@{14}: checkout: moving from main to saksham
+[33m7b8898f[m HEAD@{15}: checkout: moving from saksham to main
+[33mf8468d2[m HEAD@{16}: commit: Fix footer visibility on mobile and layout scroll logic
+[33m7b8898f[m HEAD@{17}: checkout: moving from saksham to saksham
+[33m7b8898f[m HEAD@{18}: checkout: moving from main to saksham
+[33m7b8898f[m HEAD@{19}: clone: from https://github.com/RishHUB447/Triverse-3.0.git
