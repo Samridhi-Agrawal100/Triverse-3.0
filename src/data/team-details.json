@@ -1,7 +1,7 @@
 {
   "teams": [
     {
-      "name": "office bearer",
+      "name": "Leads",
       "lead": {
         "name": "Devansh Kumar",
         "role": "Chairperson",
@@ -19,28 +19,31 @@
           "image": "\\team\\office-bearer\\Satvik.png"
         },
          {
-          "name": "Ayush Anand",
-          "role": "General secretary",
-          "image": "\\team\\office-bearer\\Ayush.png"
-        },
-         {
           "name": "Rishabh Verma",
           "role": "Web Master",
           "image": "\\team\\office-bearer\\Rishabh_Verma.png"
+        },{
+        "name": "Vansh Singhal",
+        "role": "Lead",
+        "image": "\\team\\Media\\vansh.png"
+        },{
+        "name": "Saharsh jaishwal",
+        "role": "Logistics Head",
+        "image": "\\team\\Management\\Saharsh_jaishwal.png"
         }
       ]
     },
     {
       "name": "Tech team",
       "lead": {
-        "name": "Samridhi Agrawal",
+        "name": "Gyanendra Pratap Singh",
         "role": "Team Lead",
-        "image": "/team/tech/samridhi-agrawal.png"
+        "image": "/team/tech/gyanendra.png"
       },
       "colead": {
-        "name": "Gyanendra Pratap Singh",
+        "name": "Samridhi Agrawal",
         "role": "Co-Lead",
-        "image": "/team/tech/gyanendra.png"
+        "image": "/team/tech/samridhi-agrawal.png"
       },
       "members": [
         {
@@ -68,14 +71,14 @@
     {
       "name": "Content team",
       "lead": {
-        "name": "Venugopal Chepuri",
+        "name": "Dhruv Gupta",
         "role": "Team Lead",
-        "image": "\\team\\Content\\venugopal_Chepuri.png"
+        "image": "\\team\\Research\\Dhruv_Gupta.png"
       },
       "colead": {
-        "name": "Krishna Gaur",
+        "name": "Aisha",
         "role": "Co-Lead",
-        "image": "\\team\\Content\\krishna_Gaur.png"
+        "image": "\\team\\Placeholder.png"
       },
       "members": [
         {
@@ -104,7 +107,7 @@
       "lead": {
         "name": "Amogh Sharma",
         "role": "Team Lead",
-        "image": "\\team\\Placeholder.png"
+        "image": ""
       },
       "colead": {
         "name": "Apoorv Verma",
@@ -129,7 +132,7 @@
         }
       ]
     },{
-      "name": "Pr and Outreach Team ",
+      "name": "Sponsors Team",
       "lead": {
         "name": "Shreyasi Doshi",
         "role": "Team Lead",
@@ -175,9 +178,7 @@
         "image": "\\team\\Management\\Atharv_Krishna.png"
       },
       "colead": {
-        "name": "Saharsh jaishwal",
-        "role": "Logistics Head",
-        "image": "\\team\\Management\\Saharsh_jaishwal.png"
+        
       },
       "members": [
         {
@@ -244,9 +245,7 @@
         "image": "\\team\\Media\\athrav.png"
       },
       "colead": {
-        "name": "Sanskriti Chaudhary",
-        "role": "Co-Lead",
-        "image": "\\team\\Media\\Sanskriti Chaudhary.png"
+        
       },
       "members": [
         {
@@ -256,51 +255,12 @@
         },
         {
           "name": "Sagar Yadav",
-          "role": "Core Member",
+          "role": "",
           "image": "\\team\\Media\\Sagar_yadav.png"
-        }
-      ]
-    },{
-      "name": "Social Media Team",
-      "lead": {
+        },{
         "name": "Gaurika",
         "role": "Team Lead",
         "image": "\\team\\Media\\gaurika.PNG"
-      },
-      "colead": {
-        "name": "Vansh Singhal",
-        "role": "Co-Lead",
-        "image": "\\team\\Media\\vansh.png"
-      },
-      "members": [
-      ]
-    },{
-      "name": "research team",
-      "lead": {
-        "name": "Dhruv Gupta",
-        "role": "Team Lead",
-        "image": "\\team\\Research\\Dhruv_Gupta.png"
-      },
-      "colead": {
-        "name": "Shambhavi_Saumya",
-        "role": "Co-Lead",
-        "image": "\\team\\Research\\Shambhavi_Saumya.png"
-      },
-      "members": [
-        {
-          "name": "Dhaanvee Mathur",
-          "role": "Core Member",
-          "image": "\\team\\Research\\Dhaanvee_mathur.png"
-        },
-        {
-          "name": "Tanmay Sahai",
-          "role": "Core Member",
-          "image": "\\team\\Placeholder.png"
-        },
-        {
-          "name": "Maahi",
-          "role": "Core Member",
-          "image": "\\team\\Placeholder.png"
         }
       ]
     }
