@@ -6,857 +6,793 @@ import theDropt from "../images/event/TheDropt.png";
 import frame87 from "../images/event/Frame 87 (1).png";
 
 const events = [
-	{
-		id: 1,
-		image: logoCff,
-		cardTitle: "BREAKIT",
-		tagline: "Deconstruct. Stress Test. Redesign.",
-		objectiveTitle: "🎯 Objective",
-		objective:
-			"Participants analyze and rethink real-world tech products, exposing system flaws and proposing grounded fixes — no code required.",
-		color: "#a855f7",
-		day: "Day 1",
-	},
-	{
-		id: 2,
-		image: theDropt,
-		cardTitle: "THE DROP",
-		tagline: "Launch the Future. Even If It's Fake.",
-		objectiveTitle: "🎯 Objective",
-		objective:
-			"Teams invent fictional future-tech products and launch them like real startups — blending storytelling, design, and satire.",
-		color: "#d946ef",
-		day: "Day 2",
-	},
-	{
-		id: 3,
-		image: frame87,
-		cardTitle: "BET FOR TECH 3.0",
-		tagline: "Code. Bet. Conquer.",
-		objectiveTitle: "🎯 Objective",
-		objective:
-			"Tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
-		color: "#ec4899",
-		day: "Day 3",
-	},
-];
-
-/* Positions: top% centers card on SVG dot, side determines left/right of dot */
-const positions = [
-	{ top: "14%", side: "left" } /* dot at y=350/2000=17.5% */,
-	{ top: "42%", side: "right" } /* dot at y=900/2000=45% */,
-	{ top: "70%", side: "left" } /* dot at y=1450/2000=72.5% */,
+  {
+    id: 1,
+    image: logoCff,
+    cardTitle: "BREAKIT",
+    tagline: "Deconstruct. Stress Test. Redesign.",
+    objective:
+      "Participants analyze and rethink real-world tech products, exposing system flaws and proposing grounded fixes — no code required.",
+    color: "#a855f7",
+    glowColor: "rgba(168,85,247,1)",
+    day: "Day 1",
+    tag: "Competition",
+    details: [
+      "Identify critical vulnerabilities in existing tech systems",
+      "Propose innovative solutions without writing code",
+      "Present redesigned architecture to judges",
+    ],
+    participants: "Teams of 3-4",
+    duration: "8 hours",
+  },
+  {
+    id: 2,
+    image: theDropt,
+    cardTitle: "THE DROP",
+    tagline: "Launch the Future. Even If It's Fake.",
+    objective:
+      "Teams invent fictional future-tech products and launch them like real startups — blending storytelling, design, and satire.",
+    color: "#d946ef",
+    glowColor: "rgba(217,70,239,1)",
+    day: "Day 2",
+    tag: "Creative",
+    details: [
+      "Create a fictional future-tech product concept",
+      "Develop complete branding and marketing strategy",
+      "Build a compelling product launch presentation",
+    ],
+    participants: "Teams of 2-5",
+    duration: "10 hours",
+  },
+  {
+    id: 3,
+    image: frame87,
+    cardTitle: "BET FOR TECH 3.0",
+    tagline: "Code. Bet. Conquer.",
+    objective:
+      "Tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
+    color: "#ec4899",
+    glowColor: "rgba(236,72,153,1)",
+    day: "Day 3",
+    tag: "Hackathon",
+    details: [
+      "Solve complex coding challenges under pressure",
+      "Make strategic bets on your solutions",
+      "Compete in real-time against other teams",
+    ],
+    participants: "Individual or Pairs",
+    duration: "6 hours",
+  },
 ];
 ---
 
 <Layout title="Events - Triverse">
-	<!-- Fixed Background Video -->
-	<div class="video-background">
-		<video autoplay muted loop playsinline preload="auto" class="bg-video">
-			<source
-				src="https://res.cloudinary.com/dtxhjkgdu/video/upload/v1769102015/Event_Background_vpzjlx.mp4"
-				type="video/mp4"
-			/>
-		</video>
-		<div class="video-overlay"></div>
-	</div>
+  <!-- Fixed Background Video -->
+  <div class="video-background">
+    <video autoplay muted loop playsinline preload="auto" class="bg-video">
+      <source
+        src="https://res.cloudinary.com/dtxhjkgdu/video/upload/v1769102015/Event_Background_vpzjlx.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="video-overlay"></div>
+  </div>
 
-	<main class="events-page">
-		<!-- Hero Section -->
-		<section class="hero">
-			<h1 class="page-title">The Events</h1>
-			<p class="subtitle">
-				Three days of innovation, competition & creativity
-			</p>
-			<div class="scroll-hint">
-				<span>Scroll to explore</span>
-				<div class="scroll-arrow">↓</div>
-			</div>
-		</section>
+  <main class="events-main">
+    <!-- Vertical Timeline Line -->
+    <div class="timeline-vertical"></div>
 
-		<!-- Flowing Path Events -->
-		<section class="path-section">
-			<!-- SVG Curved Path with nodes ON the curve -->
-			<svg
-				class="curve-svg"
-				viewBox="0 0 1000 2000"
-				preserveAspectRatio="none"
-				fill="none"
-			>
-				<defs>
-					<linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
-						<stop offset="0%" stop-color="#a855f7"></stop>
-						<stop offset="50%" stop-color="#d946ef"></stop>
-						<stop offset="100%" stop-color="#ec4899"></stop>
-					</linearGradient>
-					<filter id="curveGlow">
-						<feGaussianBlur
-							in="SourceGraphic"
-							stdDeviation="3"
-							result="blur"></feGaussianBlur>
-						<feMerge>
-							<feMergeNode in="blur"></feMergeNode>
-							<feMergeNode in="SourceGraphic"></feMergeNode>
-						</feMerge>
-					</filter>
-				</defs>
-				<!-- Faint base curve -->
-				<path
-					d="M 500,0 C 500,140 180,180 180,350 C 180,530 820,560 820,900 C 820,1200 180,1230 180,1450 C 180,1650 500,1680 500,1800 L 500,2000"
-					stroke="rgba(168,85,247,0.08)"
-					stroke-width="2.5"
-					fill="none"></path>
-				<!-- Animated glowing curve -->
-				<path
-					id="curvePath"
-					d="M 500,0 C 500,140 180,180 180,350 C 180,530 820,560 820,900 C 820,1200 180,1230 180,1450 C 180,1650 500,1680 500,1800 L 500,2000"
-					stroke="url(#curveGrad)"
-					stroke-width="2.5"
-					fill="none"
-					filter="url(#curveGlow)"></path>
+    <!-- Section Header -->
+    <header class="chronicle-header">
+      <h1 class="chronicle-title">
+        <span class="title-line" id="titleLine1">
+          <span class="letter">T</span><span class="letter">H</span><span class="letter">E</span>
+        </span>
+        <br/>
+        <span class="title-line" id="titleLine2">
+          <span class="letter">E</span><span class="letter">V</span><span class="letter">E</span><span class="letter">N</span><span class="letter">T</span><span class="letter">S</span>
+        </span>
+      </h1>
+      <p class="chronicle-subtitle" id="subtitleText">Three days of innovation, competition & creativity</p>
+    </header>
 
-				<!-- Day 1 arrow on curve pointing RIGHT toward card -->
-				<polygon
-					points="170,330 210,350 170,370"
-					fill="#a855f7"
-					opacity="0.9"
-					class="svg-arrow"></polygon>
-				<polygon
-					points="165,325 215,350 165,375"
-					fill="none"
-					stroke="#a855f7"
-					stroke-width="1.5"
-					opacity="0.3"
-					class="svg-arrow-ring"></polygon>
+    <!-- Timeline Content -->
+    <div class="chronicle-content">
+      {events.map((event, index) => {
+        const isReversed = index % 2 !== 0;
+        return (
+          <div class="chronicle-event group" data-event-id={event.id}>
+            <!-- Day Number - Large Text -->
+            <div class="event-day-col">
+              <span class="day-large-text" style={`--hover-color: ${event.color}20;`}>
+                {event.day.replace("Day ", "0")}
+              </span>
+              <span class="day-label" style={`color: ${event.color};`}>
+                {event.day.toUpperCase()}
+              </span>
+            </div>
 
-				<!-- Day 2 arrow on curve pointing LEFT toward card -->
-				<polygon
-					points="830,880 790,900 830,920"
-					fill="#d946ef"
-					opacity="0.9"
-					class="svg-arrow"></polygon>
-				<polygon
-					points="835,875 785,900 835,925"
-					fill="none"
-					stroke="#d946ef"
-					stroke-width="1.5"
-					opacity="0.3"
-					class="svg-arrow-ring"></polygon>
+            <!-- Timeline Dot -->
+            <div class="timeline-dot-anchor">
+              <div class="timeline-dot" style={`background-color: ${event.color}; box-shadow: 0 0 20px ${event.glowColor};`}></div>
+            </div>
 
-				<!-- Day 3 arrow on curve pointing RIGHT toward card -->
-				<polygon
-					points="170,1430 210,1450 170,1470"
-					fill="#ec4899"
-					opacity="0.9"
-					class="svg-arrow"></polygon>
-				<polygon
-					points="165,1425 215,1450 165,1475"
-					fill="none"
-					stroke="#ec4899"
-					stroke-width="1.5"
-					opacity="0.3"
-					class="svg-arrow-ring"></polygon>
-			</svg>
+            <!-- Content + Image -->
+            <div class={`event-content-col ${isReversed ? "content-reversed" : ""}`}>
+              <div class={`event-inner ${isReversed ? "inner-reversed" : ""}`}>
+                <!-- Text Content -->
+                <div class={`event-text ${isReversed ? "text-right-align" : ""}`}>
+                  <div class="event-tag" style={`color: ${event.color};`}>
+                    {event.tag}
+                  </div>
+                  <h2 class="event-title">{event.cardTitle}</h2>
+                  <p class="event-tagline">{event.tagline}</p>
+                  <p class="event-objective">{event.objective}</p>
 
-			<!-- Event cards absolutely positioned to align with SVG dots -->
-			{
-				events.map((event, index) => (
-					<div
-						class={`event-card ${positions[index].side === "left" ? "card-left" : "card-right"}`}
-						style={`top: ${positions[index].top}; --accent: ${event.color};`}
-						data-event-id={event.id}
-						data-day={event.day}
-						data-title={event.cardTitle}
-						data-tagline={event.tagline}
-						data-objective-title={event.objectiveTitle}
-						data-objective={event.objective}
-					>
-						<div class="card-bubble">
-							<div class="card-image">
-								<Image
-									src={event.image}
-									alt={event.cardTitle}
-									class="card-img"
-									width={260}
-									height={170}
-								/>
-							</div>
-							<div class="card-info">
-								<span
-									class="card-day"
-									style={`color: ${event.color};`}
-								>
-									{event.day}
-								</span>
-								<h3 class="card-name">{event.cardTitle}</h3>
-								<p class="card-tagline">{event.tagline}</p>
-								<span class="card-hint">
-									Click to explore →
-								</span>
-							</div>
-						</div>
-					</div>
-				))
-			}
-		</section>
-	</main>
+                  <!-- Meta -->
+                  <div class={`event-meta ${isReversed ? "meta-right" : ""}`}>
+                    <div class="meta-chip">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={`color: ${event.color};`}>
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                      <span>{event.participants}</span>
+                    </div>
+                    <div class="meta-chip">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={`color: ${event.color};`}>
+                        <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      <span>{event.duration}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Image -->
+                <div class="event-image-container">
+                  <div class="event-image-glow" style={`background: ${event.color}08;`}></div>
+                  <Image
+                    src={event.image}
+                    alt={event.cardTitle}
+                    class="event-image"
+                    width={320}
+                    height={320}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Decorative Floating Blurs -->
+    <div class="deco-blur deco-blur-1"></div>
+    <div class="deco-blur deco-blur-2"></div>
+  </main>
 </Layout>
 
-<!-- Modal OUTSIDE Layout so it's not inside any scrollable wrapper -->
-<div class="modal-overlay" id="eventModal">
-	<div class="modal-card" id="modalCard">
-		<button class="modal-close" id="modalClose" aria-label="Close modal">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<line x1="18" y1="6" x2="6" y2="18"></line>
-				<line x1="6" y1="6" x2="18" y2="18"></line>
-			</svg>
-		</button>
-		<div class="modal-image-wrapper" id="modalImageWrapper"></div>
-		<div class="modal-body">
-			<span class="modal-day" id="modalDay"></span>
-			<h2 class="modal-title" id="modalTitle"></h2>
-			<p class="modal-tagline" id="modalTagline"></p>
-			<div class="modal-divider"></div>
-			<h4 class="modal-objective-title" id="modalObjectiveTitle"></h4>
-			<p class="modal-objective" id="modalObjective"></p>
-		</div>
-	</div>
-</div>
-
 <style is:global>
-	:root {
-		--bg-dark: #0a0e1a;
-		--purple-bright: #b48bff;
-	}
-	html {
-		background-color: var(--bg-dark);
-	}
-	body {
-		background-color: transparent;
-		color: #ffffff;
-		margin: 0;
-		font-family:
-			"Inter",
-			system-ui,
-			-apple-system,
-			sans-serif;
-		overflow-x: hidden;
-	}
-	body.modal-open {
-		overflow: hidden !important;
-	}
+  :root {
+    --bg-dark: #0a0e1a;
+    --purple-bright: #b48bff;
+  }
+  html {
+    background-color: var(--bg-dark);
+  }
+  body {
+    background-color: transparent;
+    color: #ffffff;
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
 </style>
 
 <style>
-	/* ==================== FIXED VIDEO ==================== */
-	.video-background {
-		position: fixed;
-		inset: 0;
-		overflow: hidden;
-		pointer-events: none;
-		z-index: 0;
-	}
-	.bg-video {
-		width: 100vw;
-		height: 100vh;
-		object-fit: cover;
-		filter: blur(8px) brightness(0.35);
-	}
-	.video-overlay {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			180deg,
-			rgba(10, 14, 26, 0.5) 0%,
-			rgba(10, 14, 26, 0.2) 50%,
-			rgba(10, 14, 26, 0.6) 100%
-		);
-	}
+  /* ==================== FIXED VIDEO ==================== */
+  .video-background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    filter: blur(8px) brightness(0.3);
+  }
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0.6) 0%, rgba(10,14,26,0.2) 50%, rgba(10,14,26,0.7) 100%);
+  }
 
-	/* ==================== PAGE ==================== */
-	.events-page {
-		position: relative;
-		min-height: 100vh;
-		z-index: 2;
-	}
+  /* ==================== MAIN ==================== */
+  .events-main {
+    position: relative;
+    min-height: 100vh;
+    z-index: 2;
+    padding-top: 120px;
+    padding-bottom: 160px;
+    overflow: hidden;
+  }
 
-	/* ==================== HERO ==================== */
-	.hero {
-		text-align: center;
-		padding: 120px 20px 40px;
-		position: relative;
-		z-index: 1;
-	}
-	.page-title {
-		font-size: clamp(2.5rem, 8vw, 5rem);
-		font-weight: 950;
-		margin: 0 0 1rem;
-		letter-spacing: -0.03em;
-		background: linear-gradient(135deg, #fff 0%, var(--purple-bright) 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-	.subtitle {
-		font-size: clamp(1rem, 2.5vw, 1.3rem);
-		color: rgba(255, 255, 255, 0.8);
-		margin: 0 0 40px;
-	}
-	.scroll-hint {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 8px;
-		color: rgba(255, 255, 255, 0.35);
-		font-size: 0.8rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-	.scroll-arrow {
-		animation: bounce 1.5s ease infinite;
-		font-size: 1.2rem;
-	}
-	@keyframes bounce {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(8px);
-		}
-	}
+  /* ==================== VERTICAL TIMELINE ==================== */
+  .timeline-vertical {
+    position: absolute;
+    left: 25%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(180,139,255,0.3), transparent);
+    box-shadow: 0 0 15px rgba(180,139,255,0.2);
+    pointer-events: none;
+  }
 
-	/* ==================== PATH SECTION ==================== */
-	.path-section {
-		position: relative;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 24px;
-		height: 1800px; /* fixed height so absolute children align with SVG */
-	}
+  /* ==================== HEADER ==================== */
+  .chronicle-header {
+    max-width: 1280px;
+    margin: 0 auto 160px;
+    padding: 0 48px;
+    position: relative;
+    z-index: 10;
+  }
+  .chronicle-title {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: #fff;
+    opacity: 0.9;
+    margin: 0 0 16px;
+  }
+  .title-line {
+    display: inline-block;
+    overflow: hidden;
+  }
+  .letter {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.4s ease;
+  }
+  .letter.pop {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .chronicle-subtitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.45);
+    max-width: 320px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .chronicle-subtitle.pop {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-	/* SVG Curve behind cards */
-	.curve-svg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		z-index: 0;
-	}
-	#curvePath {
-		stroke-dasharray: 3000;
-		stroke-dashoffset: 3000;
-	}
-	/* Pulsing SVG arrows */
-	.svg-arrow {
-		animation: svgArrowPulse 2.5s ease-in-out infinite;
-	}
-	.svg-arrow-ring {
-		animation: svgArrowRingPulse 2.5s ease-in-out infinite;
-	}
-	@keyframes svgArrowPulse {
-		0%,
-		100% {
-			opacity: 0.7;
-		}
-		50% {
-			opacity: 1;
-		}
-	}
-	@keyframes svgArrowRingPulse {
-		0%,
-		100% {
-			opacity: 0.15;
-		}
-		50% {
-			opacity: 0.5;
-		}
-	}
+  /* ==================== TIMELINE CONTENT ==================== */
+  .chronicle-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+    position: relative;
+    z-index: 10;
+  }
 
-	/* ==================== EVENT CARDS ==================== */
-	.event-card {
-		position: absolute;
-		z-index: 1;
-		cursor: pointer;
-		opacity: 0;
-		transform: translateY(30px);
-		transition:
-			opacity 0.7s ease,
-			transform 0.7s ease;
-	}
-	.event-card.revealed {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  /* ==================== CHRONICLE EVENT ==================== */
+  .chronicle-event {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 200px;
+  }
+  .chronicle-event:last-child {
+    margin-bottom: 80px;
+  }
 
-	/* Card sits further RIGHT of the left-side dot (dot at 18%) */
-	.card-left {
-		left: 35%;
-		width: 58%;
-	}
-	/* Card sits further LEFT of the right-side dot (dot at 82%) */
-	.card-right {
-		right: 35%;
-		width: 58%;
-	}
+  /* ==================== DAY COLUMN ==================== */
+  .event-day-col {
+    width: 25%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-day-col {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.1s;
+  }
 
-	/* ==================== CARD BUBBLE ==================== */
-	.card-bubble {
-		display: flex;
-		flex-direction: row;
-		align-items: stretch;
-		background: rgba(0, 0, 0, 0.65);
-		backdrop-filter: blur(20px);
-		-webkit-backdrop-filter: blur(20px);
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: 18px;
-		overflow: hidden;
-		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
-		width: 100%;
-	}
-	.card-right .card-bubble {
-		flex-direction: row-reverse;
-	}
-	.event-card:hover .card-bubble {
-		transform: translateY(-4px);
-		border-color: var(--accent);
-		box-shadow:
-			0 16px 48px rgba(0, 0, 0, 0.5),
-			0 0 24px rgba(168, 85, 247, 0.12);
-	}
+  .day-large-text {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-weight: 100;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    transition: color 0.7s ease;
+    user-select: none;
+  }
+  .chronicle-event:hover .day-large-text {
+    color: var(--hover-color, rgba(180,139,255,0.15));
+  }
+  .day-label {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transform: rotate(90deg);
+    transform-origin: right center;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .day-label {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
 
-	/* Card image */
-	.card-image {
-		width: 220px;
-		min-width: 220px;
-		overflow: hidden;
-		flex-shrink: 0;
-	}
-	.card-img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: transform 0.5s ease;
-	}
-	.event-card:hover .card-img {
-		transform: scale(1.06);
-	}
+  /* ==================== TIMELINE DOT ==================== */
+  .timeline-dot-anchor {
+    width: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    flex-shrink: 0;
+  }
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    z-index: 20;
+    flex-shrink: 0;
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .timeline-dot {
+    transform: scale(1);
+    transition-delay: 0.25s;
+  }
 
-	/* Card text */
-	.card-info {
-		padding: 24px 28px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 6px;
-	}
-	.card-day {
-		font-size: 0.75rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.18em;
-	}
-	.card-name {
-		font-size: 1.5rem;
-		font-weight: 900;
-		color: #fff;
-		margin: 2px 0 0;
-		line-height: 1.15;
-	}
-	.card-tagline {
-		font-size: 0.9rem;
-		color: rgba(255, 255, 255, 0.45);
-		margin: 0;
-		line-height: 1.4;
-	}
-	.card-hint {
-		font-size: 0.7rem;
-		color: rgba(255, 255, 255, 0.2);
-		font-weight: 500;
-		margin-top: 6px;
-		transition: all 0.3s ease;
-	}
-	.event-card:hover .card-hint {
-		color: var(--accent);
-		transform: translateX(4px);
-	}
+  /* ==================== CONTENT ANIMATIONS ==================== */
+  .event-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
-	/* ==================== MODAL ==================== */
-	.modal-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 9999;
-		background: rgba(0, 0, 0, 0.85);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 20px;
-		opacity: 0;
-		visibility: hidden;
-		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-	.modal-overlay.active {
-		opacity: 1;
-		visibility: visible;
-	}
-	.modal-card {
-		position: relative;
-		width: min(600px, 95vw);
-		max-height: 88vh;
-		background: rgba(12, 12, 22, 0.97);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 24px;
-		overflow: hidden;
-		overflow-y: auto;
-		transform: translateY(30px) scale(0.96);
-		transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-		box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
-	}
-	.modal-overlay.active .modal-card {
-		transform: translateY(0) scale(1);
-	}
-	.modal-card::-webkit-scrollbar {
-		width: 0;
-	}
-	.modal-close {
-		position: absolute;
-		top: 14px;
-		right: 14px;
-		z-index: 10;
-		width: 38px;
-		height: 38px;
-		border-radius: 50%;
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		background: rgba(0, 0, 0, 0.6);
-		backdrop-filter: blur(10px);
-		color: #fff;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: all 0.3s ease;
-	}
-	.modal-close:hover {
-		background: rgba(255, 255, 255, 0.15);
-		transform: rotate(90deg);
-	}
-	.modal-image-wrapper {
-		width: 100%;
-		height: 240px;
-		overflow: hidden;
-		position: relative;
-		background: #111;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.modal-image-wrapper img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		object-position: center;
-		display: block;
-		padding: 20px;
-	}
-	.modal-image-wrapper::after {
-		content: "";
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 80px;
-		background: linear-gradient(transparent, rgba(12, 12, 22, 0.97));
-	}
-	.modal-body {
-		padding: 8px 32px 32px;
-	}
-	.modal-day {
-		display: inline-block;
-		font-size: 0.7rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.2em;
-		color: var(--purple-bright);
-		padding: 5px 14px;
-		background: rgba(180, 139, 255, 0.1);
-		border: 1px solid rgba(180, 139, 255, 0.2);
-		border-radius: 50px;
-		margin-bottom: 12px;
-	}
-	.modal-title {
-		font-size: clamp(1.5rem, 5vw, 2.1rem);
-		font-weight: 900;
-		color: #fff;
-		margin: 0 0 6px;
-		line-height: 1.1;
-	}
-	.modal-tagline {
-		font-size: 0.95rem;
-		color: var(--purple-bright);
-		font-weight: 600;
-		margin: 0;
-	}
-	.modal-divider {
-		width: 100%;
-		height: 1px;
-		margin: 16px 0;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			rgba(255, 255, 255, 0.12),
-			transparent
-		);
-	}
-	.modal-objective-title {
-		font-size: 0.9rem;
-		color: var(--purple-bright);
-		margin: 0 0 6px;
-		font-weight: 700;
-	}
-	.modal-objective {
-		font-size: 0.9rem;
-		color: rgba(255, 255, 255, 0.65);
-		line-height: 1.75;
-		margin: 0;
-	}
+  .event-image-container {
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px) scale(0.85);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-image-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 0.65s;
+    animation: imageBreath 3s ease-in-out 1.5s infinite;
+  }
+  @keyframes imageBreath {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.06); }
+  }
 
-	/* ==================== RESPONSIVE ==================== */
-	@media (max-width: 768px) {
-		.hero {
-			padding: 100px 20px 30px;
-		}
-		.path-section {
-			height: auto;
-			padding: 0 16px 80px;
-		}
-		.curve-svg {
-			display: none;
-		}
+  .event-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    width: fit-content;
+    opacity: 0;
+    transform: translateY(12px) translateX(-15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-tag {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+    transition-delay: 0.3s;
+  }
 
-		.event-card {
-			position: relative !important;
-			top: auto !important;
-			left: auto !important;
-			right: auto !important;
-			width: 100% !important;
-			padding-left: 40px;
-			margin-bottom: 24px;
-		}
+  .event-meta {
+    display: flex;
+    gap: 16px;
+    padding-top: 8px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-meta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.75s;
+  }
+  .meta-chip {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .meta-chip:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+  }
+  .chronicle-event.revealed .meta-chip:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.9s;
+  }
 
-		.path-section::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 20px;
-			width: 2px;
-			height: 100%;
-			background: linear-gradient(180deg, #a855f7, #d946ef, #ec4899);
-			opacity: 0.3;
-			border-radius: 2px;
-		}
+  /* ==================== CONTENT COLUMN ==================== */
+  .event-content-col {
+    flex: 1;
+    padding-left: 80px;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-content-col {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.2s;
+  }
+  .event-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+  }
+  .event-inner.inner-reversed {
+    flex-direction: row-reverse;
+  }
 
-		.card-bubble {
-			flex-direction: column !important;
-		}
-		.card-right .card-bubble {
-			flex-direction: column !important;
-		}
-		.card-image {
-			width: 100%;
-			min-width: 100%;
-			height: 150px;
-		}
-		.card-info {
-			padding: 16px 18px 18px;
-		}
-		.card-name {
-			font-size: 1.1rem;
-		}
-		.modal-image-wrapper {
-			height: 170px;
-		}
-		.modal-body {
-			padding: 8px 22px 24px;
-		}
-	}
+  /* ==================== EVENT TEXT ==================== */
+  .event-text.text-right-align {
+    text-align: right;
+  }
+  .text-right-align .event-tag {
+    margin-left: auto;
+  }
 
-	@media (max-width: 480px) {
-		.hero {
-			padding: 90px 16px 20px;
-		}
-		.card-image {
-			height: 120px;
-		}
-		.card-name {
-			font-size: 1rem;
-		}
-	}
+  .event-title {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+
+  .event-tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-tagline {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+
+  .event-objective {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 380px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-objective {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+  }
+  .text-right-align .event-objective {
+    margin-left: auto;
+  }
+
+  /* ==================== META ==================== */
+  .event-meta.meta-right {
+    justify-content: flex-end;
+  }
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ==================== EVENT IMAGE ==================== */
+  .event-image-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+  }
+  .chronicle-event:hover .event-image {
+    transform: scale(1.1);
+  }
+
+  /* ==================== DECORATIVE BLURS ==================== */
+  .deco-blur {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(120px);
+  }
+  .deco-blur-1 {
+    top: 20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(168,85,247,0.04);
+  }
+  .deco-blur-2 {
+    bottom: 20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(217,70,239,0.04);
+  }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 1024px) {
+    .event-day-col {
+      padding-right: 48px;
+    }
+    .event-content-col {
+      padding-left: 48px;
+    }
+    .event-inner {
+      flex-direction: column !important;
+      gap: 24px;
+    }
+    .event-image-container {
+      width: 180px;
+      height: 180px;
+    }
+    .text-right-align {
+      text-align: left;
+    }
+    .text-right-align .event-tag,
+    .text-right-align .event-objective {
+      margin-left: 0;
+    }
+    .event-meta.meta-right {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .events-main {
+      padding-top: 100px;
+      padding-bottom: 80px;
+    }
+
+    .timeline-vertical {
+      display: none;
+    }
+
+    .chronicle-header {
+      padding: 0 24px;
+      margin-bottom: 80px;
+    }
+    .chronicle-title {
+      font-size: clamp(3rem, 14vw, 5rem);
+    }
+
+    .chronicle-content {
+      padding: 0 24px;
+    }
+
+    .chronicle-event {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 100px;
+    }
+
+    .event-day-col {
+      width: 100%;
+      justify-content: flex-start;
+      padding-right: 0;
+    }
+    .day-large-text {
+      font-size: 4rem;
+    }
+    .day-label {
+      position: static;
+      transform: none;
+      margin-left: 12px;
+    }
+    .event-day-col {
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline-dot-anchor {
+      display: none;
+    }
+
+    .event-content-col {
+      padding-left: 0;
+    }
+    .event-inner {
+      flex-direction: column !important;
+      gap: 24px;
+    }
+    .event-image-container {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .chronicle-header {
+      padding: 0 16px;
+    }
+    .chronicle-content {
+      padding: 0 16px;
+    }
+    .day-large-text {
+      font-size: 3rem;
+    }
+    .event-title {
+      font-size: 1.8rem;
+    }
+  }
 </style>
 
 <script>
-	// === Scroll-driven SVG path trace ===
-	const curvePath = document.getElementById(
-		"curvePath",
-	) as SVGPathElement | null;
-	const pathSection = document.querySelector(
-		".path-section",
-	) as HTMLElement | null;
-	let curveLen = 0;
-	if (curvePath) {
-		curveLen = curvePath.getTotalLength();
-		curvePath.style.strokeDasharray = `${curveLen}`;
-		curvePath.style.strokeDashoffset = `${curveLen}`;
-	}
+  // === Header letter-by-letter pop-up animation ===
+  function animateHeader() {
+    const line1Letters = document.querySelectorAll("#titleLine1 .letter");
+    const line2Letters = document.querySelectorAll("#titleLine2 .letter");
+    const subtitle = document.getElementById("subtitleText");
+    const letterDelay = 80; // ms between each letter
 
-	window.addEventListener("scroll", () => {
-		if (!curvePath || !pathSection) return;
-		const rect = pathSection.getBoundingClientRect();
-		const sectionTop = rect.top + window.scrollY;
-		const sectionHeight = pathSection.offsetHeight;
-		const vh = window.innerHeight;
+    // Animate "THE" letters
+    line1Letters.forEach((letter, i) => {
+      setTimeout(() => letter.classList.add("pop"), 200 + i * letterDelay);
+    });
 
-		const scrollStart = sectionTop - vh * 0.5;
-		const scrollEnd = sectionTop + sectionHeight - vh * 0.3;
-		const progress = Math.max(
-			0,
-			Math.min(
-				1,
-				(window.scrollY - scrollStart) / (scrollEnd - scrollStart),
-			),
-		);
+    // Animate "EVENTS" letters after "THE" finishes
+    const line2Start = 200 + line1Letters.length * letterDelay + 150;
+    line2Letters.forEach((letter, i) => {
+      setTimeout(() => letter.classList.add("pop"), line2Start + i * letterDelay);
+    });
 
-		curvePath.style.strokeDashoffset = (
-			curveLen *
-			(1 - progress)
-		).toString();
-	});
+    // Animate subtitle after all letters finish
+    const subtitleStart = line2Start + line2Letters.length * letterDelay + 200;
+    setTimeout(() => subtitle?.classList.add("pop"), subtitleStart);
+  }
+  animateHeader();
 
-	// === Intersection Observer for card reveals ===
-	const cards = document.querySelectorAll(".event-card");
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((e) => {
-				if (e.isIntersecting) e.target.classList.add("revealed");
-			});
-		},
-		{ threshold: 0.15 },
-	);
-	cards.forEach((c) => observer.observe(c));
+  // === Intersection Observer with reverse scroll support ===
+  // Delay observer start so the first event (already in viewport)
+  // doesn't instantly reveal — user gets to see the animation on load/reload
+  const eventItems = document.querySelectorAll(".chronicle-event");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+        } else {
+          // Reverse animation when scrolling away
+          e.target.classList.remove("revealed");
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-	// === Modal ===
-	// Teleport modal to document.body so it's outside any scrollable wrapper
-	const modal = document.getElementById("eventModal");
-	if (modal) document.body.appendChild(modal);
-	const modalImageWrapper = document.getElementById("modalImageWrapper");
-	const modalDay = document.getElementById("modalDay");
-	const modalTitle = document.getElementById("modalTitle");
-	const modalTagline = document.getElementById("modalTagline");
-	const modalObjectiveTitle = document.getElementById("modalObjectiveTitle");
-	const modalObjective = document.getElementById("modalObjective");
-	const modalClose = document.getElementById("modalClose");
+  // Wait for the user's first scroll to start observing (desktop),
+  // or auto-start after header animation finishes (mobile)
+  let observerStarted = false;
+  function startObserving() {
+    if (observerStarted) return;
+    observerStarted = true;
+    eventItems.forEach((item) => observer.observe(item));
+    window.removeEventListener("scroll", startObserving);
+  }
 
-	document.querySelectorAll(".event-card").forEach((card) => {
-		card.addEventListener("click", () => {
-			const el = card as HTMLElement;
-			const cardImg = card.querySelector(".card-img") as HTMLImageElement;
-			if (cardImg && modalImageWrapper) {
-				const img = document.createElement("img");
-				img.src = cardImg.src || cardImg.currentSrc;
-				img.alt = el.dataset.title || "";
-				modalImageWrapper.innerHTML = "";
-				modalImageWrapper.appendChild(img);
-			}
-			if (modalDay) modalDay.textContent = el.dataset.day || "";
-			if (modalTitle) modalTitle.textContent = el.dataset.title || "";
-			if (modalTagline)
-				modalTagline.textContent = el.dataset.tagline || "";
-			if (modalObjectiveTitle)
-				modalObjectiveTitle.textContent =
-					el.dataset.objectiveTitle || "";
-			if (modalObjective)
-				modalObjective.textContent = el.dataset.objective || "";
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    // On mobile, auto-start after header animation (~1.5s)
+    setTimeout(startObserving, 1500);
+  }
+  // Always listen for scroll as a fallback / desktop trigger
+  window.addEventListener("scroll", startObserving, { passive: true });
 
-			modal?.classList.add("active");
-			lockScroll();
-		});
-	});
+  // === Move video to fixed container ===
+  const videoContainer = document.querySelector(".video-background");
+  const fixedContainer = document.getElementById("fixed-video-container");
+  if (videoContainer && fixedContainer) fixedContainer.appendChild(videoContainer);
 
-	// === Scroll lock using event blockers ===
-	let scrollLocked = false;
-	function preventScroll(e: Event) {
-		// Allow scrolling inside the modal card itself
-		const modalCard = document.getElementById("modalCard");
-		if (modalCard && modalCard.contains(e.target as Node)) return;
-		e.preventDefault();
-	}
-	function lockScroll() {
-		if (scrollLocked) return;
-		scrollLocked = true;
-		document.addEventListener("wheel", preventScroll, { passive: false });
-		document.addEventListener("touchmove", preventScroll, {
-			passive: false,
-		});
-		document.body.style.overflow = "hidden";
-		document.documentElement.style.overflow = "hidden";
-	}
-	function unlockScroll() {
-		scrollLocked = false;
-		document.removeEventListener("wheel", preventScroll);
-		document.removeEventListener("touchmove", preventScroll);
-		document.body.style.overflow = "";
-		document.documentElement.style.overflow = "";
-	}
-
-	function closeModal() {
-		modal?.classList.remove("active");
-		unlockScroll();
-	}
-
-	modalClose?.addEventListener("click", (e) => {
-		e.stopPropagation();
-		closeModal();
-	});
-	modal?.addEventListener("click", (e) => {
-		if (e.target === modal) closeModal();
-	});
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") closeModal();
-	});
-
-	// === Move video to fixed container ===
-	const videoContainer = document.querySelector(".video-background");
-	const fixedContainer = document.getElementById("fixed-video-container");
-	if (videoContainer && fixedContainer)
-		fixedContainer.appendChild(videoContainer);
-
-	// === Footer reveal ===
-	window.addEventListener("load", () => {
-		const footer = document.querySelector("footer");
-		if (!footer) return;
-		footer.classList.add("footer-animate");
-		footer.classList.remove("footer-visible");
-		window.addEventListener("scroll", () => {
-			const pct =
-				(window.scrollY + window.innerHeight) /
-				document.documentElement.scrollHeight;
-			if (pct > 0.8) footer.classList.add("footer-visible");
-			else footer.classList.remove("footer-visible");
-		});
-	});
+  // === Footer reveal ===
+  window.addEventListener("load", () => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    footer.classList.add("footer-animate");
+    footer.classList.remove("footer-visible");
+    window.addEventListener("scroll", () => {
+      const pct =
+        (window.scrollY + window.innerHeight) /
+        document.documentElement.scrollHeight;
+      if (pct > 0.8) footer.classList.add("footer-visible");
+      else footer.classList.remove("footer-visible");
+    });
+  });
 </script>
