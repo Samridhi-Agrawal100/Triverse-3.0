@@ -1,0 +1,779 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoCff from "../images/event/LOGO_cff.png";
+import theDropt from "../images/event/TheDropt.png";
+import frame87 from "../images/event/Frame 87 (1).png";
+
+const events = [
+{
+id: 1,
+image: logoCff,
+cardTitle: "BREAKIT",
+tagline: "Deconstruct. Stress Test. Redesign.",
+objectiveTitle: "🎯 Objective",
+objective:
+"Participants analyze and rethink real-world tech products, exposing system flaws and proposing grounded fixes — no code
+required.",
+color: "#a855f7",
+day: "Day 1",
+details: [
+"Identify critical vulnerabilities in existing tech systems",
+"Propose innovative solutions without writing code",
+"Present redesigned architecture to judges",
+"Focus on user experience and system reliability"
+],
+participants: "Teams of 3-4",
+duration: "8 hours"
+},
+{
+id: 2,
+image: theDropt,
+cardTitle: "THE DROP",
+tagline: "Launch the Future. Even If It's Fake.",
+objectiveTitle: "🎯 Objective",
+objective:
+"Teams invent fictional future-tech products and launch them like real startups — blending storytelling, design, and
+satire.",
+color: "#d946ef",
+day: "Day 2",
+details: [
+"Create a fictional future-tech product concept",
+"Develop complete branding and marketing strategy",
+"Build a compelling product launch presentation",
+"Blend creativity with satirical commentary"
+],
+participants: "Teams of 2-5",
+duration: "10 hours"
+},
+{
+id: 3,
+image: frame87,
+cardTitle: "BET FOR TECH 3.0",
+tagline: "Code. Bet. Conquer.",
+objectiveTitle: "🎯 Objective",
+objective:
+"Tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with
+betting and psychological decision-making in a high-stakes competitive format.",
+color: "#ec4899",
+day: "Day 3",
+details: [
+"Solve complex coding challenges under pressure",
+"Make strategic bets on your solutions",
+"Compete in real-time against other teams",
+"Balance risk-taking with technical precision"
+],
+participants: "Individual or Pairs",
+duration: "6 hours"
+},
+];
+---
+
+<Layout title="Events - Triverse">
+    <!-- Fixed Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline preload="auto" class="bg-video">
+            <source src="https://res.cloudinary.com/dtxhjkgdu/video/upload/v1769102015/Event_Background_vpzjlx.mp4"
+                type="video/mp4" />
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <main class="events-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="page-title">The Events</h1>
+            <p class="subtitle">Three days of innovation, competition & creativity</p>
+        </section>
+
+        <!-- Events Container with Center Timeline -->
+        <div class="events-container">
+            <!-- Timeline line (desktop) -->
+            <div class="timeline-line" aria-hidden="true"></div>
+            <div class="timeline-line-glow" aria-hidden="true"></div>
+
+            <!-- Event Items -->
+            <div class="events-list">
+                {events.map((event, index) => {
+                const isLeft = index % 2 === 0;
+                return (
+                <div class="event-item" data-event-id={event.id} data-side={isLeft ? "left" : "right" }>
+                    <!-- Timeline Dot (desktop) -->
+                    <div class="timeline-dot-wrapper">
+                        <div class="timeline-dot" style={`background-color: ${event.color};`}>
+                            <div class="timeline-dot-ping" style={`background-color: ${event.color};`}></div>
+                        </div>
+                    </div>
+
+                    <!-- Grid: Card + Description -->
+                    <div class="event-grid">
+                        <!-- Card Side -->
+                        <div class={`event-card-col ${isLeft ? "order-1" : "order-2" }`}>
+                            <div class="event-card" data-color={event.color}>
+                                <div class="card-image-wrapper">
+                                    <Image src={event.image} alt={event.cardTitle} class="card-img" width={600}
+                                        height={320} />
+                                    <div class="card-image-gradient"></div>
+                                    <span class="card-day-badge" style={`color: ${event.color}; border-color:
+                                        ${event.color};`}>
+                                        {event.day}
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title">{event.cardTitle}</h3>
+                                    <p class="card-tagline">{event.tagline}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description Side -->
+                        <div class={`event-desc-col ${isLeft ? "order-2" : "order-1" }`}>
+                            <div class="event-desc">
+                                <!-- Objective -->
+                                <div class="desc-block">
+                                    <div class="desc-header">
+                                        <svg class="desc-icon" style={`color: ${event.color};`}
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <circle cx="12" cy="12" r="6"></circle>
+                                            <circle cx="12" cy="12" r="2"></circle>
+                                        </svg>
+                                        <h4 class="desc-label" style={`color: ${event.color};`}>Objective</h4>
+                                    </div>
+                                    <p class="desc-text">{event.objective}</p>
+                                </div>
+
+                                <div class="desc-divider"></div>
+
+                                <!-- What You'll Do -->
+                                <div class="desc-block">
+                                    <div class="desc-header">
+                                        <svg class="desc-icon" style={`color: ${event.color};`}
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 7 7s3-3 6-3 6 3 6 3 0-3 2.5-3a2.5 2.5 0 0 1 0 5H20">
+                                            </path>
+                                            <path d="M4 14h16"></path>
+                                            <path d="M4 9h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"></path>
+                                        </svg>
+                                        <h4 class="desc-label" style={`color: ${event.color};`}>What You'll Do</h4>
+                                    </div>
+                                    <ul class="desc-list">
+                                        {event.details.slice(0, 3).map((detail) => (
+                                        <li class="desc-list-item">
+                                            <span class="desc-bullet" style={`color: ${event.color};`}>•</span>
+                                            <span>{detail}</span>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <!-- Meta: Team & Duration -->
+                                <div class="desc-meta">
+                                    <div class="meta-item">
+                                        <div class="meta-header">
+                                            <svg class="meta-icon" style={`color: ${event.color};`}
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="9" cy="7" r="4"></circle>
+                                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                            </svg>
+                                            <span class="meta-label">Team</span>
+                                        </div>
+                                        <p class="meta-value">{event.participants}</p>
+                                    </div>
+                                    <div class="meta-item">
+                                        <div class="meta-header">
+                                            <svg class="meta-icon" style={`color: ${event.color};`}
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <polyline points="12 6 12 12 16 14"></polyline>
+                                            </svg>
+                                            <span class="meta-label">Duration</span>
+                                        </div>
+                                        <p class="meta-value">{event.duration}</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                );
+                })}
+            </div>
+        </div>
+    </main>
+</Layout>
+
+
+
+<style is:global>
+    :root {
+        --bg-dark: #0a0e1a;
+        --purple-bright: #b48bff;
+    }
+
+    html {
+        background-color: var(--bg-dark);
+    }
+
+    body {
+        background-color: transparent;
+        color: #ffffff;
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        overflow-x: hidden;
+    }
+</style>
+
+<style>
+    /* ==================== FIXED VIDEO ==================== */
+    .video-background {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .bg-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        filter: blur(8px) brightness(0.35);
+    }
+
+    .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10, 14, 26, 0.5) 0%, rgba(10, 14, 26, 0.2) 50%, rgba(10, 14, 26, 0.6) 100%);
+    }
+
+    /* ==================== PAGE ==================== */
+    .events-page {
+        position: relative;
+        min-height: 100vh;
+        z-index: 2;
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+        text-align: center;
+        padding: 120px 20px 64px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .page-title {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 950;
+        margin: 0 0 1rem;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #fff 0%, var(--purple-bright) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0 0 40px;
+    }
+
+    .scroll-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .scroll-arrow {
+        animation: bounce 1.5s ease infinite;
+        font-size: 1.2rem;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(8px);
+        }
+    }
+
+    /* ==================== EVENTS CONTAINER ==================== */
+    .events-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 100px;
+    }
+
+    /* ==================== TIMELINE ==================== */
+    .timeline-line,
+    .timeline-line-glow {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        margin-left: -0.5px;
+        background: linear-gradient(180deg, #a855f7, #d946ef, #ec4899);
+        pointer-events: none;
+    }
+
+    .timeline-line {
+        opacity: 0.15;
+    }
+
+    .timeline-line-glow {
+        opacity: 0.5;
+        animation: timelineGrow 2s ease-out forwards;
+    }
+
+    @keyframes timelineGrow {
+        from {
+            height: 0;
+        }
+
+        to {
+            height: 100%;
+        }
+    }
+
+    /* ==================== TIMELINE DOT ==================== */
+    .timeline-dot-wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        display: block;
+    }
+
+    .timeline-dot {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 4px solid var(--bg-dark);
+        position: relative;
+        transform: scale(0);
+        opacity: 0;
+        transition: all 0.7s ease;
+    }
+
+    .event-item.revealed .timeline-dot {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .timeline-dot-ping {
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        opacity: 0.4;
+        animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+
+        75%,
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    /* ==================== EVENT ITEMS ==================== */
+    .events-list {
+        display: flex;
+        flex-direction: column;
+        gap: 128px;
+    }
+
+    .event-item {
+        position: relative;
+    }
+
+    /* ==================== EVENT GRID ==================== */
+    .event-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+    }
+
+    .order-1 {
+        order: 1;
+    }
+
+    .order-2 {
+        order: 2;
+    }
+
+    /* ==================== CARD SLIDE ANIMATIONS ==================== */
+    .event-card-col,
+    .event-desc-col {
+        opacity: 0;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .event-desc-col {
+        transition-delay: 0.2s;
+    }
+
+    /* Left-side events: card slides from left, desc from right */
+    .event-item[data-side="left"] .event-card-col {
+        transform: translateX(-80px);
+    }
+
+    .event-item[data-side="left"] .event-desc-col {
+        transform: translateX(80px);
+    }
+
+    /* Right-side events: card slides from right, desc from left */
+    .event-item[data-side="right"] .event-card-col {
+        transform: translateX(80px);
+    }
+
+    .event-item[data-side="right"] .event-desc-col {
+        transform: translateX(-80px);
+    }
+
+    /* Revealed state */
+    .event-item.revealed .event-card-col,
+    .event-item.revealed .event-desc-col {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* ==================== EVENT CARD ==================== */
+    .event-card {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    .event-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Card image */
+    .card-image-wrapper {
+        position: relative;
+        height: 256px;
+        overflow: hidden;
+    }
+
+    .card-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+    }
+
+    .event-card:hover .card-img {
+        transform: scale(1.1);
+    }
+
+    .card-image-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2), transparent);
+    }
+
+    .card-day-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        padding: 6px 12px;
+        border-radius: 9999px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1.5px solid;
+    }
+
+    /* Card body */
+    .card-body {
+        padding: 24px;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #fff;
+        margin: 0 0 8px;
+        line-height: 1.15;
+    }
+
+    .card-tagline {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* ==================== EVENT DESCRIPTION ==================== */
+    .event-desc {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .desc-block {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .desc-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .desc-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+
+    .desc-label {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 0;
+    }
+
+    .desc-text {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .desc-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    }
+
+    .desc-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .desc-list-item {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .desc-bullet {
+        margin-top: 2px;
+    }
+
+    /* Meta: Team & Duration */
+    .desc-meta {
+        display: flex;
+        gap: 24px;
+        padding-top: 8px;
+    }
+
+    .meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .meta-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .meta-icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+
+    .meta-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .meta-value {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+        margin: 0;
+    }
+
+    /* CTA Button */
+    .view-details-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-weight: 700;
+        color: #fff;
+        font-size: 0.9rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        align-self: flex-start;
+    }
+
+    .view-details-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+        .hero {
+            padding: 100px 20px 40px;
+        }
+
+        .timeline-line,
+        .timeline-line-glow,
+        .timeline-dot-wrapper {
+            display: none;
+        }
+
+        .events-list {
+            gap: 48px;
+        }
+
+        .event-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .order-1,
+        .order-2 {
+            order: 0 !important;
+        }
+
+        .event-card-col,
+        .event-desc-col {
+            transform: translateY(30px) !important;
+        }
+
+        .event-item.revealed .event-card-col,
+        .event-item.revealed .event-desc-col {
+            transform: translateY(0) !important;
+        }
+
+        .card-image-wrapper {
+            height: 200px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+        }
+
+
+    }
+
+    @media (max-width: 480px) {
+        .hero {
+            padding: 90px 16px 30px;
+        }
+
+        .card-image-wrapper {
+            height: 160px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+
+<script>
+    // === Intersection Observer for event reveals ===
+    const eventItems = document.querySelectorAll(".event-item");
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) e.target.classList.add("revealed");
+            });
+        },
+        { threshold: 0.2 }
+    );
+    eventItems.forEach((item) => observer.observe(item));
+
+    // === Card hover border color ===
+    document.querySelectorAll < HTMLElement > (".event-card").forEach((card) => {
+        const color = card.dataset.color || "#a855f7";
+        card.addEventListener("mouseenter", () => {
+            card.style.borderColor = color;
+            card.style.boxShadow = `0 20px 60px rgba(0,0,0,0.6), 0 0 40px ${color}30`;
+        });
+        card.addEventListener("mouseleave", () => {
+            card.style.borderColor = "rgba(255,255,255,0.1)";
+            card.style.boxShadow = "0 12px 36px rgba(0,0,0,0.5)";
+        });
+    });
+
+
+
+    // === Move video to fixed container ===
+    const videoContainer = document.querySelector(".video-background");
+    const fixedContainer = document.getElementById("fixed-video-container");
+    if (videoContainer && fixedContainer) fixedContainer.appendChild(videoContainer);
+
+    // === Footer reveal ===
+    window.addEventListener("load", () => {
+        const footer = document.querySelector("footer");
+        if (!footer) return;
+        footer.classList.add("footer-animate");
+        footer.classList.remove("footer-visible");
+        window.addEventListener("scroll", () => {
+            const pct =
+                (window.scrollY + window.innerHeight) /
+                document.documentElement.scrollHeight;
+            if (pct > 0.8) footer.classList.add("footer-visible");
+            else footer.classList.remove("footer-visible");
+        });
+    });
+</script>
